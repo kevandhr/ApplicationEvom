@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              tools:context="com.milk.open.openmove21.fragment.FragmentMenu"
+              android:background="#F84AAABF" >
+
+    <ImageView
+            android:id="@+id/iv_close_fmenu"
+            android:layout_width="38dip"
+            android:layout_height="38dip"
+            android:contentDescription="@string/contentDescription"
+            android:src="@drawable/fmenu_ic_close_white"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="4dp"
+            android:layout_marginRight="8dp"/>
+
+    <LinearLayout
+            android:id="@+id/ll_1_fmenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="vertical"
+            android:layout_marginLeft="12dp">
+
+        <ImageView
+                android:id="@+id/iv_user_icon_fmenu"
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="6dp"
+                android:layout_marginLeft="4dp"
+                android:contentDescription="@string/contentDescription"
+                android:scaleType="centerCrop"
+                android:src="@drawable/fmenu_ic_userhead" />
+
+        <TextView
+                android:id="@+id/tv_username_fmenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:text="@string/username"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+        <TextView
+                android:id="@+id/tv_email_fmenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:text="@string/email"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp" />
+        <TextView
+                android:id="@+id/tv_money_fmenu"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dip"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/money"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp" />
+
+    </LinearLayout>
+
+    <ImageView
+            android:id="@+id/iv_line_below_ll_1_fmenu"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_below="@id/ll_1_fmenu"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/gen_img_white_line"
+            android:contentDescription="@string/contentDescription"/>
+
+    <LinearLayout
+            android:id="@+id/ll_2_fmenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dip"
+            android:layout_below="@id/iv_line_below_ll_1_fmenu"
+            android:layout_above="@id/iv_line_above_logout_fmenu"
+            android:orientation="vertical" >
+
+        <ListView
+            android:id="@+id/lv_fmenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#ffffff"
+            android:divider="@null"
+            android:scrollbars="none"
+            android:cacheColorHint="#00000000" />
+
+    </LinearLayout>
+
+    <ImageView
+            android:id="@+id/iv_line_above_logout_fmenu"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_marginLeft="16dp"
+            android:layout_marginRight="16dp"
+            android:layout_marginBottom="4dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/gen_img_white_line"
+            android:contentDescription="@string/contentDescription"
+            android:layout_above="@id/ll_3_fmenu"/>
+
+    <LinearLayout
+            android:id="@+id/ll_3_fmenu"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:layout_marginLeft="12dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="12dp">
+
+        <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginLeft="12dip"
+                android:contentDescription="@string/contentDescription"
+                android:scaleType="centerCrop"
+                android:src="@drawable/fmenu_ic_logout1" />
+
+        <TextView
+                android:id="@+id/tv_logout"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="36dp"
+                android:text="@string/logout"
+                android:textColor="#FFFFF0"
+                android:textSize="18sp" />
+    </LinearLayout>
+
+</RelativeLayout>

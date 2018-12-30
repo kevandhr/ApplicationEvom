@@ -21,6 +21,7 @@ public class FragmentMenu extends FragmentBase implements AbsListView.OnItemClic
 
     private OnFragmentInteractionListener mListener;
 
+    private ImageView iv_close;
     /**
      * The fragment's ListView/GridView.
      */
@@ -32,23 +33,6 @@ public class FragmentMenu extends FragmentBase implements AbsListView.OnItemClic
      */
     private ListAdapter mAdapter;
 
-    // TODO: Rename and change types of parameters
-    public static FragmentMenu newInstance(String param1, String param2) {
-        FragmentMenu fragment = new FragmentMenu();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
-        return fragment;
-    }
-
-    /**
-     * Mandatory empty constructor for the fragment manager to instantiate the
-     * fragment (e.g. upon screen orientation changes).
-     */
-    public FragmentMenu() {
-    }
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,8 +43,14 @@ public class FragmentMenu extends FragmentBase implements AbsListView.OnItemClic
         }
 
         // TODO: Change Adapter to display your content
-        mAdapter = new ArrayAdapter<UtilDummyContent.DummyItem>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1, UtilDummyContent.ITEMS);
+        mAdapter = new ArrayAdapter<UtilDataDummyContent.DummyItem>(getActivity(),
+                android.R.layout.simple_list_item_1, android.R.id.text1, UtilDataDummyContent.ITEMS);
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putInt("curChoice", 1);
     }
 
     @Override
@@ -69,13 +59,32 @@ public class FragmentMenu extends FragmentBase implements AbsListView.OnItemClic
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
 
         // Set the adapter
-        mListView = (AbsListView) view.findViewById(android.R.id.list);
+        mListView = (AbsListView) view.findViewById(R.id.lv_fmenu);
         ((AdapterView<ListAdapter>) mListView).setAdapter(mAdapter);
 
         // Set OnItemClickListener so we can be notified on item clicks
         mListView.setOnItemClickListener(this);
 
+        iv_close = view.findViewById(R.id.iv_close_fmenu);
+        iv_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mListener.onFragmentInteraction("iv_close onclick");
+            }
+        });
+
         return view;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+//        if (null != mListener) {
+//            // Notify the active callbacks interface (the activity, if the
+//            // fragment is attached to one) that an item has been selected.
+//            mListener.onFragmentInteraction(UtilDataDummyContent.ITEMS.get(position).id);
+//        }
+        toast("onItemClick="+position);
+        mListener.onFragmentInteraction("onItemClick="+position);
     }
 
     @Override
@@ -89,19 +98,33 @@ public class FragmentMenu extends FragmentBase implements AbsListView.OnItemClic
         }
     }
 
+    public void setOnFragmentInteractionListener(OnFragmentInteractionListener mListener){
+        this.mListener = mListener;
+    }
+
     @Override
     public void onDetach() {
         super.onDetach();
         mListener = null;
     }
 
-    @Override
-    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        if (null != mListener) {
-            // Notify the active callbacks interface (the activity, if the
-            // fragment is attached to one) that an item has been selected.
-            mListener.onFragmentInteraction(UtilDummyContent.ITEMS.get(position).id);
+    public FragmentMenu() {
+    }
+    private static FragmentMenu fragment;
+    public static FragmentMenu getInstance(){
+        if (null == fragment){
+            fragment = new FragmentMenu();
         }
+        return fragment;
+    }
+
+    public static FragmentMenu newInstance(String param1, String param2) {
+        FragmentMenu fragment = FragmentMenu.getInstance();
+        Bundle args = new Bundle();
+        args.putString(ARG_PARAM1, param1);
+        args.putString(ARG_PARAM2, param2);
+        fragment.setArguments(args);
+        return fragment;
     }
 
     /**
@@ -128,8 +151,7 @@ public class FragmentMenu extends FragmentBase implements AbsListView.OnItemClic
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        public void onFragmentInteraction(String id);
+        public void onFragmentInteraction(String msg);
 
     }
 }

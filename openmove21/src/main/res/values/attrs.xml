@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <declare-styleable name="XMenu">
-        <attr name="LeftShadowDrawable" format="reference" />
+        <attr name="RightShadowDrawable" format="reference" />
         <attr name="touchModeAbove" format="integer" />
         <attr name="edgeWidth" format="integer" />
     </declare-styleable>

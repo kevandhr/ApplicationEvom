@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string-array name="left_panel_group_names">
+        <item>新闻</item>
+        <item>扩展</item>
+    </string-array>
+    <string-array name="left_panel_first_group_names">
+        <item>校园新事</item>
+        <item>校内通知</item>
+        <item>自习室</item>
+        <item>课程表</item>
+        <item>圈内消息</item>
+    </string-array>
+    <string-array name="left_panel_second_group_names">
+        <item>订餐</item>
+        <item>失物招领</item>
+        <item>二手市场</item>
+    </string-array>
+
+</resources>

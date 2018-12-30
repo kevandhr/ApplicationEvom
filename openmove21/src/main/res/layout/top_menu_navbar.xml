@@ -1,0 +1,77 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="60sp" >
+
+    <LinearLayout
+        android:id="@+id/ll_back"
+        android:layout_width="60sp"
+        android:layout_height="fill_parent"
+        android:background="@drawable/online_file_ignore"
+        android:gravity="center_vertical"
+        android:orientation="horizontal" >
+
+        <ImageView
+            android:id="@+id/iv_back_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dip"
+            android:contentDescription="@string/contentDescription"
+            android:src="@drawable/topmenubar_ic_flipper_head_flip" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/ll_down_list"
+        android:layout_width="188sp"
+        android:layout_height="fill_parent"
+        android:layout_toRightOf="@+id/ll_back"
+        android:layout_toLeftOf="@+id/ll_refresh"
+        android:background="@drawable/online_file_ignore" >
+
+        <ImageView
+        	android:id="@+id/iv_line_separator"
+       	 	android:layout_width="1dip"
+       	 	android:layout_height="25dip"
+        	android:background="@drawable/topmenubar_ic_flipper_head_separator"
+        	android:contentDescription="@string/contentDescription" />
+
+        <TextView
+            android:id="@+id/tv_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="37dp"
+            android:layout_toRightOf="@+id/iv_line_separator"
+            android:text="@string/textview"
+            android:textColor="#090909"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/iv_down_list_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/tv_title"
+            android:contentDescription="@string/contentDescription"
+            android:src="@drawable/topmenubar_ic_qb_qrcode_menu_down" />
+
+    </RelativeLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_refresh"
+        android:layout_width="70sp"
+        android:layout_height="fill_parent"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/online_file_ignore"
+        android:gravity="center"
+        android:orientation="horizontal" >
+
+         <ImageView
+	        android:id="@+id/iv_right_line"
+	        android:layout_width="wrap_content"
+	        android:layout_height="40sp"
+	        android:src="@drawable/topmenubar_ic_flipper_head_separator"
+	        android:contentDescription="@string/contentDescription" />
+    </LinearLayout>
+    
+</RelativeLayout>

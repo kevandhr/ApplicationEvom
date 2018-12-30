@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/height_zhengti_adpstickets"
+        android:background="#FFFFFF"
+        android:orientation="vertical" >
+
+    <RelativeLayout
+            android:id="@+id/rl_head_adp_stickets"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_head_adpstickets" >
+
+        <ImageView
+                android:id="@+id/iv_che_adp_stickets"
+                android:layout_width="48dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:contentDescription="@string/contentDescription"
+                android:background="@drawable/fcontent_ic_01_gouwuche"/>
+
+        <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/iv_che_adp_stickets"
+                android:layout_toLeftOf="@id/iv_gongsi_adp_stickets"
+                android:orientation="vertical"
+                android:layout_marginLeft="12dp" >
+
+            <TextView
+                    android:id="@+id/tv_state_adp_stickets"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:textSize="12sp"
+                    android:text="@string/textview"/>
+
+            <TextView
+                    android:id="@+id/tv_scope_adp_stickets"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:textSize="16sp"
+                    android:text="@string/textview"/>
+
+            <TextView
+                    android:id="@+id/tv_timelimit_adp_stickets"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:textSize="13sp"
+                    android:text="@string/textview"/>
+
+        </LinearLayout>
+
+        <ImageView
+                android:id="@+id/iv_gongsi_adp_stickets"
+                android:layout_width="118dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentTop="true"
+                android:contentDescription="@string/contentDescription"
+                android:background="@drawable/fcontent_ic_01_gouwuche"/>
+    </RelativeLayout>
+
+    <RelativeLayout
+            android:id="@+id/rl_tail_adp_stickets"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_tail_adpstickets" >
+
+        <ImageView
+                android:layout_alignParentTop="true"
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@drawable/gen_img_grey_line"
+                android:contentDescription="@string/contentDescription"/>
+
+        <ImageView
+                android:id="@+id/iv_gouwuche_adp_stickets"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_centerVertical="true"
+                android:background="@drawable/fcontent_ic_01_gouwuche"
+                android:layout_marginLeft="8dp" />
+
+        <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_toRightOf="@+id/iv_gouwuche_adp_stickets"
+                android:layout_marginLeft="8dp"
+                android:textSize="15sp"
+                android:text="@string/purchase" />
+
+        <TextView
+                android:id="@+id/tv_money_adp_stickets"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_alignParentRight="true"
+                android:layout_marginRight="12dp"
+                android:textSize="15sp"
+                android:text="@string/textview"/>
+
+    </RelativeLayout>
+
+</LinearLayout>

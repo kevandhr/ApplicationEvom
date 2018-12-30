@@ -14,7 +14,7 @@ import android.util.Log;
  */
 public class UtilLog {
 
-    public static String customTagPrefix = "qualvision";
+    public static String customTagPrefix = "LOG_MILK";
 
     private UtilLog() {
     }

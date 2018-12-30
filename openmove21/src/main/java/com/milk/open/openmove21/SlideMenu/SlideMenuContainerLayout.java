@@ -6,16 +6,26 @@ import android.graphics.Color;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
-import android.util.TypedValue;
-import android.view.LayoutInflater;
-import android.view.View;
+import android.view.*;
 import android.widget.RelativeLayout;
 import com.milk.open.openmove21.R;
+import com.milk.open.openmove21.Util.UtilLog;
+import com.milk.open.openmove21.activity.ActivityMain;
+import com.milk.open.openmove21.activity.UtilDataConstants;
+import com.milk.open.openmove21.fragment.FragmentContent01SearchTickets;
+import com.milk.open.openmove21.fragment.FragmentContent02;
+import com.milk.open.openmove21.fragment.FragmentMenu;
 
-public class SlideMenuContainerLayout extends RelativeLayout {
+
+/**
+ * 功能描述：手指在屏幕上左右滑动时，该类的实例负责让其子View根据用户的手势左右偏移（滚动）
+ *
+ */
+public class SlideMenuContainerLayout extends RelativeLayout implements OnMenuClickListener, FragmentMenu.OnFragmentInteractionListener {
 
     private SlideMenuMenuView mMenuView;
     private SlideMenuContentView mContentView;
+    private int menuWidth = 400;
     /**
      * Constant value for use with setTouchModeAbove(). Allows the SlidingMenu to be opened with a swipe
      * gesture on the screen's margin
@@ -50,40 +60,78 @@ public class SlideMenuContainerLayout extends RelativeLayout {
     }
 
     private void init(Context context, AttributeSet attrs) {
-        LayoutParams behindParams = new LayoutParams(LayoutParams.MATCH_PARENT,
-                LayoutParams.MATCH_PARENT);
+
+        LayoutParams behindParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         mMenuView = new SlideMenuMenuView(context);
+        mMenuView.setParentLayout(this);
         addView(mMenuView, behindParams);
 
-        LayoutParams aboveParams = new LayoutParams(LayoutParams.MATCH_PARENT,
-                LayoutParams.MATCH_PARENT);
+        LayoutParams aboveParams = new LayoutParams(LayoutParams.MATCH_PARENT, LayoutParams.MATCH_PARENT);
         mContentView = new SlideMenuContentView(context);
         addView(mContentView, aboveParams);
 
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.XMenu);
+        TypedArray typedArray = context.obtainStyledAttributes(attrs, R.styleable.XMenu);
         try {
-            Drawable leftShadowDrawable = a
-                    .getDrawable(R.styleable.XMenu_LeftShadowDrawable);
-            if (null == leftShadowDrawable) {
-                leftShadowDrawable = new GradientDrawable(
-                        GradientDrawable.Orientation.LEFT_RIGHT, new int[]{Color.TRANSPARENT,
-                        Color.argb(99, 0, 0, 0)});
+            Drawable rightShadowDrawable = typedArray.getDrawable(R.styleable.XMenu_RightShadowDrawable);
+            if (null == rightShadowDrawable) {
+                rightShadowDrawable = new GradientDrawable(
+                        GradientDrawable.Orientation.RIGHT_LEFT,
+                        new int[]{Color.TRANSPARENT, Color.argb(99, 0, 0, 0)});
             }
-            mContentView.setLeftShadowDrawable(leftShadowDrawable);
-            int touchModeAbove = a.getInt(R.styleable.XMenu_touchModeAbove, TOUCHMODE_MARGIN);
-            setTouchModeAbove(touchModeAbove);
-//            int edgeWidth = a.getInt(R.styleable.XMenu_edgeWidth, DisplayUtil.dip2px(getContext(), 10));
+            mMenuView.setRightShadowDrawable(rightShadowDrawable);
+//            int touchModeAbove = typedArray.getInt(R.styleable.XMenu_touchModeAbove, TOUCHMODE_MARGIN);
+//            setTouchModeAbove(touchModeAbove);
+//            int edgeWidth = typedArray.getInt(R.styleable.XMenu_edgeWidth, DisplayUtil.dip2px(getContext(), 10));
 //            setEdgeWidth(edgeWidth);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-            a.recycle();
+            typedArray.recycle();
         }
-        int mMarginThreshold = (int) TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP,
-                20, getResources().getDisplayMetrics());
+
     }
 
+    public void show_menu(){
+        bringChildToFront(getChildAt(0));
+        mMenuView.scrollToShow();
+    }
 
+    public void hide_menu() {
+        mMenuView.scrollToHide();
+    }
+
+    public void show_content(){
+        View view=null;
+        for(int i=0;i<getChildCount();i++){
+            view = getChildAt(i);
+            if(SlideMenuContentView.class == view.getClass()){
+                break;
+            }
+        }
+        bringChildToFront(view);
+    }
+
+    public void showfragment_01(){
+//        FragmentContent02 f01 = new FragmentContent02();
+
+//        mContentView.setView();
+    }
+
+//    /**
+//     * Controls whether the SlidingMenu can be opened with a swipe gesture.
+//     * Options are {@link #TOUCHMODE_MARGIN TOUCHMODE_MARGIN}, {@link #TOUCHMODE_FULLSCREEN TOUCHMODE_FULLSCREEN},
+//     * or {@link #TOUCHMODE_NONE TOUCHMODE_NONE}
+//     *
+//     * @param i the new touch mode
+//     */
+//    public void setTouchModeAbove(int i) {
+//        if (i != SlideMenuContainerLayout.TOUCHMODE_FULLSCREEN && i != SlideMenuContainerLayout.TOUCHMODE_MARGIN
+//                && i != SlideMenuContainerLayout.TOUCHMODE_NONE) {
+//            throw new IllegalStateException("TouchMode must be set to either" +
+//                    "TOUCHMODE_FULLSCREEN or TOUCHMODE_MARGIN or TOUCHMODE_NONE.");
+//        }
+//        mContentView.setTouchMode(i);
+//    }
 
     public void setMenu(int layoutId) {
         setMenu(LayoutInflater.from(getContext()).inflate(layoutId, null));
@@ -102,47 +150,22 @@ public class SlideMenuContainerLayout extends RelativeLayout {
     }
 
     public void setMenuWidth(int menuWidth) {
-        mContentView.setMenuWidth(menuWidth);
+        this.menuWidth=menuWidth;
         mMenuView.setMenuWidth(menuWidth);
     }
 
-    public void toggle() {
-        mContentView.toggle();
+    public void onClick(View view){
+
     }
 
-    public boolean isMenuShowing() {
-        return mContentView.isMenuShowing();
+    public void onClick(){
+        show_menu();
     }
 
-    public void showContent() {
-        mContentView.showContent();
-    }
-
-    public void setLeftShadowWidth(int width) {
-        mContentView.setLeftShadowWidth(width);
-    }
-
-    /**
-     * Controls whether the SlidingMenu can be opened with a swipe gesture.
-     * Options are {@link #TOUCHMODE_MARGIN TOUCHMODE_MARGIN}, {@link #TOUCHMODE_FULLSCREEN TOUCHMODE_FULLSCREEN},
-     * or {@link #TOUCHMODE_NONE TOUCHMODE_NONE}
-     *
-     * @param i the new touch mode
-     */
-    public void setTouchModeAbove(int i) {
-        if (i != SlideMenuContainerLayout.TOUCHMODE_FULLSCREEN && i != SlideMenuContainerLayout.TOUCHMODE_MARGIN
-                && i != SlideMenuContainerLayout.TOUCHMODE_NONE) {
-            throw new IllegalStateException("TouchMode must be set to either" +
-                    "TOUCHMODE_FULLSCREEN or TOUCHMODE_MARGIN or TOUCHMODE_NONE.");
-        }
-        mContentView.setTouchMode(i);
-    }
-
-    /**
-     * 当touchModeAbove为TOUCHMODE_MARGIN时,设置屏幕边缘的宽度，建议使用系统的配置
-     */
-    @Deprecated
-    public void setEdgeWidth(int edgeWidth) {
-        mContentView.setEdgeWidth(edgeWidth);
+    @Override
+    public void onFragmentInteraction(String msg) {
+//        UtilLog.i(msg);
+        hide_menu();
+        show_content();
     }
 }

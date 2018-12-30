@@ -1,7 +1,6 @@
 <resources>
     <string name="app_name">0penMove</string>
 
-
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
@@ -12,4 +11,17 @@
     <string name="action_example">Example action</string>
 
     <string name="action_settings">Settings</string>
+
+    <!-- no sence -->
+    <string name="contentDescription">contentDescription</string>
+    <string name="textview">TextView</string>
+    <string name="logout">Logout</string>
+    <string name="username">yu shen</string>
+    <string name="email">shenyu123@gmail.com</string>
+    <string name="money">6.60 €</string>
+    <string name="tag_no_internet">No Internet!</string>
+    <string name="lianjiezhong">连接中....</string>
+    <string name="lianjiezhong_shaohou">连接中..请稍后....</string>
+    <string name="purchase">Purchase</string>
+
 </resources>

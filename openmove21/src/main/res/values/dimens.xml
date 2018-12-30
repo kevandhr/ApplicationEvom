@@ -6,4 +6,15 @@
     <!-- Per the design guidelines, navigation drawers should be between 240dp and 320dp:
          https://developer.android.com/design/patterns/navigation-drawer.html -->
     <dimen name="navigation_drawer_width">240dp</dimen>
+
+
+    <!-- adapter_searchtickets -->
+    <dimen name="height_zhengti_adpstickets">154dp</dimen>
+    <dimen name="height_head_adpstickets">110dp</dimen>
+    <dimen name="height_tail_adpstickets">42dp</dimen>
+
+    <!-- top item navbar-->
+    <dimen name="height_zhengti_titembar">41dp</dimen>
+
+
 </resources>

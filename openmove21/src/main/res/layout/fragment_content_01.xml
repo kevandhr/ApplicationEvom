@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/openmove_bg_01"
+    android:orientation="vertical">
+
+    <RelativeLayout
+            android:id="@+id/rl_top_fcontent01"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#4AAABF">
+
+        <com.milk.open.openmove21.SlideMenu.TopItemNavbar
+            android:id="@+id/topitembar_fcontent01"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#4AAABF" />
+
+        <ImageView
+                android:id="@+id/iv_dingwei_fcontent01"
+                android:layout_width="26dp"
+                android:layout_height="26dip"
+                android:background="@drawable/fcontent_ic_01_dingwei"
+                android:contentDescription="@string/contentDescription"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="12dp"/>
+
+    </RelativeLayout>
+
+    <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#664AAABF"
+            android:scrollbars="none" >
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            <ImageView
+                    android:id="@+id/iv_content1_fcontent01"
+                    android:layout_width="match_parent"
+                    android:layout_height="102dp"
+                    android:background="@drawable/gen_img_test_content"
+                    android:contentDescription="@string/contentDescription"
+                    android:layout_margin="6dp"/>
+
+            <ListView
+                    android:id="@+id/lv_fcontent01"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:scrollbars="none"
+                    android:divider="@color/divider"
+                    android:dividerHeight="8dp"
+                    android:textColor="#FFFFFF"/>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

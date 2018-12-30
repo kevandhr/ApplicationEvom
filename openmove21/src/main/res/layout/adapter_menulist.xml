@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#00000000" >
+
+    <ImageView
+            android:id="@+id/iv_icon_adp_menulist"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_centerVertical="true"
+            android:background="@drawable/fcontent_ic_01_gouwuche"
+            android:layout_marginLeft="12dp" />
+
+    <TextView
+            android:id="@+id/tv_item_adp_menulist"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_toRightOf="@+id/iv_gouwuche_adp_stickets"
+            android:layout_marginLeft="64dp"
+            android:textColor="#FFFFFF"
+            android:textSize="18sp"
+            android:text="@string/textview" />
+
+</RelativeLayout>

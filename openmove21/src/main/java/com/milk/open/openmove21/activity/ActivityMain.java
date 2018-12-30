@@ -1,58 +1,83 @@
 package com.milk.open.openmove21.activity;
 
 import android.os.Bundle;
-import android.view.MenuItem;
-import com.milk.open.openmove21.*;
+import com.milk.open.openmove21.R;
 import com.milk.open.openmove21.SlideMenu.SlideMenuContainerLayout;
-import com.milk.open.openmove21.fragment.UtilConstants;
-import com.milk.open.openmove21.fragment.FragmentContent;
+import com.milk.open.openmove21.fragment.FragmentContent01SearchTickets;
 import com.milk.open.openmove21.fragment.FragmentMenu;
 
 public class ActivityMain extends ActivityBase implements FragmentMenu.OnFragmentInteractionListener {
 
-    private SlideMenuContainerLayout xMenu;
+    /**
+     * 滑动容器
+     */
+    private SlideMenuContainerLayout mSlideContainer;
+
+
     private FragmentMenu mMenuFragment;
-    private FragmentContent mContentFragment;
+
+    private FragmentContent01SearchTickets mContentFragment;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        xMenu = new SlideMenuContainerLayout(this);
-        setContentView(xMenu);
-        configMenu();
-        configContent();
+
+        setupView();
+
+        setContentView(mSlideContainer);
     }
 
-    private void configMenu() {
-        mMenuFragment = new FragmentMenu();
+    @SuppressWarnings("deprecation")
+    @Override
+    protected void setupView() {
+        mSlideContainer = new SlideMenuContainerLayout(mContext);
+
+        //configMenu();
+        mMenuFragment = FragmentMenu.getInstance();
+        mMenuFragment.setOnFragmentInteractionListener(this);
         getSupportFragmentManager().beginTransaction().replace(R.id.slidemenu_menu_frame, mMenuFragment).commit();
-        xMenu.setMenu(R.layout.slidemenu_menu_container);
-        int width = Math.min(UtilConstants.sWidth, UtilConstants.sHeight);
-        xMenu.setMenuWidth(3 * width / 5);
-    }
+        mSlideContainer.setMenu(R.layout.slidemenu_menu);
+        int width = Math.min(UtilDataConstants.sWidth, UtilDataConstants.sHeight);
+        mSlideContainer.setMenuWidth(63 * width / 100);
+        mSlideContainer.hide_menu();
 
-    private void configContent() {
-        mContentFragment = new FragmentContent();
+        //configContent();
+        mContentFragment = FragmentContent01SearchTickets.getInstance();
         getSupportFragmentManager().beginTransaction().replace(R.id.slidemenu_content_frame, mContentFragment).commit();
-        xMenu.setContent(R.layout.slidemenu_content);
+        mSlideContainer.setContent(R.layout.slidemenu_content);
     }
 
-    @Override
-    public void onFragmentInteraction(String id) {
+//    public void toggle() {
+//        mSlideContainer.toggle();
+//    }
+
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()){
+//            case android.R.id.home:
+//                toggle();
+//                break;
+//        }
+//        return super.onOptionsItemSelected(item);
+//    }
+
+    public void onFragmentInteraction(String msg) {
+        mSlideContainer.onFragmentInteraction(msg);
+    }
+
+    protected void initialized() {
 
     }
 
-    public void toggle() {
-        xMenu.toggle();
+    protected int getLayoutId() {
+        return 0;
     }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
-            case android.R.id.home:
-                toggle();
-                break;
-        }
-        return super.onOptionsItemSelected(item);
-    }
+//
+//    public void onClick() {
+//        mSlideContainer.slideToRight();
+//    }
+//
+//    public void onClick(View view) {
+//        mSlideContainer.show(view);
+//    }
 }

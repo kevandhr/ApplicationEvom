@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class UtilDummyContent {
+public class UtilDataDummyContent {
 
     /**
      * An array of sample (dummy) items.
@@ -19,9 +19,17 @@ public class UtilDummyContent {
 
     static {
         // Add 3 sample items.
-        addItem(new DummyItem("1", "Item 1"));
-        addItem(new DummyItem("2", "Item 2"));
-        addItem(new DummyItem("3", "Item 3"));
+        addItem(new DummyItem("1", "Search tickets"));
+        addItem(new DummyItem("2", "Search trips"));
+        addItem(new DummyItem("3", "Timetable"));
+        addItem(new DummyItem("4", "Advise"));
+        addItem(new DummyItem("5", "My tickets"));
+        addItem(new DummyItem("6", "Profile"));
+        addItem(new DummyItem("7", "Credit"));
+        addItem(new DummyItem("8", "Privilege cards"));
+        addItem(new DummyItem("9", "Gift"));
+        addItem(new DummyItem("10", "Statistics"));
+        addItem(new DummyItem("11", "About"));
     }
 
     private static void addItem(DummyItem item) {
