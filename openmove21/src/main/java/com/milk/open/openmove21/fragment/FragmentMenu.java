@@ -7,6 +7,11 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import com.milk.open.openmove21.R;
+import com.milk.open.openmove21.Util.Utils;
+import com.milk.open.openmove21.adapter.AdapterMenuList;
+import com.milk.open.openmove21.model.ModelMenuItem;
+
+import java.util.ArrayList;
 
 public class FragmentMenu extends FragmentBase implements AbsListView.OnItemClickListener {
 
@@ -22,29 +27,26 @@ public class FragmentMenu extends FragmentBase implements AbsListView.OnItemClic
     private OnFragmentInteractionListener mListener;
 
     private ImageView iv_close;
-    /**
-     * The fragment's ListView/GridView.
-     */
-    private AbsListView mListView;
 
-    /**
-     * The Adapter which will be used to populate the ListView/GridView with
-     * Views.
-     */
-    private ListAdapter mAdapter;
+    private ListView mListView;
+
+    private ArrayList<ModelMenuItem> arraydata;
+    private AdapterMenuList mAdapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+//        if (getArguments() != null) {
+//            mParam1 = getArguments().getString(ARG_PARAM1);
+//            mParam2 = getArguments().getString(ARG_PARAM2);
+//        }
+        arraydata = new ArrayList<ModelMenuItem>();
+        for(int i=0;i<11;i++){
+            arraydata.add(new ModelMenuItem(""+i, Utils.menuitems[i], Utils.menuitemimgs[i]));
         }
 
-        // TODO: Change Adapter to display your content
-        mAdapter = new ArrayAdapter<UtilDataDummyContent.DummyItem>(getActivity(),
-                android.R.layout.simple_list_item_1, android.R.id.text1, UtilDataDummyContent.ITEMS);
+        mAdapter = new AdapterMenuList(getActivity(), arraydata);
     }
 
     @Override
@@ -58,10 +60,8 @@ public class FragmentMenu extends FragmentBase implements AbsListView.OnItemClic
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_menu, container, false);
 
-        // Set the adapter
-        mListView = (AbsListView) view.findViewById(R.id.lv_fmenu);
-        ((AdapterView<ListAdapter>) mListView).setAdapter(mAdapter);
-
+        mListView = (ListView) view.findViewById(R.id.lv_fmenu);
+        mListView.setAdapter(mAdapter);
         // Set OnItemClickListener so we can be notified on item clicks
         mListView.setOnItemClickListener(this);
 
@@ -83,8 +83,8 @@ public class FragmentMenu extends FragmentBase implements AbsListView.OnItemClic
 //            // fragment is attached to one) that an item has been selected.
 //            mListener.onFragmentInteraction(UtilDataDummyContent.ITEMS.get(position).id);
 //        }
-        toast("onItemClick="+position);
-        mListener.onFragmentInteraction("onItemClick="+position);
+        toast("FragmentMenu onItemClick="+position);
+        mListener.onFragmentInteraction(""+position);
     }
 
     @Override

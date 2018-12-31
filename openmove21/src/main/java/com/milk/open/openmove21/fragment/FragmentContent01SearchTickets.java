@@ -11,10 +11,10 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.Toast;
+import android.widget.RelativeLayout;
 import com.milk.open.openmove21.R;
 import com.milk.open.openmove21.SlideMenu.OnMenuClickListener;
-import com.milk.open.openmove21.SlideMenu.TopItemNavbar;
+import com.milk.open.openmove21.diyview.TopItemNavbar;
 import com.milk.open.openmove21.Util.Utils;
 import com.milk.open.openmove21.adapter.AdapterSearchTickets;
 import com.milk.open.openmove21.model.ModelTicket;
@@ -56,7 +56,30 @@ public class FragmentContent01SearchTickets extends FragmentBase {
                 .show(this.getContext(), getString(R.string.lianjiezhong)
                         , getString(R.string.lianjiezhong_shaohou), true, true);
         arraydata = new ArrayList<ModelTicket>();
+        adapter = new AdapterSearchTickets(getActivity(), arraydata);
         new Thread(new Rungetdata()).start();
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        topItemNavbar = (TopItemNavbar) view.findViewById(R_id_topbar);
+        topItemNavbar.setTitle("SEATCH TICKETS");
+        topItemNavbar.setOnMenuClickListener((OnMenuClickListener)view.getParent().getParent().getParent());
+
+        mListView = (ListView) view.findViewById(R.id.lv_fcontent01);
+        mListView.setAdapter(adapter);
+        mListView.setOnTouchListener(new View.OnTouchListener() {
+            // Setting on Touch Listener for handling the touch inside ScrollView
+            @Override
+            public boolean onTouch(View v, MotionEvent event) {
+                // Disallow the touch request for parent scroll on touch of child view
+                v.getParent().requestDisallowInterceptTouchEvent(true);
+                return false;
+            }
+        });
+        setListViewHeightBasedOnChildren(mListView);
     }
 
     @Override
@@ -69,30 +92,6 @@ public class FragmentContent01SearchTickets extends FragmentBase {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R_id_layout, container, false);
-    }
-
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        topItemNavbar = (TopItemNavbar) view.findViewById(R_id_topbar);
-        topItemNavbar.setTitle("SEATCH TICKETS");
-        topItemNavbar.setOnMenuClickListener((OnMenuClickListener)view.getParent().getParent().getParent());
-
-        mListView = (ListView) view.findViewById(R.id.lv_fcontent01);
-        adapter = new AdapterSearchTickets().setParent(getActivity()).setMlv(mListView);
-        adapter.setDataSource(arraydata);
-        mListView.setAdapter(adapter);
-        mListView.setOnTouchListener(new View.OnTouchListener() {
-            // Setting on Touch Listener for handling the touch inside ScrollView
-            @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                // Disallow the touch request for parent scroll on touch of child view
-                v.getParent().requestDisallowInterceptTouchEvent(true);
-                return false;
-            }
-        });
-        setListViewHeightBasedOnChildren(mListView);
     }
 
     private void print() {
@@ -121,17 +120,16 @@ public class FragmentContent01SearchTickets extends FragmentBase {
                         Utils.money[i]);
                 arraydata.add(aticket);
             }
-            handler.sendEmptyMessage(MESSAGE_UPDATE_PRINT);
+
+            try {
+                Thread.sleep(1000);
+            } catch (Exception e) {
+                handler.sendEmptyMessage(MESSAGE_NET_CONNECTION_ERROR);
+            } finally {
+                handler.sendEmptyMessage(MESSAGE_UPDATE_PRINT);
+            }
             return;
         }
-
-//        try {
-//
-//        } catch (Exception e) {
-//            handler.sendEmptyMessage(MESSAGE_NET_CONNECTION_ERROR);
-//        } finally {
-//            handler.sendEmptyMessage(MESSAGE_UPDATE_PRINT);
-//        }
     }
 
     class Rungetdata implements Runnable {

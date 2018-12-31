@@ -18,7 +18,7 @@ public class AdapterSearchTickets extends BaseAdapter {
 
 	private List<ModelTicket> l;
 	private Activity activityParent;
-	private ListView mlv;
+//	private ListView mlv;
 
 	class Holder {
 		TextView tv_state;
@@ -61,10 +61,6 @@ public class AdapterSearchTickets extends BaseAdapter {
 		return convertView;
 	}
 
-	public AdapterSearchTickets() {
-		super();
-	}
-
 	@Override
 	public int getCount() {
 		return l.size();
@@ -83,23 +79,33 @@ public class AdapterSearchTickets extends BaseAdapter {
 		return position;
 	}
 
+	public AdapterSearchTickets() {
+		super();
+	}
+
+	public AdapterSearchTickets(Activity activity, List<ModelTicket> data) {
+		super();
+		this.activityParent = activity;
+		this.l = data;
+	}
+
 	public AdapterSearchTickets setParent(Activity activity) {
 		this.activityParent = activity;
 		return this;
 	}
 
 	public AdapterSearchTickets setDataSource(List<ModelTicket> data) {
-		l = data;
+		this.l = data;
 		return this;
 	}
 
-	public AdapterSearchTickets setMlv(ListView mlv) {
-		this.mlv = mlv;
-		return this;
-	}
-
-	public ListView getMlv() {
-		return mlv;
-	}
+//	public AdapterSearchTickets setMlv(ListView mlv) {
+//		this.mlv = mlv;
+//		return this;
+//	}
+//
+//	public ListView getMlv() {
+//		return mlv;
+//	}
 
 }

@@ -5,9 +5,10 @@ public class ModelMenuItem {
     private String itemstr;
     private int imagerid;
 
-    public ModelMenuItem(String seq, String itemstr){
+    public ModelMenuItem(String seq, String itemstr, int imagerid){
         this.seq = seq;
         this.itemstr = itemstr;
+        this.imagerid = imagerid;
     }
 
     public String getSeq() {

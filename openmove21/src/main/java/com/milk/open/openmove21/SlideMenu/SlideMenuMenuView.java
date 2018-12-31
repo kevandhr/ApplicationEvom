@@ -15,6 +15,7 @@ public class SlideMenuMenuView extends ViewGroup {
 
     private int menuWidth = 400;
     private int duration = 500;
+    private int duration_hide_menu = 400;
     private Scroller mScroller;
 
     private int oldScrollX = 0;
@@ -64,15 +65,13 @@ public class SlideMenuMenuView extends ViewGroup {
 
             case MotionEvent.ACTION_CANCEL:
             case MotionEvent.ACTION_UP:
-                if (x >= menuWidth) {
-                    parentLayout.hide_menu();
-                    parentLayout.show_content();
+                if (x > menuWidth) {
+                    parentLayout.handler.sendEmptyMessage(parentLayout.MESSAGE_TO_HIDE_MENU);
                 }
                 if (mVelocityTracker != null) {
                     mVelocityTracker.recycle();
                     mVelocityTracker = null;
                 }
-
                 break;
         }
         return super.dispatchTouchEvent(ev);
@@ -111,12 +110,19 @@ public class SlideMenuMenuView extends ViewGroup {
 //            UtilLog.i("scrollToHide scrollto="+dx);
             smoothScrollTo(dx);
             isMenuShowing = false;
+            postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    parentLayout.handler.sendEmptyMessage(parentLayout.MESSAGE_TO_FRONT_CONTENT);
+                }
+            }, duration_hide_menu);
         }
+
+
     }
 
     private void smoothScrollTo(int dx) {
         int oldScrollX = getScrollX();
-//        UtilLog.i("scroll from ="+oldScrollX+" to ="+dx+" duration="+duration);
         mScroller.startScroll(oldScrollX, getScrollY(), dx, getScrollY(), duration);
         invalidate();
     }

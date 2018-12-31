@@ -3,6 +3,7 @@ package com.milk.open.openmove21.Util;
 import android.app.Activity;
 import android.graphics.Point;
 import android.util.DisplayMetrics;
+import com.milk.open.openmove21.R;
 
 public class Utils {
 
@@ -32,5 +33,17 @@ public class Utils {
             "Search tickets", "Search trips", "Timetable", "Advise",
             "My tickets", "Profile", "Credit", "Privilege cards",
             "Gift", "Statistics", "About"};
+    public static int[] menuitemimgs = {
+            R.drawable.fcontent_ic_01_gouwuche_white,
+            R.drawable.fcontent_ic_01_gouwuche_white,
+            R.drawable.fcontent_ic_01_gouwuche_white,
+            R.drawable.fcontent_ic_01_gouwuche_white,
+            R.drawable.fcontent_ic_01_gouwuche_white,
+            R.drawable.fcontent_ic_01_gouwuche_white,
+            R.drawable.fcontent_ic_01_gouwuche_white,
+            R.drawable.fcontent_ic_01_gouwuche_white,
+            R.drawable.fcontent_ic_01_gouwuche_white,
+            R.drawable.fcontent_ic_01_gouwuche_white,
+            R.drawable.fcontent_ic_01_gouwuche_white, };
 
 }

@@ -11,7 +11,7 @@
             android:layout_height="wrap_content"
             android:background="#4AAABF">
 
-        <com.milk.open.openmove21.SlideMenu.TopItemNavbar
+        <com.milk.open.openmove21.diyview.TopItemNavbar
             android:id="@+id/topitembar_fcontent01"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -31,7 +31,7 @@
 
     </RelativeLayout>
 
-    <ScrollView
+    <com.milk.open.openmove21.diyview.MilkScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="#664AAABF"
@@ -60,6 +60,6 @@
                     android:textColor="#FFFFFF"/>
 
         </LinearLayout>
-    </ScrollView>
+    </com.milk.open.openmove21.diyview.MilkScrollView>
 
 </LinearLayout>

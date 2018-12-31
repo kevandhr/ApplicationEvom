@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import com.milk.open.openmove21.R;
 import com.milk.open.openmove21.SlideMenu.OnMenuClickListener;
-import com.milk.open.openmove21.SlideMenu.TopItemNavbar;
+import com.milk.open.openmove21.diyview.TopItemNavbar;
 
 public class FragmentContent02 extends FragmentBase {
 

@@ -1,4 +1,4 @@
-package com.milk.open.openmove21.SlideMenu;
+package com.milk.open.openmove21.diyview;
 
 import android.widget.FrameLayout;
 import android.content.Context;
@@ -10,6 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.milk.open.openmove21.R;
+import com.milk.open.openmove21.SlideMenu.OnMenuClickListener;
 
 /**
  * 功能描述：自定义顶部菜单栏

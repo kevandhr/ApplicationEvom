@@ -1,4 +1,4 @@
-package com.milk.open.openmove21.SlideMenu;
+package com.milk.open.openmove21.diyview;
 
 import android.widget.*;
 import android.content.Context;
@@ -6,6 +6,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import com.milk.open.openmove21.R;
+import com.milk.open.openmove21.SlideMenu.OnMenuClickListener;
 import com.milk.open.openmove21.Util.UtilLog;
 
 /**
@@ -15,7 +16,8 @@ import com.milk.open.openmove21.Util.UtilLog;
 public class TopItemNavbar extends FrameLayout {
 
 	private OnMenuClickListener onMenuClickListener;
-	private ImageView iv_menu;
+	private RelativeLayout rl_gomenu;
+	private ImageView iv_gomenu;
 	private TextView tv_title;
 
 	public TopItemNavbar(Context context) {
@@ -33,8 +35,8 @@ public class TopItemNavbar extends FrameLayout {
 		RelativeLayout rlTopNavbar = (RelativeLayout) mLayoutInflater.inflate(R.layout.top_item_navbar, null);
 		addView(rlTopNavbar);
 
-		iv_menu = (ImageView) rlTopNavbar.findViewById(R.id.iv_menu_titembar);
-		iv_menu.setOnClickListener(new OnClickListener() {
+		rl_gomenu = (RelativeLayout) rlTopNavbar.findViewById(R.id.rl_menu_titembar);
+		rl_gomenu.setOnClickListener(new OnClickListener() {
 			@Override
 			public void onClick(View v) {
 //				UtilLog.i("onclick");

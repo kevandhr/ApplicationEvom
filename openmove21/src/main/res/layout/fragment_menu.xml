@@ -80,7 +80,7 @@
     <LinearLayout
             android:id="@+id/ll_2_fmenu"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
             android:layout_marginLeft="10dip"
             android:layout_below="@id/iv_line_below_ll_1_fmenu"
             android:layout_above="@id/iv_line_above_logout_fmenu"
@@ -89,11 +89,13 @@
         <ListView
             android:id="@+id/lv_fmenu"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
             android:textColor="#ffffff"
             android:divider="@null"
-            android:scrollbars="none"
-            android:cacheColorHint="#00000000" />
+            android:dividerHeight="2dp"
+            android:scrollbars="none" />
 
     </LinearLayout>
 
@@ -132,7 +134,7 @@
                 android:id="@+id/tv_logout"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="36dp"
+                android:layout_marginLeft="32dp"
                 android:text="@string/logout"
                 android:textColor="#FFFFF0"
                 android:textSize="18sp" />

@@ -17,7 +17,7 @@ public class AdapterMenuList extends BaseAdapter {
 
 	private List<ModelMenuItem> l;
 	private Activity activityParent;
-	private ListView mlv;
+//	private ListView mlv;
 
 	class Holder {
 		ImageView iv_icon;
@@ -30,27 +30,35 @@ public class AdapterMenuList extends BaseAdapter {
 		Holder h = null;
 		if (convertView == null) {
 			convertView = activityParent.getLayoutInflater().inflate(R.layout.adapter_menulist, null);
-			convertView.setOnClickListener(new OnClickListener() {
-				@Override
-				public void onClick(View v) {
-					Toast.makeText(activityParent,l.get(_position).getSeq(), Toast.LENGTH_SHORT).show();
-				}
-			});
+//			convertView.setOnClickListener(new OnClickListener() {
+//				@Override
+//				public void onClick(View v) {
+//					Toast.makeText(activityParent,l.get(_position).getSeq(), Toast.LENGTH_SHORT).show();
+//				}
+//			});
 		}
 
 		h = new Holder();
 		h.tv_itemstr = (TextView) convertView.findViewById(R.id.tv_item_adp_menulist);
+		h.iv_icon = (ImageView) convertView.findViewById(R.id.iv_icon_adp_menulist);
 
 		ModelMenuItem _data = l.get(position);
 		convertView.setTag(position);
 		h.tv_itemstr.setText(_data.getItemstr());
-		h.tv_itemstr.setTextColor(Color.WHITE);
+//		h.tv_itemstr.setTextColor(Color.WHITE);
+		h.iv_icon.setBackgroundResource(_data.getImagerid());
 
 		return convertView;
 	}
 
 	public AdapterMenuList() {
 		super();
+	}
+
+	public AdapterMenuList(Activity activity, List<ModelMenuItem> data) {
+		super();
+		this.activityParent = activity;
+		this.l = data;
 	}
 
 	@Override
@@ -77,17 +85,17 @@ public class AdapterMenuList extends BaseAdapter {
 	}
 
 	public AdapterMenuList setDataSource(List<ModelMenuItem> data) {
-		l = data;
+		this.l = data;
 		return this;
 	}
 
-	public AdapterMenuList setMlv(ListView mlv) {
-		this.mlv = mlv;
-		return this;
-	}
-
-	public ListView getMlv() {
-		return mlv;
-	}
+//	public AdapterMenuList setMlv(ListView mlv) {
+//		this.mlv = mlv;
+//		return this;
+//	}
+//
+//	public ListView getMlv() {
+//		return mlv;
+//	}
 
 }
