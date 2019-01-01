@@ -94,14 +94,16 @@
                 android:layout_marginStart="8dp" />
 
         <TextView
+                android:id="@+id/adp_mytickets_tv_validate"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/adp_mytickets_iv_gouwuche"
                 android:layout_toEndOf="@+id/adp_mytickets_iv_gouwuche"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
                 android:textColor="@color/color2_fenhongse"
+                android:gravity="center"
                 android:textSize="15sp"
                 android:textStyle="bold"
                 android:text="@string/validate" />

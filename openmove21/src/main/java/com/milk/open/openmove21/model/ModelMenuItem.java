@@ -1,8 +1,11 @@
 package com.milk.open.openmove21.model;
 
 public class ModelMenuItem {
+
     private String seq;
+
     private String itemstr;
+
     private int imagerid;
 
     public ModelMenuItem(String seq, String itemstr, int imagerid){

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f4f4f4"
+    android:orientation="vertical">
+
+    <RelativeLayout
+            android:id="@+id/fcontent04_rl_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#4AAABF">
+
+        <com.milk.open.openmove21.diyview.TopItemNavbar
+                android:id="@+id/fcontent04_topitembar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#4AAABF" />
+
+        <ImageView
+                android:id="@+id/fcontent04_iv_home"
+                android:layout_width="26dp"
+                android:layout_height="22dip"
+                android:background="@drawable/fcontent_ic_02_home"
+                android:contentDescription="@string/contentDescription"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="12dp"/>
+
+    </RelativeLayout>
+
+    <com.milk.open.openmove21.diyview.MilkScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:overScrollMode="never"
+            android:background="#f0f0f0">
+
+        <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+            <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF" >
+
+                <TextView
+                        android:id="@+id/f04_tv_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="2dp"
+                        android:textSize="16sp"
+                        android:textColor="#515757"
+                        android:text="@string/contentDescription"
+                        android:layout_alignParentTop="true"/>
+                <TextView
+                        android:id="@+id/f04_tv_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="2dp"
+                        android:textSize="16sp"
+                        android:textColor="#515757"
+                        android:text="@string/contentDescription"
+                        android:layout_below="@id/f04_tv_1" />
+                <TextView
+                        android:id="@+id/f04_tv_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="2dp"
+                        android:textSize="16sp"
+                        android:textColor="#515757"
+                        android:text="@string/contentDescription"
+                        android:layout_below="@id/f04_tv_2"/>
+                <TextView
+                        android:id="@+id/f04_tv_4"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="2dp"
+                        android:textSize="16sp"
+                        android:textColor="#515757"
+                        android:text="@string/contentDescription"
+                        android:layout_below="@id/f04_tv_3"/>
+
+                <TextView
+                        android:id="@+id/f04_tv_5"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="2dp"
+                        android:textSize="16sp"
+                        android:textColor="#515757"
+                        android:text="@string/contentDescription"
+                        android:layout_below="@id/f04_tv_4"/>
+
+                <TextView
+                        android:id="@+id/f04_tv_6"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="2dp"
+                        android:textSize="16sp"
+                        android:textColor="#515757"
+                        android:text="@string/contentDescription"
+                        android:layout_below="@id/f04_tv_5"/>
+                <TextView
+                        android:id="@+id/f04_tv_7"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="2dp"
+                        android:textSize="16sp"
+                        android:textColor="#515757"
+                        android:text="@string/contentDescription"
+                        android:layout_below="@id/f04_tv_6"/>
+                <TextView
+                        android:id="@+id/f04_tv_8"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="2dp"
+                        android:textSize="16sp"
+                        android:textColor="#515757"
+                        android:text="@string/contentDescription"
+                        android:layout_below="@id/f04_tv_7"/>
+
+            </RelativeLayout>
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="16dp"
+                    android:textColor="#dd515757"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:text="@string/information"/>
+
+            <ListView
+                    android:id="@+id/fcontent04_lv_userinfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:scrollbars="none"
+                    android:background="#FFFFFF"/>
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="16dp"
+                    android:textStyle="bold"
+                    android:textColor="#dd515757"
+                    android:textSize="18sp"
+                    android:text="@string/information"/>
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="8dp"
+                    android:background="#FFFFFF"
+                    android:textSize="18sp"
+                    android:textColor="#989b9d"
+                    android:text="@string/informationduo"/>
+
+            <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="16dp"
+                    android:textColor="#dd515757"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:text="@string/information"/>
+
+            <ListView
+                    android:id="@+id/fcontent04_lv_trecord"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:scrollbars="none"
+                    android:background="#FFFFFF"/>
+
+        </LinearLayout>
+
+    </com.milk.open.openmove21.diyview.MilkScrollView>
+
+</LinearLayout>

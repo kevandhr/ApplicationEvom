@@ -1,8 +1,11 @@
 package com.milk.open.openmove21.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
+import com.google.zxing.integration.android.IntentIntegrator;
+import com.google.zxing.integration.android.IntentResult;
 import com.milk.open.openmove21.R;
 import com.milk.open.openmove21.fragment.*;
 import com.milk.open.openmove21.slidemenu.SlideMenuContainerLayout;
@@ -18,11 +21,13 @@ public class ActivityMain extends ActivityBase implements FragmentMenu.OnFragmen
 
     private Fragment currentFragment;
 
-    private FragmentContent01SearchTickets mContent01Fragment;
+    private FragmentContent01SearchTickets fragment01;
 
-    private FragmentContent02 mContent02Fragment;
+    private FragmentContent02 fragment02;
 
-    private FragmentContent03MyTickets mContent03Fragment;
+    private FragmentContent03MyTickets fragment03;
+
+    private FragmentContent04TicketInfo fragment04;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -67,24 +72,28 @@ public class ActivityMain extends ActivityBase implements FragmentMenu.OnFragmen
 
     public void onFragmentInteraction(int seq){
         if(0 == seq){
-            if(null == mContent01Fragment){
-                mContent01Fragment = FragmentContent01SearchTickets.getInstance();
+            if(null == fragment01){
+                fragment01 = FragmentContent01SearchTickets.getInstance();
             }
-            switchContentFragment(mContent01Fragment).commit();
+            switchContentFragment(fragment01).commit();
         } else if(1 == seq){
-            if(null == mContent02Fragment){
-                mContent02Fragment = FragmentContent02.getInstance();
-                mContent02Fragment.setOnFragmentInteractionListener(this);
+            if(null == fragment02){
+                fragment02 = FragmentContent02.getInstance();
+                fragment02.setOnFragmentInteractionListener(this);
             }
-            switchContentFragment(mContent02Fragment).commit();
+            switchContentFragment(fragment02).commit();
         } else if(4 == seq){
-            if(null == mContent03Fragment){
-                mContent03Fragment = FragmentContent03MyTickets.getInstance();
-                mContent03Fragment.setOnFragmentInteractionListener(this);
+            if(null == fragment03){
+                fragment03 = FragmentContent03MyTickets.getInstance();
+                fragment03.setOnFragmentInteractionListener(this);
             }
-            switchContentFragment(mContent03Fragment).commit();
+            switchContentFragment(fragment03).commit();
         } else if(3 == seq){
-
+            if(null == fragment04){
+                fragment04 = FragmentContent04TicketInfo.getInstance();
+                fragment04.setOnFragmentInteractionListener(this);
+            }
+            switchContentFragment(fragment04).commit();
         }
         mSlideContainer.hide_menu();
     }
@@ -108,4 +117,19 @@ public class ActivityMain extends ActivityBase implements FragmentMenu.OnFragmen
 //    public void onClick(View view) {
 //        mSlideContainer.show(view);
 //    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        // 获取解析结果
+        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+        if (result != null) {
+            if (result.getContents() == null) {
+                toast("取消扫描");
+            } else {
+                toast("扫描内容:" + result.getContents());
+            }
+        } else {
+            super.onActivityResult(requestCode, resultCode, data);
+        }
+    }
 }

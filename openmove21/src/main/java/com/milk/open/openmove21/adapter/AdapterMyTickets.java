@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
 import android.widget.Toast;
+import com.google.zxing.integration.android.IntentIntegrator;
 import com.milk.open.openmove21.R;
 import com.milk.open.openmove21.model.ModelTicket;
 
@@ -21,6 +22,7 @@ public class AdapterMyTickets extends BaseAdapter {
 		TextView tv_state;
 		TextView tv_scope;
 		TextView tv_timelimit;
+		TextView tv_validate;
 	}
 
 	@Override
@@ -51,6 +53,18 @@ public class AdapterMyTickets extends BaseAdapter {
 //		h.iv01.setBackgroundResource(R.drawable.downloading_photo);
 //		syncImageLoader.loadImage(position, _data.getPicurl(),
 //				imageLoadListener);
+
+        h.tv_validate = (TextView) convertView.findViewById(R.id.adp_mytickets_tv_validate);
+        h.tv_validate.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // 创建IntentIntegrator对象
+                IntentIntegrator intentIntegrator = new IntentIntegrator(activityParent);
+                intentIntegrator.setOrientationLocked(false);
+                // 开始扫描
+                intentIntegrator.initiateScan();
+            }
+        });
 
 		return convertView;
 	}

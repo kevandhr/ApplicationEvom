@@ -3,9 +3,13 @@ package com.milk.open.openmove21.model;
 public class ModelTicket {
 
     private String ticketid;
+
     private String state;
+
     private String scope;
+
     private String timelimit;
+
     private double money;
 
     public ModelTicket(String ticketid, String state, String scope, String timelimit, double money){

@@ -12,7 +12,6 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
 import com.milk.open.openmove21.R;
-import com.milk.open.openmove21.util.UtilLog;
 import com.milk.open.openmove21.util.Utils;
 import com.milk.open.openmove21.adapter.AdapterMyTickets;
 import com.milk.open.openmove21.diyview.TopItemNavbar;
@@ -44,7 +43,7 @@ public class FragmentContent03MyTickets extends FragmentBase {
             if (msg.what == MESSAGE_UPDATE_PRINT) {
                 print();
             } else if (msg.what == MESSAGE_NET_CONNECTION_ERROR) {
-                toast(R.string.tag_no_internet);
+                toast(R.string.no_internet);
             }
             if (proDialog != null) {
                 proDialog.dismiss();
@@ -99,7 +98,7 @@ public class FragmentContent03MyTickets extends FragmentBase {
     }
 
     private void print() {
-        UtilLog.i("print()");
+//        UtilLog.i("print()");
         adapter.setDataSource(arraydata);
         adapter.notifyDataSetChanged();
     }
@@ -111,7 +110,7 @@ public class FragmentContent03MyTickets extends FragmentBase {
     private void getData() {
         if (Utils.IS_TEST_DATA){
             try {
-                Thread.sleep(1000);
+                Thread.sleep(500);
                 // test data
                 arraydata.clear();
                 for (int i = 1; i < Utils.n_mytickets; i++) {

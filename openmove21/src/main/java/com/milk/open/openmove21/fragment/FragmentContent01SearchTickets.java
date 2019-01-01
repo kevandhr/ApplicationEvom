@@ -39,7 +39,7 @@ public class FragmentContent01SearchTickets extends FragmentBase {
             if (msg.what == MESSAGE_UPDATE_PRINT) {
                 print();
             } else if (msg.what == MESSAGE_NET_CONNECTION_ERROR) {
-                toast(R.string.tag_no_internet);
+                toast(R.string.no_internet);
             }
             if (proDialog != null) {
                 proDialog.dismiss();

@@ -48,4 +48,31 @@ public class Utils {
             R.drawable.ticket_gouwuche_white,
             R.drawable.ticket_gouwuche_white, };
 
+    public static int n_userinfo = 6;
+    public static String[] userinfostr1 = {"Name", "Date of birth", "Email", "Name", "Date of birth", "Email"};
+    public static String[] userinfostr2 = {"yu", "14/03/1995", "shenyu123@gmail.com", "yu", "14/03/1995", "shenyu123@gmail.com"};
+
+    public static int n_ticketrecords = 10;
+    public static String[] ticketrecordstr1 = {
+            "31/12/18 - 19:32:18",
+            "29/12/18 - 17:17:04",
+            "25/12/18 - 13:59:42",
+            "25/12/18 - 11:36:28",
+            "29/12/18 - 17:17:04",
+            "25/12/18 - 13:59:42",
+            "25/12/18 - 11:36:28",
+            "31/12/18 - 19:32:18",
+            "29/12/18 - 17:17:04",
+            "23/12/18 - 17:23:18"};
+    public static String[] ticketrecordstr2 = {
+            "TT1416",
+            "66 - S - S.Bartolameo FS",
+            "TT1472",
+            "TT1668",
+            "TT2512",
+            "TT1416",
+            "66 - S - S.Bartolameo FS",
+            "TT1472",
+            "TT1668",
+            "TT2512"};
 }
