@@ -49,7 +49,7 @@ public abstract class ActivityBase extends AppCompatActivity {
 		mContext = this.getApplicationContext();
 		// ((EveryoneApplication) this.getApplication()).addActivity(this);
 
-		mHandler = new Handler();
+//		mHandler = new Handler();
 		// mAsyncRequests = new ArrayList<AsyncBaseRequest>();
 		// mDefaultThreadPool = DefaultThreadPool.getInstance();
 

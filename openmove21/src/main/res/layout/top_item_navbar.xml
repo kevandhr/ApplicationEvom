@@ -6,7 +6,7 @@
     <RelativeLayout
         android:id="@+id/rl_menu_titembar"
         android:layout_width="60dp"
-        android:layout_height="@dimen/height_zhengti_titembar">
+        android:layout_height="@dimen/titembar_height_zhengti">
 
         <ImageView
                 android:id="@+id/iv_menu_titembar"
@@ -14,6 +14,7 @@
                 android:layout_height="match_parent"
                 android:gravity="center_vertical"
                 android:layout_marginLeft="15dp"
+                android:layout_marginStart="15dp"
                 android:contentDescription="@string/contentDescription"
                 android:src="@drawable/topcontbar_ic_gotomenu" />
 

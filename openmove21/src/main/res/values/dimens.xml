@@ -9,13 +9,17 @@
 
 
     <!-- adapter_searchtickets -->
-    <dimen name="height_zhengti_adpstickets">154dp</dimen>
-    <dimen name="height_head_adpstickets">110dp</dimen>
-    <dimen name="height_tail_adpstickets">42dp</dimen>
+    <dimen name="adpstickets_height_zhengti">154dp</dimen>
+    <dimen name="adpstickets_height_head">110dp</dimen>
+    <dimen name="adpstickets_height_tail">42dp</dimen>
 
     <!-- top item navbar-->
-    <dimen name="height_zhengti_titembar">41dp</dimen>
-    <dimen name="fab_margin">16dp</dimen>
+    <dimen name="titembar_height_zhengti">41dp</dimen>
+
+    <!--view search dep arr-->
+    <dimen name="vsdeparr_height_zhengti">106dp</dimen>
+    <dimen name="vsdeparr_weight_deparr">26dp</dimen>
+    <dimen name="vsdeparr_weight_gongneng">30dp</dimen>
 
 
 </resources>

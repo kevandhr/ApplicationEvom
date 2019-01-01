@@ -1,16 +1,9 @@
-package com.milk.open.openmove21.SlideMenu;
+package com.milk.open.openmove21.slidemenu;
 
 import android.content.Context;
 import android.graphics.Canvas;
-import android.graphics.Rect;
-import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.view.*;
-import android.widget.Scroller;
-import com.milk.open.openmove21.Util.UtilLog;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class SlideMenuContentView extends ViewGroup {
 

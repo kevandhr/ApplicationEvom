@@ -5,20 +5,42 @@ import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import com.milk.open.openmove21.R;
-import com.milk.open.openmove21.SlideMenu.OnMenuClickListener;
+import com.milk.open.openmove21.slidemenu.OnMenuClickListener;
 import com.milk.open.openmove21.diyview.TopItemNavbar;
 
 public class FragmentContent02 extends FragmentBase {
 
     private int R_id_layout = R.layout.fragment_content_02;
-    private int R_id_topbar = R.id.topbar_fragment_content_02;
+    private int R_id_topbar = R.id.fcontent02_topitembar;
 
     private TopItemNavbar topItemNavbar;
+    private ImageView iv_home;
+
+    private FragmentMenu.OnFragmentInteractionListener mListenerActivity;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+    }
+
+    @Override
+    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        topItemNavbar = (TopItemNavbar) view.findViewById(R_id_topbar);
+        topItemNavbar.setTitle("Search trips");
+        topItemNavbar.setOnMenuClickListener((OnMenuClickListener)view.getParent().getParent().getParent());
+
+        iv_home = (ImageView) view.findViewById(R.id.fcontent02_iv_home);
+        iv_home.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                toast("home");
+                mListenerActivity.onFragmentInteraction(0);
+            }
+        });
     }
 
     @Override
@@ -33,14 +55,8 @@ public class FragmentContent02 extends FragmentBase {
         return inflater.inflate(R_id_layout, container, false);
     }
 
-    @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-
-        topItemNavbar = (TopItemNavbar) view.findViewById(R_id_topbar);
-        topItemNavbar.setTitle("fragment content 01");
-        topItemNavbar.setOnMenuClickListener((OnMenuClickListener)view.getParent().getParent().getParent());
-
+    public void setOnFragmentInteractionListener(FragmentMenu.OnFragmentInteractionListener mListenerActivity){
+        this.mListenerActivity = mListenerActivity;
     }
 
     private static FragmentContent02 fragment;

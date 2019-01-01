@@ -6,8 +6,7 @@ import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
 import com.milk.open.openmove21.R;
-import com.milk.open.openmove21.SlideMenu.OnMenuClickListener;
-import com.milk.open.openmove21.Util.UtilLog;
+import com.milk.open.openmove21.slidemenu.OnMenuClickListener;
 
 /**
  * 功能描述：自定义顶部菜单栏

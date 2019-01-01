@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="@dimen/vsdeparr_height_zhengti" >
+
+    <ImageView
+            android:id="@+id/vs_iv_dep"
+            android:layout_width="@dimen/vsdeparr_weight_deparr"
+            android:layout_height="@dimen/vsdeparr_weight_deparr"
+            android:background="@drawable/fcontent_ic_01_vs_dep"
+            android:layout_above="@id/vs_iv_points"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"/>
+
+    <ImageView
+            android:id="@+id/vs_iv_points"
+            android:layout_width="@dimen/vsdeparr_weight_deparr"
+            android:layout_height="@dimen/vsdeparr_weight_deparr"
+            android:background="@drawable/fcontent_ic_01_vs_points"
+            android:layout_centerVertical="true"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"/>
+
+    <ImageView
+            android:id="@+id/vs_iv_arr"
+            android:layout_width="@dimen/vsdeparr_weight_deparr"
+            android:layout_height="@dimen/vsdeparr_weight_deparr"
+            android:background="@drawable/fcontent_ic_01_vs_arr"
+            android:layout_below="@id/vs_iv_points"
+            android:layout_marginLeft="16dp"
+            android:layout_marginStart="16dp"/>
+
+
+    <TextView
+            android:id="@+id/vs_tv_dep"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_above="@id/vs_iv_line"
+            android:layout_toRightOf="@id/vs_iv_points"
+            android:layout_toEndOf="@id/vs_iv_points"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginBottom="11dp"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:text="@string/trento" />
+
+    <ImageView
+            android:id="@+id/vs_iv_line"
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:layout_toRightOf="@id/vs_iv_points"
+            android:layout_toEndOf="@id/vs_iv_points"
+            android:layout_toLeftOf="@id/vs_iv_gongneng"
+            android:layout_toStartOf="@id/vs_iv_gongneng"
+            android:background="@drawable/gen_img_white_line"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginRight="18dp"
+            android:layout_marginEnd="18dp"/>
+
+    <TextView
+            android:id="@+id/vs_tv_arr"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/vs_iv_line"
+            android:layout_toRightOf="@id/vs_iv_points"
+            android:layout_toEndOf="@id/vs_iv_points"
+            android:layout_marginLeft="12dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="11dp"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:text="@string/to"/>
+
+
+    <ImageView
+        android:id="@+id/vs_iv_gongneng"
+        android:layout_width="@dimen/vsdeparr_weight_gongneng"
+        android:layout_height="@dimen/vsdeparr_weight_gongneng"
+        android:background="@drawable/fcontent_ic_01_vs_gongneng"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"/>
+
+
+</RelativeLayout>

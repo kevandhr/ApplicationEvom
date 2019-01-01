@@ -1,6 +1,6 @@
 *.iml
 .gradle
-gradlew.bat
+/gradlew.bat
 /local.properties
 /.idea/libraries
 /.idea/modules.xml

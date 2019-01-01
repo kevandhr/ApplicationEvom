@@ -24,14 +24,12 @@ public class FragmentMenu extends FragmentBase implements AbsListView.OnItemClic
     private String mParam1;
     private String mParam2;
 
-    private OnFragmentInteractionListener mListener;
-
     private ImageView iv_close;
-
     private ListView mListView;
-
     private ArrayList<ModelMenuItem> arraydata;
     private AdapterMenuList mAdapter;
+
+    private OnFragmentInteractionListener mListenerActivity;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -69,7 +67,7 @@ public class FragmentMenu extends FragmentBase implements AbsListView.OnItemClic
         iv_close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mListener.onFragmentInteraction("iv_close onclick");
+                mListenerActivity.onFragmentInteraction("iv_close onclick");
             }
         });
 
@@ -83,29 +81,26 @@ public class FragmentMenu extends FragmentBase implements AbsListView.OnItemClic
 //            // fragment is attached to one) that an item has been selected.
 //            mListener.onFragmentInteraction(UtilDataDummyContent.ITEMS.get(position).id);
 //        }
-        toast("FragmentMenu onItemClick="+position);
-        mListener.onFragmentInteraction(""+position);
+//        toast("onItemClick="+position);
+        mListenerActivity.onFragmentInteraction(position);
     }
 
     @Override
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         try {
-            mListener = (OnFragmentInteractionListener) activity;
+            mListenerActivity = (OnFragmentInteractionListener) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
                     + " must implement OnFragmentInteractionListener");
         }
     }
 
-    public void setOnFragmentInteractionListener(OnFragmentInteractionListener mListener){
-        this.mListener = mListener;
-    }
 
     @Override
     public void onDetach() {
         super.onDetach();
-        mListener = null;
+        mListenerActivity = null;
     }
 
     public FragmentMenu() {
@@ -151,7 +146,11 @@ public class FragmentMenu extends FragmentBase implements AbsListView.OnItemClic
      * >Communicating with Other Fragments</a> for more information.
      */
     public interface OnFragmentInteractionListener {
+        public void onFragmentInteraction(int i);
         public void onFragmentInteraction(String msg);
+    }
 
+    public void setOnFragmentInteractionListener(OnFragmentInteractionListener mListenerActivity){
+        this.mListenerActivity = mListenerActivity;
     }
 }

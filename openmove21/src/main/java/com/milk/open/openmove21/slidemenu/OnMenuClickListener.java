@@ -1,4 +1,4 @@
-package com.milk.open.openmove21.SlideMenu;
+package com.milk.open.openmove21.slidemenu;
 
 import android.view.View;
 import android.view.View.OnClickListener;

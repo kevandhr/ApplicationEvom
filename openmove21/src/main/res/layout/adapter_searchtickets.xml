@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/height_zhengti_adpstickets"
+        android:layout_height="@dimen/adpstickets_height_zhengti"
         android:background="#FFFFFF"
         android:orientation="vertical" >
 
     <RelativeLayout
             android:id="@+id/rl_head_adp_stickets"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/height_head_adpstickets" >
+            android:layout_height="@dimen/adpstickets_height_head" >
 
         <ImageView
                 android:id="@+id/iv_che_adp_stickets"
@@ -66,7 +66,7 @@
     <RelativeLayout
             android:id="@+id/rl_tail_adp_stickets"
             android:layout_width="match_parent"
-            android:layout_height="@dimen/height_tail_adpstickets" >
+            android:layout_height="@dimen/adpstickets_height_tail" >
 
         <ImageView
                 android:layout_alignParentTop="true"

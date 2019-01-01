@@ -10,7 +10,7 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.milk.open.openmove21.R;
-import com.milk.open.openmove21.SlideMenu.OnMenuClickListener;
+import com.milk.open.openmove21.slidemenu.OnMenuClickListener;
 
 /**
  * 功能描述：自定义顶部菜单栏

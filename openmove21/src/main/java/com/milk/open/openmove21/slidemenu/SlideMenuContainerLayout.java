@@ -1,4 +1,4 @@
-package com.milk.open.openmove21.SlideMenu;
+package com.milk.open.openmove21.slidemenu;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -12,11 +12,6 @@ import android.util.AttributeSet;
 import android.view.*;
 import android.widget.RelativeLayout;
 import com.milk.open.openmove21.R;
-import com.milk.open.openmove21.Util.UtilLog;
-import com.milk.open.openmove21.activity.ActivityMain;
-import com.milk.open.openmove21.activity.UtilDataConstants;
-import com.milk.open.openmove21.fragment.FragmentContent01SearchTickets;
-import com.milk.open.openmove21.fragment.FragmentContent02;
 import com.milk.open.openmove21.fragment.FragmentMenu;
 
 
@@ -24,13 +19,13 @@ import com.milk.open.openmove21.fragment.FragmentMenu;
  * 功能描述：手指在屏幕上左右滑动时，该类的实例负责让其子View根据用户的手势左右偏移（滚动）
  *
  */
-public class SlideMenuContainerLayout extends RelativeLayout implements OnMenuClickListener, FragmentMenu.OnFragmentInteractionListener {
+public class SlideMenuContainerLayout extends RelativeLayout implements OnMenuClickListener {
 
     private SlideMenuMenuView mMenuView;
     private SlideMenuContentView mContentView;
     private int menuWidth = 400;
-    public static final int MESSAGE_TO_FRONT_MENU = 88;
-    public static final int MESSAGE_TO_HIDE_MENU = 89;
+    public static final int MESSAGE_TO_FRONT_MENU = 18;
+    public static final int MESSAGE_TO_HIDE_MENU = 19;
     public static final int MESSAGE_TO_FRONT_CONTENT = 11;
     @SuppressLint("HandlerLeak")
     Handler handler = new Handler() {
@@ -112,12 +107,6 @@ public class SlideMenuContainerLayout extends RelativeLayout implements OnMenuCl
         bringChildToFront(view);
     }
 
-    public void showfragment_01(){
-//        FragmentContent02 f01 = new FragmentContent02();
-
-//        mContentView.setView();
-    }
-
 //    /**
 //     * Controls whether the SlidingMenu can be opened with a swipe gesture.
 //     * Options are {@link #TOUCHMODE_MARGIN TOUCHMODE_MARGIN}, {@link #TOUCHMODE_FULLSCREEN TOUCHMODE_FULLSCREEN},
@@ -160,15 +149,13 @@ public class SlideMenuContainerLayout extends RelativeLayout implements OnMenuCl
     }
 
     public void onClick(){
-//        show_menu();
         handler.sendEmptyMessage(MESSAGE_TO_FRONT_MENU);
     }
 
-    @Override
-    public void onFragmentInteraction(String msg) {
-//        hide_menu();
-        handler.sendEmptyMessage(MESSAGE_TO_HIDE_MENU);
-    }
+//    @Override
+//    public void onFragmentInteraction(String msg) {
+//        handler.sendEmptyMessage(MESSAGE_TO_HIDE_MENU);
+//    }
 
     /**
      * Constant value for use with setTouchModeAbove(). Allows the SlidingMenu to be opened with a swipe

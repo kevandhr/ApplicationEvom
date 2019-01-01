@@ -11,9 +11,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-import android.widget.RelativeLayout;
 import com.milk.open.openmove21.R;
-import com.milk.open.openmove21.SlideMenu.OnMenuClickListener;
+import com.milk.open.openmove21.slidemenu.OnMenuClickListener;
 import com.milk.open.openmove21.diyview.TopItemNavbar;
 import com.milk.open.openmove21.Util.Utils;
 import com.milk.open.openmove21.adapter.AdapterSearchTickets;
@@ -24,14 +23,15 @@ import java.util.ArrayList;
 public class FragmentContent01SearchTickets extends FragmentBase {
 
     private int R_id_layout = R.layout.fragment_content_01;
-    private int R_id_topbar = R.id.topitembar_fcontent01;
+    private int R_id_topbar = R.id.fcontent01_topitembar;
 
     private TopItemNavbar topItemNavbar;
     private ListView mListView;
     private ArrayList<ModelTicket> arraydata;
     private AdapterSearchTickets adapter;
-    private static final int MESSAGE_NET_CONNECTION_ERROR = 8;
-    private static final int MESSAGE_UPDATE_PRINT = 1;
+
+    private static final int MESSAGE_NET_CONNECTION_ERROR = 108;
+    private static final int MESSAGE_UPDATE_PRINT = 101;
     @SuppressLint("HandlerLeak")
     Handler handler = new Handler() {
         @Override
@@ -68,7 +68,7 @@ public class FragmentContent01SearchTickets extends FragmentBase {
         topItemNavbar.setTitle("SEATCH TICKETS");
         topItemNavbar.setOnMenuClickListener((OnMenuClickListener)view.getParent().getParent().getParent());
 
-        mListView = (ListView) view.findViewById(R.id.lv_fcontent01);
+        mListView = (ListView) view.findViewById(R.id.fcontent01_lv);
         mListView.setAdapter(adapter);
         mListView.setOnTouchListener(new View.OnTouchListener() {
             // Setting on Touch Listener for handling the touch inside ScrollView

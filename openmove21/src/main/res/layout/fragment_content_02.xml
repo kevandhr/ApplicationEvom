@@ -1,13 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#552288">
+    android:background="@drawable/gen_img_bg_02"
+    android:orientation="vertical">
 
-    <com.milk.open.openmove21.diyview.TopItemNavbar
-        android:id="@+id/topbar_fragment_content_02"
-        android:layout_width="match_parent"
-        android:layout_height="55dp" />
+    <RelativeLayout
+            android:id="@+id/fcontent02_rl_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#4AAABF">
 
-    
-</RelativeLayout>
+        <com.milk.open.openmove21.diyview.TopItemNavbar
+                android:id="@+id/fcontent02_topitembar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#4AAABF" />
+
+        <ImageView
+                android:id="@+id/fcontent02_iv_home"
+                android:layout_width="26dp"
+                android:layout_height="20dip"
+                android:background="@drawable/fcontent_ic_02_home"
+                android:contentDescription="@string/contentDescription"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="12dp"/>
+
+    </RelativeLayout>
+
+</LinearLayout>
