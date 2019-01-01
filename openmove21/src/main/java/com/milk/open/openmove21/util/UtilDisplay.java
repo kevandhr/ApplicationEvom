@@ -1,8 +1,6 @@
-package com.milk.open.openmove21.Util;
+package com.milk.open.openmove21.util;
 
 import android.content.Context;
-import android.util.DisplayMetrics;
-import android.util.Log;
 
 /**
  * Created by Administrator on 2015/8/2.

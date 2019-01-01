@@ -44,7 +44,7 @@
             android:layout_marginStart="12dp"
             android:layout_marginBottom="11dp"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
+            android:textSize="19sp"
             android:text="@string/trento" />
 
     <ImageView
@@ -73,7 +73,7 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="11dp"
             android:textColor="#FFFFFF"
-            android:textSize="20sp"
+            android:textSize="19sp"
             android:text="@string/to"/>
 
 

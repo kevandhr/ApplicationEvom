@@ -6,7 +6,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
-import com.milk.open.openmove21.Util.Utils;
+import com.milk.open.openmove21.util.Utils;
 
 /**
  * 应用中Activity的基类，对原有的Activity类进行扩展

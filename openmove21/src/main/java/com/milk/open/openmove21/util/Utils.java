@@ -1,4 +1,4 @@
-package com.milk.open.openmove21.Util;
+package com.milk.open.openmove21.util;
 
 import android.app.Activity;
 import android.graphics.Point;
@@ -27,23 +27,25 @@ public class Utils {
             "TRENTO URBAN", "TRENTO URBAN", "PERGINE URBAN", "PERGINE URBAN", "PERGINE URBAN"};
     public static String[] timelimits = {"70 minutes", "70 minutes", "150 minutes", "6 h", "1 Day",
             "70 minutes", "70 minutes", "150 minutes", "6 h", "1 Day"};
-    public static double[] money = {0.90, 1.60, 1.60, 2.00, 2.00, 1.60, 2.00, 2.00,1.60, 2.00};
+    public static double[] money = {1.10, 1.60, 1.60, 2.00, 2.00, 1.60, 2.00, 2.00,1.60, 2.00};
+
+    public static int n_mytickets = 4;
 
     public static String[] menuitems = {
             "Search tickets", "Search trips", "Timetable", "Advise",
             "My tickets", "Profile", "Credit", "Privilege cards",
             "Gift", "Statistics", "About"};
     public static int[] menuitemimgs = {
-            R.drawable.fcontent_ic_01_gouwuche_white,
-            R.drawable.fcontent_ic_01_gouwuche_white,
-            R.drawable.fcontent_ic_01_gouwuche_white,
-            R.drawable.fcontent_ic_01_gouwuche_white,
-            R.drawable.fcontent_ic_01_gouwuche_white,
-            R.drawable.fcontent_ic_01_gouwuche_white,
-            R.drawable.fcontent_ic_01_gouwuche_white,
-            R.drawable.fcontent_ic_01_gouwuche_white,
-            R.drawable.fcontent_ic_01_gouwuche_white,
-            R.drawable.fcontent_ic_01_gouwuche_white,
-            R.drawable.fcontent_ic_01_gouwuche_white, };
+            R.drawable.ticket_gouwuche_white,
+            R.drawable.ticket_gouwuche_white,
+            R.drawable.ticket_gouwuche_white,
+            R.drawable.ticket_gouwuche_white,
+            R.drawable.ticket_gouwuche_white,
+            R.drawable.ticket_gouwuche_white,
+            R.drawable.ticket_gouwuche_white,
+            R.drawable.ticket_gouwuche_white,
+            R.drawable.ticket_gouwuche_white,
+            R.drawable.ticket_gouwuche_white,
+            R.drawable.ticket_gouwuche_white, };
 
 }

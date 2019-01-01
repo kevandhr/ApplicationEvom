@@ -7,7 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.*;
 import com.milk.open.openmove21.R;
-import com.milk.open.openmove21.Util.Utils;
+import com.milk.open.openmove21.util.Utils;
 import com.milk.open.openmove21.adapter.AdapterMenuList;
 import com.milk.open.openmove21.model.ModelMenuItem;
 

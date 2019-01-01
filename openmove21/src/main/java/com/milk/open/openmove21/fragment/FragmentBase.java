@@ -6,7 +6,7 @@ import android.view.ViewGroup;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Toast;
-import com.milk.open.openmove21.Util.UtilLog;
+import com.milk.open.openmove21.util.UtilLog;
 
 public class FragmentBase extends Fragment {
     private Toast toast;

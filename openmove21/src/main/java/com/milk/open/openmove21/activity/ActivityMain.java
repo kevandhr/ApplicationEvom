@@ -4,10 +4,8 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import com.milk.open.openmove21.R;
-import com.milk.open.openmove21.fragment.FragmentContent02;
+import com.milk.open.openmove21.fragment.*;
 import com.milk.open.openmove21.slidemenu.SlideMenuContainerLayout;
-import com.milk.open.openmove21.fragment.FragmentContent01SearchTickets;
-import com.milk.open.openmove21.fragment.FragmentMenu;
 
 public class ActivityMain extends ActivityBase implements FragmentMenu.OnFragmentInteractionListener {
 
@@ -23,6 +21,8 @@ public class ActivityMain extends ActivityBase implements FragmentMenu.OnFragmen
     private FragmentContent01SearchTickets mContent01Fragment;
 
     private FragmentContent02 mContent02Fragment;
+
+    private FragmentContent03MyTickets mContent03Fragment;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -43,7 +43,6 @@ public class ActivityMain extends ActivityBase implements FragmentMenu.OnFragmen
         mSlideContainer.setMenu(R.layout.slidemenu_menu);
         int width = Math.min(UtilDataConstants.sWidth, UtilDataConstants.sHeight);
         mSlideContainer.setMenuWidth(63 * width / 100);
-//        mSlideContainer.hide_menu();
 
         mSlideContainer.setContent(R.layout.slidemenu_content);
 
@@ -78,8 +77,12 @@ public class ActivityMain extends ActivityBase implements FragmentMenu.OnFragmen
                 mContent02Fragment.setOnFragmentInteractionListener(this);
             }
             switchContentFragment(mContent02Fragment).commit();
-        } else if(2 == seq){
-
+        } else if(4 == seq){
+            if(null == mContent03Fragment){
+                mContent03Fragment = FragmentContent03MyTickets.getInstance();
+                mContent03Fragment.setOnFragmentInteractionListener(this);
+            }
+            switchContentFragment(mContent03Fragment).commit();
         } else if(3 == seq){
 
         }

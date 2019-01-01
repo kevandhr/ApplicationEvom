@@ -1,14 +1,8 @@
-package com.milk.open.openmove21.Util;
+package com.milk.open.openmove21.util;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
-import android.content.Intent;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
-import android.provider.Settings;
-import android.widget.TextView;
-import android.widget.Toast;
 
 @SuppressWarnings("unused")
 public class Tools {

@@ -23,6 +23,7 @@ public class SlideMenuContainerLayout extends RelativeLayout implements OnMenuCl
 
     private SlideMenuMenuView mMenuView;
     private SlideMenuContentView mContentView;
+
     private int menuWidth = 400;
     public static final int MESSAGE_TO_FRONT_MENU = 18;
     public static final int MESSAGE_TO_HIDE_MENU = 19;
@@ -142,6 +143,12 @@ public class SlideMenuContainerLayout extends RelativeLayout implements OnMenuCl
     public void setMenuWidth(int menuWidth) {
         this.menuWidth=menuWidth;
         mMenuView.setMenuWidth(menuWidth);
+    }
+
+    public void setMenuWidth(int menuWidth, int menuShadowWidth) {
+        this.menuWidth=menuWidth;
+        mMenuView.setMenuWidth(menuWidth);
+        mMenuView.setLeftShadowWidth(menuShadowWidth);
     }
 
     public void onClick(View view){

@@ -1,14 +1,10 @@
 package com.milk.open.openmove21.adapter;
 
 import android.app.Activity;
-import android.graphics.Color;
-import android.media.Image;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.*;
 import com.milk.open.openmove21.R;
-import com.milk.open.openmove21.Util.UtilLog;
 import com.milk.open.openmove21.model.ModelMenuItem;
 
 import java.util.List;
@@ -22,6 +18,7 @@ public class AdapterMenuList extends BaseAdapter {
 	class Holder {
 		ImageView iv_icon;
 		TextView tv_itemstr;
+		TextView tv_myticketsnumber;
 	}
 
 	@Override
@@ -39,14 +36,20 @@ public class AdapterMenuList extends BaseAdapter {
 		}
 
 		h = new Holder();
-		h.tv_itemstr = (TextView) convertView.findViewById(R.id.tv_item_adp_menulist);
-		h.iv_icon = (ImageView) convertView.findViewById(R.id.iv_icon_adp_menulist);
+		h.tv_itemstr = (TextView) convertView.findViewById(R.id.adp_menulist_tv_item);
+		h.iv_icon = (ImageView) convertView.findViewById(R.id.adp_menulist_iv_icon);
 
 		ModelMenuItem _data = l.get(position);
 		convertView.setTag(position);
 		h.tv_itemstr.setText(_data.getItemstr());
-//		h.tv_itemstr.setTextColor(Color.WHITE);
 		h.iv_icon.setBackgroundResource(_data.getImagerid());
+
+		if(4 == position){
+			h.tv_myticketsnumber = (TextView) convertView.findViewById(R.id.adp_menulist_tv_myticketsnumber);
+//			h.tv_myticketsnumber.setTextSize(10);
+			h.tv_myticketsnumber.setText("3");
+			h.tv_myticketsnumber.setBackgroundResource(R.drawable.fmenu_ic_whitecircle);
+		}
 
 		return convertView;
 	}

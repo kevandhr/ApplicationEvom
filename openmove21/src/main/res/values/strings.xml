@@ -23,6 +23,7 @@
     <string name="lianjiezhong">连接中....</string>
     <string name="lianjiezhong_shaohou">连接中..请稍后....</string>
     <string name="purchase">Purchase</string>
+    <string name="validate">Validate</string>
 
     <string name="trento">TRENTO</string>
     <string name="to">TO</string>

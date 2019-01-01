@@ -7,31 +7,36 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.ListView;
 import com.milk.open.openmove21.R;
-import com.milk.open.openmove21.slidemenu.OnMenuClickListener;
-import com.milk.open.openmove21.diyview.TopItemNavbar;
+import com.milk.open.openmove21.util.UtilLog;
 import com.milk.open.openmove21.util.Utils;
-import com.milk.open.openmove21.adapter.AdapterSearchTickets;
+import com.milk.open.openmove21.adapter.AdapterMyTickets;
+import com.milk.open.openmove21.diyview.TopItemNavbar;
 import com.milk.open.openmove21.model.ModelTicket;
+import com.milk.open.openmove21.slidemenu.OnMenuClickListener;
 
 import java.util.ArrayList;
 
-public class FragmentContent01SearchTickets extends FragmentBase {
+public class FragmentContent03MyTickets extends FragmentBase {
 
-    private int R_id_layout = R.layout.fragment_content_01;
-    private int R_id_topbar = R.id.fcontent01_topitembar;
+    private int R_id_layout = R.layout.fragment_content_03;
+    private int R_id_topbar = R.id.fcontent03_topitembar;
 
     private TopItemNavbar topItemNavbar;
+    private ImageView iv_home;
+
+    private FragmentMenu.OnFragmentInteractionListener mListenerActivity;
+
     private ListView mListView;
     private ArrayList<ModelTicket> arraydata;
-    private AdapterSearchTickets adapter;
+    private AdapterMyTickets adapter;
 
-    private static final int MESSAGE_NET_CONNECTION_ERROR = 108;
-    private static final int MESSAGE_UPDATE_PRINT = 101;
+    private static final int MESSAGE_NET_CONNECTION_ERROR = 308;
+    private static final int MESSAGE_UPDATE_PRINT = 301;
     @SuppressLint("HandlerLeak")
     Handler handler = new Handler() {
         @Override
@@ -56,7 +61,7 @@ public class FragmentContent01SearchTickets extends FragmentBase {
                 .show(this.getContext(), getString(R.string.lianjiezhong)
                         , getString(R.string.lianjiezhong_shaohou), true, true);
         arraydata = new ArrayList<ModelTicket>();
-        adapter = new AdapterSearchTickets(getActivity(), arraydata);
+        adapter = new AdapterMyTickets(getActivity(), arraydata);
         new Thread(new Rungetdata()).start();
     }
 
@@ -65,21 +70,20 @@ public class FragmentContent01SearchTickets extends FragmentBase {
         super.onViewCreated(view, savedInstanceState);
 
         topItemNavbar = (TopItemNavbar) view.findViewById(R_id_topbar);
-        topItemNavbar.setTitle("SEATCH TICKETS");
+        topItemNavbar.setTitle("MY TICKETS");
         topItemNavbar.setOnMenuClickListener((OnMenuClickListener)view.getParent().getParent().getParent());
 
-        mListView = (ListView) view.findViewById(R.id.fcontent01_lv);
-        mListView.setAdapter(adapter);
-        mListView.setOnTouchListener(new View.OnTouchListener() {
-            // Setting on Touch Listener for handling the touch inside ScrollView
+        iv_home = (ImageView) view.findViewById(R.id.fcontent03_iv_home);
+        iv_home.setOnClickListener(new View.OnClickListener() {
             @Override
-            public boolean onTouch(View v, MotionEvent event) {
-                // Disallow the touch request for parent scroll on touch of child view
-                v.getParent().requestDisallowInterceptTouchEvent(true);
-                return false;
+            public void onClick(View v) {
+//                toast("home");
+                mListenerActivity.onFragmentInteraction(0);
             }
         });
-        setListViewHeightBasedOnChildren(mListView);
+
+        mListView = (ListView) view.findViewById(R.id.fcontent03_lv);
+        mListView.setAdapter(adapter);
     }
 
     @Override
@@ -95,27 +99,30 @@ public class FragmentContent01SearchTickets extends FragmentBase {
     }
 
     private void print() {
+        UtilLog.i("print()");
         adapter.setDataSource(arraydata);
         adapter.notifyDataSetChanged();
     }
 
+    public void setOnFragmentInteractionListener(FragmentMenu.OnFragmentInteractionListener mListenerActivity){
+        this.mListenerActivity = mListenerActivity;
+    }
+
     private void getData() {
         if (Utils.IS_TEST_DATA){
-            // test data
-            arraydata.clear();
-            for (int i = 0; i < Utils.n_data; i++) {
-                ModelTicket aticket = new ModelTicket(
-                        Utils.ticketid[i],
-                        Utils.states[i],
-                        Utils.scopes[i],
-                        Utils.timelimits[i],
-                        Utils.money[i]);
-                arraydata.add(aticket);
-            }
-
             try {
                 Thread.sleep(1000);
-
+                // test data
+                arraydata.clear();
+                for (int i = 1; i < Utils.n_mytickets; i++) {
+                    ModelTicket aticket = new ModelTicket(
+                            Utils.ticketid[i],
+                            Utils.states[i],
+                            Utils.scopes[i],
+                            Utils.timelimits[i],
+                            Utils.money[i]);
+                    arraydata.add(aticket);
+                }
             } catch (Exception e) {
                 handler.sendEmptyMessage(MESSAGE_NET_CONNECTION_ERROR);
             } finally {
@@ -124,10 +131,10 @@ public class FragmentContent01SearchTickets extends FragmentBase {
         }
     }
 
-    private static FragmentContent01SearchTickets fragment;
-    public static FragmentContent01SearchTickets getInstance(){
+    private static FragmentContent03MyTickets fragment;
+    public static FragmentContent03MyTickets getInstance(){
         if (null == fragment){
-            fragment = new FragmentContent01SearchTickets();
+            fragment = new FragmentContent03MyTickets();
         }
         return fragment;
     }

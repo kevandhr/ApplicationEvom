@@ -1,4 +1,4 @@
-package com.milk.open.openmove21.Util;
+package com.milk.open.openmove21.util;
 
 import android.text.TextUtils;
 import android.util.Log;

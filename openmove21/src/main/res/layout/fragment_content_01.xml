@@ -53,8 +53,7 @@
                     android:layout_height="wrap_content"
                     android:scrollbars="none"
                     android:divider="@color/divider"
-                    android:dividerHeight="8dp"
-                    android:textColor="#FFFFFF"/>
+                    android:dividerHeight="8dp"/>
 
         </LinearLayout>
     </com.milk.open.openmove21.diyview.MilkScrollView>

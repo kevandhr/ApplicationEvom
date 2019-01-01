@@ -2,18 +2,12 @@ package com.milk.open.openmove21.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.text.Layout;
-import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.view.animation.Animation;
 import android.widget.ImageView;
 import android.widget.Toast;
 import com.milk.open.openmove21.R;
-import com.milk.open.openmove21.Util.Tools;
+import com.milk.open.openmove21.util.Tools;
 
 public class ActivityStart extends ActivityBase {
 

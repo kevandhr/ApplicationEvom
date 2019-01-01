@@ -19,7 +19,7 @@
     <!--view search dep arr-->
     <dimen name="vsdeparr_height_zhengti">106dp</dimen>
     <dimen name="vsdeparr_weight_deparr">26dp</dimen>
-    <dimen name="vsdeparr_weight_gongneng">30dp</dimen>
+    <dimen name="vsdeparr_weight_gongneng">29dp</dimen>
 
 
 </resources>

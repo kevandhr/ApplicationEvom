@@ -6,12 +6,12 @@
         android:orientation="vertical" >
 
     <RelativeLayout
-            android:id="@+id/adp_stickets_rl_head"
+            android:id="@+id/adp_mytickets_rl_head"
             android:layout_width="match_parent"
             android:layout_height="@dimen/adpstickets_height_head" >
 
         <ImageView
-                android:id="@+id/adp_stickets_iv_che"
+                android:id="@+id/adp_mytickets_iv_che"
                 android:layout_width="48dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
@@ -24,15 +24,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
-                android:layout_toRightOf="@id/adp_stickets_iv_che"
-                android:layout_toEndOf="@id/adp_stickets_iv_che"
-                android:layout_toLeftOf="@id/adp_stickets_iv_gongsi"
-                android:layout_toStartOf="@id/adp_stickets_iv_gongsi"
+                android:layout_toRightOf="@id/adp_mytickets_iv_che"
+                android:layout_toEndOf="@id/adp_mytickets_iv_che"
+                android:layout_toLeftOf="@id/adp_mytickets_iv_gongsi"
+                android:layout_toStartOf="@id/adp_mytickets_iv_gongsi"
                 android:layout_marginLeft="12dp"
                 android:layout_marginStart="12dp" >
 
             <TextView
-                    android:id="@+id/adp_stickets_tv_state"
+                    android:id="@+id/adp_mytickets_tv_state"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="22dp"
@@ -41,7 +41,7 @@
                     android:text="@string/textview"/>
 
             <TextView
-                    android:id="@+id/adp_stickets_tv_scope"
+                    android:id="@+id/adp_mytickets_tv_scope"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
@@ -50,7 +50,7 @@
                     android:text="@string/textview"/>
 
             <TextView
-                    android:id="@+id/adp_stickets_tv_timelimit"
+                    android:id="@+id/adp_mytickets_tv_timelimit"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
@@ -61,20 +61,19 @@
         </LinearLayout>
 
         <ImageView
-                android:id="@+id/adp_stickets_iv_gongsi"
+                android:id="@+id/adp_mytickets_iv_gongsi"
                 android:layout_width="118dp"
                 android:layout_height="50dp"
                 android:layout_centerVertical="true"
                 android:layout_alignParentRight="true"
                 android:layout_alignParentEnd="true"
                 android:layout_marginRight="6dp"
-                android:layout_marginEnd="6dp"
                 android:contentDescription="@string/contentDescription"
                 android:background="@drawable/ticket_logotrentras"/>
     </RelativeLayout>
 
     <RelativeLayout
-            android:id="@+id/adp_stickets_rl_tail"
+            android:id="@+id/adp_mytickets_rl_tail"
             android:layout_width="match_parent"
             android:layout_height="@dimen/adpstickets_height_tail" >
 
@@ -86,11 +85,11 @@
                 android:contentDescription="@string/contentDescription"/>
 
         <ImageView
-                android:id="@+id/adp_stickets_iv_gouwuche"
+                android:id="@+id/adp_mytickets_iv_gouwuche"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:layout_centerVertical="true"
-                android:background="@drawable/ticket_gouwuche"
+                android:background="@drawable/ticket_gouwuche_yellow"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp" />
 
@@ -98,25 +97,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_toRightOf="@+id/adp_stickets_iv_gouwuche"
-                android:layout_toEndOf="@+id/adp_stickets_iv_gouwuche"
+                android:layout_toRightOf="@+id/adp_mytickets_iv_gouwuche"
+                android:layout_toEndOf="@+id/adp_mytickets_iv_gouwuche"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp"
                 android:textColor="@color/color2_fenhongse"
                 android:textSize="15sp"
-                android:text="@string/purchase" />
-
-        <TextView
-                android:id="@+id/adp_stickets_tv_money"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_marginRight="12dp"
-                android:layout_marginEnd="12dp"
-                android:textSize="15sp"
-                android:text="@string/textview"/>
+                android:textStyle="bold"
+                android:text="@string/validate" />
 
     </RelativeLayout>
 

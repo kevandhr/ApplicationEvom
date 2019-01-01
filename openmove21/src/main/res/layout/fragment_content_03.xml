@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#f4f4f4"
+    android:orientation="vertical">
+
+    <RelativeLayout
+            android:id="@+id/fcontent03_rl_top"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#4AAABF">
+
+        <com.milk.open.openmove21.diyview.TopItemNavbar
+                android:id="@+id/fcontent03_topitembar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#4AAABF" />
+
+        <ImageView
+                android:id="@+id/fcontent03_iv_home"
+                android:layout_width="26dp"
+                android:layout_height="22dip"
+                android:background="@drawable/fcontent_ic_02_home"
+                android:contentDescription="@string/contentDescription"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                android:layout_centerInParent="true"
+                android:layout_marginEnd="12dp"
+                android:layout_marginRight="12dp"/>
+
+    </RelativeLayout>
+
+    <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:background="#6aa4ba">
+
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1">
+
+            <Button
+                    android:layout_width="68dp"
+                    android:layout_height="28dp"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_centerInParent="true"
+                    android:background="@drawable/fcontent_ic_03_button_bg"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:text="TO USE" />
+        </RelativeLayout>
+        <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_weight="1" >
+            <Button
+                    android:layout_width="wrap_content"
+                    android:layout_height="28dp"
+                    style="?android:attr/buttonBarButtonStyle"
+                    android:layout_centerInParent="true"
+                    android:background="#00000000"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:text="EXPIRED" />
+
+
+        </RelativeLayout>
+    </LinearLayout>
+
+    <ListView
+            android:id="@+id/fcontent03_lv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="none"
+            android:divider="@color/divider"
+            android:dividerHeight="8dp" />
+
+</LinearLayout>
