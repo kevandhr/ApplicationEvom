@@ -20,8 +20,8 @@
         <ImageView
                 android:id="@+id/fcontent02_iv_home"
                 android:layout_width="26dp"
-                android:layout_height="22dip"
-                android:background="@drawable/fcontent_ic_02_home"
+                android:layout_height="25dp"
+                android:background="@drawable/fmenu_ic_gongneng01"
                 android:contentDescription="@string/contentDescription"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"

@@ -31,7 +31,7 @@
                 android:layout_width="72dp"
                 android:layout_height="72dp"
                 android:layout_marginTop="20dp"
-                android:layout_marginBottom="6dp"
+                android:layout_marginBottom="8dp"
                 android:layout_marginLeft="4dp"
                 android:contentDescription="@string/contentDescription"
                 android:scaleType="centerCrop"
@@ -128,7 +128,7 @@
                 android:layout_marginLeft="12dip"
                 android:contentDescription="@string/contentDescription"
                 android:scaleType="centerCrop"
-                android:src="@drawable/fmenu_ic_logout1" />
+                android:src="@drawable/fmenu_ic_logout" />
 
         <TextView
                 android:id="@+id/tv_logout"

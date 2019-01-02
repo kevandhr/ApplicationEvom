@@ -18,7 +18,7 @@
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:contentDescription="@string/contentDescription"
-                android:background="@drawable/ticket_gouwuche_pink"/>
+                android:background="@drawable/fcontent_ic_04_bustype_yellow"/>
 
         <LinearLayout
                 android:layout_width="wrap_content"
@@ -36,7 +36,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="22dp"
-                    android:textColor="@color/color2_fenhongse"
+                    android:textColor="#ecde6b"
                     android:textSize="12sp"
                     android:text="@string/textview"/>
 
@@ -45,7 +45,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:textColor="#000000"
+                    android:textColor="#646b6b"
                     android:textSize="16sp"
                     android:text="@string/textview"/>
 
@@ -54,7 +54,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="2dp"
-                    android:textColor="#5f5f5f"
+                    android:textColor="#999999"
                     android:textSize="13sp"
                     android:text="@string/textview"/>
 
@@ -86,10 +86,10 @@
 
         <ImageView
                 android:id="@+id/adp_mytickets_iv_gouwuche"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
                 android:layout_centerVertical="true"
-                android:background="@drawable/ticket_gouwuche_yellow"
+                android:background="@drawable/fcontent_ic_03_qrcode"
                 android:layout_marginLeft="8dp"
                 android:layout_marginStart="8dp" />
 
@@ -100,12 +100,11 @@
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/adp_mytickets_iv_gouwuche"
                 android:layout_toEndOf="@+id/adp_mytickets_iv_gouwuche"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp"
-                android:textColor="@color/color2_fenhongse"
+                android:layout_marginLeft="4dp"
+                android:layout_marginStart="4dp"
+                android:textColor="#666d6d"
                 android:gravity="center"
                 android:textSize="15sp"
-                android:textStyle="bold"
                 android:text="@string/validate" />
 
     </RelativeLayout>

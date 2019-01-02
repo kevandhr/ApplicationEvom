@@ -6,9 +6,9 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.TextView;
-import android.widget.Toast;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.milk.open.openmove21.R;
+import com.milk.open.openmove21.activity.ActivityMain;
 import com.milk.open.openmove21.model.ModelTicket;
 
 import java.util.List;
@@ -35,7 +35,8 @@ public class AdapterMyTickets extends BaseAdapter {
 				@Override
 				public void onClick(View v) {
 //					UtilLog.i(l.get(_position).getTicketid());
-					Toast.makeText(activityParent,l.get(_position).getTicketid(), Toast.LENGTH_SHORT).show();
+//					Toast.makeText(activityParent,l.get(_position).getTicketid(), Toast.LENGTH_SHORT).show();
+                    ((ActivityMain)activityParent).onFragmentInteraction(ActivityMain.fragment04NICKNAME);
 				}
 			});
 		}
@@ -106,14 +107,5 @@ public class AdapterMyTickets extends BaseAdapter {
 		this.l = data;
 		return this;
 	}
-
-//	public AdapterSearchTickets setMlv(ListView mlv) {
-//		this.mlv = mlv;
-//		return this;
-//	}
-//
-//	public ListView getMlv() {
-//		return mlv;
-//	}
 
 }

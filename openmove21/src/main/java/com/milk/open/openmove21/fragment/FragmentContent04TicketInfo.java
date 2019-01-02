@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.TextView;
 import com.milk.open.openmove21.R;
 import com.milk.open.openmove21.adapter.AdapterTicketInfoUserRecord;
 import com.milk.open.openmove21.diyview.TopItemNavbar;
@@ -28,6 +29,8 @@ public class FragmentContent04TicketInfo extends FragmentBase {
 
     private TopItemNavbar topItemNavbar;
     private ImageView iv_home;
+    private ImageView iv_back;
+    private TextView tv_qrinfo;
 
     private FragmentMenu.OnFragmentInteractionListener mListenerActivity;
 
@@ -37,6 +40,9 @@ public class FragmentContent04TicketInfo extends FragmentBase {
     private ArrayList<ModelKeyValue> arraydata_ticketrecord;
     private AdapterTicketInfoUserRecord adapter_userinfo;
     private AdapterTicketInfoUserRecord adapter_ticketrecord;
+
+    private int parentFragment_nickname;
+    private String qrinfostr="";
 
     private static final int MESSAGE_NET_CONNECTION_ERROR = 408;
     private static final int MESSAGE_UPDATE_PRINT = 401;
@@ -75,7 +81,7 @@ public class FragmentContent04TicketInfo extends FragmentBase {
         super.onViewCreated(view, savedInstanceState);
 
         topItemNavbar = (TopItemNavbar) view.findViewById(R_id_topbar);
-        topItemNavbar.setTitle("TICKET");
+        topItemNavbar.setTitle("DETAILS");
         topItemNavbar.setOnMenuClickListener((OnMenuClickListener)view.getParent().getParent().getParent());
 
         iv_home = (ImageView) view.findViewById(R.id.fcontent04_iv_home);
@@ -84,6 +90,14 @@ public class FragmentContent04TicketInfo extends FragmentBase {
             public void onClick(View v) {
 //                toast("home");
                 mListenerActivity.onFragmentInteraction(0);
+            }
+        });
+
+        iv_back = (ImageView) view.findViewById(R.id.fcontent04_iv_back);
+        iv_back.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mListenerActivity.onFragmentInteraction(parentFragment_nickname);
             }
         });
 
@@ -112,6 +126,9 @@ public class FragmentContent04TicketInfo extends FragmentBase {
 //        });
         setListViewHeightBasedOnChildren(lv_userinfo);
         setListViewHeightBasedOnChildren(lv_ticketrecord);
+
+        tv_qrinfo = (TextView) view.findViewById(R.id.fcontent04_tv_qrinfo);
+        tv_qrinfo.setText(qrinfostr);
     }
 
     @Override
@@ -124,6 +141,15 @@ public class FragmentContent04TicketInfo extends FragmentBase {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R_id_layout, container, false);
+    }
+
+    //重新回来fragment
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden) {
+            tv_qrinfo.setText(qrinfostr);
+        }
     }
 
     private void print() {
@@ -166,11 +192,39 @@ public class FragmentContent04TicketInfo extends FragmentBase {
         }
     }
 
+    public String getQrinfo() {
+        return qrinfostr;
+    }
+
+    public void setQrinfo(String qrinfostr) {
+        this.qrinfostr = qrinfostr;
+    }
+
+    public int getParentFragment_nickname() {
+        return parentFragment_nickname;
+    }
+
+    public void setParentFragment_nickname(int parentFragment_nickname) {
+        this.parentFragment_nickname = parentFragment_nickname;
+    }
+
     private static FragmentContent04TicketInfo fragment;
     public static FragmentContent04TicketInfo getInstance(){
         if (null == fragment){
             fragment = new FragmentContent04TicketInfo();
         }
+        return fragment;
+    }
+
+    public static FragmentContent04TicketInfo getInstance(String qrinfo){
+        fragment = getInstance();
+        fragment.setQrinfo(qrinfo);
+        return fragment;
+    }
+
+    public static FragmentContent04TicketInfo getInstance(int parentFragment_nickname, String qrinfo){
+        fragment = getInstance(qrinfo);
+        fragment.setParentFragment_nickname(parentFragment_nickname);
         return fragment;
     }
 

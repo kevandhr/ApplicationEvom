@@ -47,7 +47,7 @@ public class AdapterMenuList extends BaseAdapter {
 		if(4 == position){
 			h.tv_myticketsnumber = (TextView) convertView.findViewById(R.id.adp_menulist_tv_myticketsnumber);
 //			h.tv_myticketsnumber.setTextSize(10);
-			h.tv_myticketsnumber.setText("3");
+			h.tv_myticketsnumber.setText("99");
 			h.tv_myticketsnumber.setBackgroundResource(R.drawable.fmenu_ic_whitecircle);
 		}
 

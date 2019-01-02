@@ -1,7 +1,10 @@
 package com.milk.open.openmove21.activity;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import com.google.zxing.integration.android.IntentIntegrator;
@@ -9,6 +12,11 @@ import com.google.zxing.integration.android.IntentResult;
 import com.milk.open.openmove21.R;
 import com.milk.open.openmove21.fragment.*;
 import com.milk.open.openmove21.slidemenu.SlideMenuContainerLayout;
+
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class ActivityMain extends ActivityBase implements FragmentMenu.OnFragmentInteractionListener {
 
@@ -20,6 +28,7 @@ public class ActivityMain extends ActivityBase implements FragmentMenu.OnFragmen
     private FragmentMenu mMenuFragment;
 
     private Fragment currentFragment;
+    private int currentFragmentNickname=0;
 
     private FragmentContent01SearchTickets fragment01;
 
@@ -28,6 +37,21 @@ public class ActivityMain extends ActivityBase implements FragmentMenu.OnFragmen
     private FragmentContent03MyTickets fragment03;
 
     private FragmentContent04TicketInfo fragment04;
+    public static int fragment04NICKNAME = 98;
+
+    private String qrinfo;
+
+    private static final int MESSAGE_NET_CONNECTION_ERROR = 9008;
+    private static final int MESSAGE_GOTO_FRAGMENT04 = 9001;
+    @SuppressLint("HandlerLeak")
+    Handler handler = new Handler() {
+        @Override
+        public void handleMessage(Message msg) {
+            if (msg.what == MESSAGE_GOTO_FRAGMENT04) {
+                onFragmentInteraction(fragment04NICKNAME, qrinfo);
+            }
+        }
+    };
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -76,24 +100,44 @@ public class ActivityMain extends ActivityBase implements FragmentMenu.OnFragmen
                 fragment01 = FragmentContent01SearchTickets.getInstance();
             }
             switchContentFragment(fragment01).commit();
+            currentFragmentNickname = seq;
         } else if(1 == seq){
             if(null == fragment02){
                 fragment02 = FragmentContent02.getInstance();
                 fragment02.setOnFragmentInteractionListener(this);
             }
             switchContentFragment(fragment02).commit();
+            currentFragmentNickname = seq;
         } else if(4 == seq){
             if(null == fragment03){
                 fragment03 = FragmentContent03MyTickets.getInstance();
                 fragment03.setOnFragmentInteractionListener(this);
             }
             switchContentFragment(fragment03).commit();
-        } else if(3 == seq){
+            currentFragmentNickname = seq;
+        } else if(fragment04NICKNAME == seq){
             if(null == fragment04){
                 fragment04 = FragmentContent04TicketInfo.getInstance();
                 fragment04.setOnFragmentInteractionListener(this);
             }
+            fragment04.setParentFragment_nickname(currentFragmentNickname);
             switchContentFragment(fragment04).commit();
+            currentFragmentNickname = seq;
+        }
+        mSlideContainer.hide_menu();
+    }
+
+    public void onFragmentInteraction(int seq, String qrinfo) {
+        if (fragment04NICKNAME == seq) {
+            if (null == fragment04) {
+                fragment04 = FragmentContent04TicketInfo.getInstance(currentFragmentNickname, qrinfo);
+                fragment04.setOnFragmentInteractionListener(this);
+            } else {
+                fragment04.setQrinfo(qrinfo);
+                fragment04.setParentFragment_nickname(currentFragmentNickname);
+            }
+            switchContentFragment(fragment04).commit();
+            currentFragmentNickname = seq;
         }
         mSlideContainer.hide_menu();
     }
@@ -109,14 +153,6 @@ public class ActivityMain extends ActivityBase implements FragmentMenu.OnFragmen
     protected int getLayoutId() {
         return 0;
     }
-//
-//    public void onClick() {
-//        mSlideContainer.slideToRight();
-//    }
-//
-//    public void onClick(View view) {
-//        mSlideContainer.show(view);
-//    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -124,9 +160,38 @@ public class ActivityMain extends ActivityBase implements FragmentMenu.OnFragmen
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
         if (result != null) {
             if (result.getContents() == null) {
-                toast("取消扫描");
+//                toast("取消扫描");
             } else {
-                toast("扫描内容:" + result.getContents());
+                // HH:mm:ss
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+                //获取当前时间
+                Date date = new Date(System.currentTimeMillis());
+
+                qrinfo = result.getContents();
+                String resultqrinfo = "";
+
+                Pattern pattern = Pattern.compile("partner=(.*?)&");
+                Matcher matcher = pattern.matcher(qrinfo);
+                if(matcher.find()) {
+                    resultqrinfo = resultqrinfo + matcher.group(1);
+                }
+
+                pattern = Pattern.compile("&id=(.*?)$");
+                matcher = pattern.matcher(qrinfo);
+                if (matcher.find()) {
+                    resultqrinfo = resultqrinfo + matcher.group(1);
+                }
+
+//                toast("Validated: "+
+//                        simpleDateFormat.format(date)+ "-"+
+//                        resultqrinfo);
+
+                qrinfo = "Validated: "+
+                        simpleDateFormat.format(date)+
+                        " - "+
+                        resultqrinfo;
+//                handler.sendEmptyMessage(MESSAGE_GOTO_FRAGMENT04);
+                handler.sendEmptyMessageDelayed(MESSAGE_GOTO_FRAGMENT04, 1500);
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);

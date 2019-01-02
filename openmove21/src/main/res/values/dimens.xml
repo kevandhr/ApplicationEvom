@@ -13,13 +13,15 @@
     <dimen name="adpstickets_height_head">110dp</dimen>
     <dimen name="adpstickets_height_tail">42dp</dimen>
 
-    <!-- top item navbar-->
+    <!-- top item navbar -->
     <dimen name="titembar_height_zhengti">41dp</dimen>
 
-    <!--view search dep arr-->
+    <!-- view search dep arr -->
     <dimen name="vsdeparr_height_zhengti">106dp</dimen>
     <dimen name="vsdeparr_weight_deparr">26dp</dimen>
     <dimen name="vsdeparr_weight_gongneng">29dp</dimen>
 
+    <!-- fragment content 04 -->
+    <dimen name="fc04_margintop_title">22dp</dimen>
 
 </resources>

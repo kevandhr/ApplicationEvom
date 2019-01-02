@@ -18,10 +18,22 @@
                 android:background="#4AAABF" />
 
         <ImageView
+                android:id="@+id/fcontent04_iv_back"
+                android:layout_width="18dp"
+                android:layout_height="22dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:background="@drawable/left_normal_arrow"
+                android:contentDescription="@string/contentDescription"
+                android:layout_marginLeft="60dp"
+                android:layout_marginStart="60dp"/>
+
+        <ImageView
                 android:id="@+id/fcontent04_iv_home"
                 android:layout_width="26dp"
-                android:layout_height="22dip"
-                android:background="@drawable/fcontent_ic_02_home"
+                android:layout_height="25dp"
+                android:background="@drawable/fmenu_ic_gongneng01"
                 android:contentDescription="@string/contentDescription"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
@@ -43,101 +55,100 @@
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
-            <RelativeLayout
+            <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:background="#FFFFFF" >
+                    android:gravity="center_horizontal"
+                    android:layout_marginTop="@dimen/fc04_margintop_title"
+                    android:textColor="#dd515757"
+                    android:textStyle="bold"
+                    android:textSize="18sp"
+                    android:text="@string/verify"/>
+
+            <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#FFFFFF"
+                    android:layout_marginTop="4dp"
+                    android:orientation="vertical">
+
+                <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="#FFFFFF"
+                        android:layout_marginTop="8dp"
+                        android:orientation="horizontal">
+                    <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+                        <ImageView
+                                android:layout_width="118dp"
+                                android:layout_height="118dp"
+                                android:layout_centerInParent="true"
+                                android:background="@drawable/fcontent_ic_04_qrcode"/>
+
+                    </RelativeLayout>
+                    <RelativeLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:layout_weight="1">
+                        <ImageView
+                                android:layout_width="118dp"
+                                android:layout_height="50dp"
+                                android:layout_centerInParent="true"
+                                android:background="@drawable/ticket_logotrentras"/>
+
+                    </RelativeLayout>
+                </LinearLayout>
 
                 <TextView
-                        android:id="@+id/f04_tv_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="2dp"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginLeft="48dp"
+                        android:layout_marginStart="48dp"
+                        android:layout_marginRight="48dp"
+                        android:layout_marginEnd="48dp"
                         android:textSize="16sp"
                         android:textColor="#515757"
-                        android:text="@string/contentDescription"
-                        android:layout_alignParentTop="true"/>
+                        android:text="@string/road" />
+                <!--<TextView-->
+                        <!--android:layout_width="wrap_content"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:layout_gravity="center_horizontal"-->
+                        <!--android:layout_marginTop="4dp"-->
+                        <!--android:textSize="16sp"-->
+                        <!--android:textColor="#515757"-->
+                        <!--android:text="@string/contentDescription" />-->
                 <TextView
-                        android:id="@+id/f04_tv_2"
+                        android:id="@+id/fcontent04_tv_isvalid"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="2dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="12dp"
                         android:textSize="16sp"
-                        android:textColor="#515757"
-                        android:text="@string/contentDescription"
-                        android:layout_below="@id/f04_tv_1" />
+                        android:textColor="#515757" />
                 <TextView
-                        android:id="@+id/f04_tv_3"
+                        android:id="@+id/fcontent04_tv_qrinfo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="2dp"
+                        android:layout_gravity="center_horizontal"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="16dp"
                         android:textSize="16sp"
                         android:textColor="#515757"
-                        android:text="@string/contentDescription"
-                        android:layout_below="@id/f04_tv_2"/>
-                <TextView
-                        android:id="@+id/f04_tv_4"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="2dp"
-                        android:textSize="16sp"
-                        android:textColor="#515757"
-                        android:text="@string/contentDescription"
-                        android:layout_below="@id/f04_tv_3"/>
+                        android:text="@string/verifytime" />
 
-                <TextView
-                        android:id="@+id/f04_tv_5"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="2dp"
-                        android:textSize="16sp"
-                        android:textColor="#515757"
-                        android:text="@string/contentDescription"
-                        android:layout_below="@id/f04_tv_4"/>
-
-                <TextView
-                        android:id="@+id/f04_tv_6"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="2dp"
-                        android:textSize="16sp"
-                        android:textColor="#515757"
-                        android:text="@string/contentDescription"
-                        android:layout_below="@id/f04_tv_5"/>
-                <TextView
-                        android:id="@+id/f04_tv_7"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="2dp"
-                        android:textSize="16sp"
-                        android:textColor="#515757"
-                        android:text="@string/contentDescription"
-                        android:layout_below="@id/f04_tv_6"/>
-                <TextView
-                        android:id="@+id/f04_tv_8"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="2dp"
-                        android:textSize="16sp"
-                        android:textColor="#515757"
-                        android:text="@string/contentDescription"
-                        android:layout_below="@id/f04_tv_7"/>
-
-            </RelativeLayout>
+            </LinearLayout>
 
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="@dimen/fc04_margintop_title"
                     android:textColor="#dd515757"
                     android:textStyle="bold"
                     android:textSize="18sp"
@@ -155,31 +166,40 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="@dimen/fc04_margintop_title"
                     android:textStyle="bold"
                     android:textColor="#dd515757"
                     android:textSize="18sp"
-                    android:text="@string/information"/>
+                    android:text="@string/addiinfo"/>
 
-            <TextView
+            <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
                     android:layout_marginTop="8dp"
-                    android:background="#FFFFFF"
-                    android:textSize="18sp"
-                    android:textColor="#989b9d"
-                    android:text="@string/informationduo"/>
+                    android:background="#FFFFFF">
+
+                <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="start"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginStart="4dp"
+                        android:background="#FFFFFF"
+                        android:textSize="17sp"
+                        android:textColor="#989b9d"
+                        android:text="@string/addiinfocontent"/>
+
+            </LinearLayout>
 
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
-                    android:layout_marginTop="16dp"
+                    android:layout_marginTop="@dimen/fc04_margintop_title"
                     android:textColor="#dd515757"
                     android:textStyle="bold"
                     android:textSize="18sp"
-                    android:text="@string/information"/>
+                    android:text="@string/validations"/>
 
             <ListView
                     android:id="@+id/fcontent04_lv_trecord"
