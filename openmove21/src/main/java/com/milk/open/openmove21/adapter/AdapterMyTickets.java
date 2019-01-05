@@ -5,10 +5,7 @@ import android.graphics.drawable.AnimationDrawable;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
-import android.widget.ImageView;
-import android.widget.RelativeLayout;
-import android.widget.TextView;
+import android.widget.*;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.milk.open.openmove21.R;
 import com.milk.open.openmove21.activity.ActivityMain;
@@ -87,7 +84,7 @@ public class AdapterMyTickets extends BaseAdapter {
             h.tv_arr.setTextColor(0xFF777777);
 
             RelativeLayout.LayoutParams Params =  (RelativeLayout.LayoutParams)h.tv_timelimit.getLayoutParams();
-            Params.topMargin = h.tv_arr.getHeight()+4;
+            Params.topMargin = 4+h.tv_arr.getHeight();
             h.tv_timelimit.setLayoutParams(Params);
         }
 		if(_data.isIsvalid()) {

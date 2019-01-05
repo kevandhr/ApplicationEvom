@@ -67,7 +67,6 @@ public class FragmentContent01SearchTickets extends FragmentBase {
         }
     };
 //    private ProgressDialog proDialog;
-    AnimationsContainer.FramesSequenceAnimation animation_proDialog;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -94,6 +93,7 @@ public class FragmentContent01SearchTickets extends FragmentBase {
         topItemNavbar.setOnMenuClickListener((OnMenuClickListener)view.getParent().getParent().getParent());
 
         adapter = new AdapterSearchTickets(getActivity(), arraydata);
+
         mListView = (ListView) view.findViewById(R.id.fcontent01_lv);
         mListView.setAdapter(adapter);
 //        mListView.setOnTouchListener(new View.OnTouchListener() {

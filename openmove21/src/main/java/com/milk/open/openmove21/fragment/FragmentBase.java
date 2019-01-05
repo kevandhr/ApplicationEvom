@@ -9,7 +9,10 @@ import android.widget.Toast;
 import com.milk.open.openmove21.util.UtilLog;
 
 public class FragmentBase extends Fragment {
+
     private Toast toast;
+
+    AnimationsContainer.FramesSequenceAnimation animation_proDialog;
 
     /**
      * 格式化字符串
@@ -64,7 +67,7 @@ public class FragmentBase extends Fragment {
 
     public FragmentBase(){
         super();
-        UtilLog.i("call FragmentBase()");
+//        UtilLog.i("call FragmentBase()");
     }
 
     private static FragmentBase fragment;
