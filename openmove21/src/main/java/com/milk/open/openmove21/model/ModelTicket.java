@@ -14,6 +14,10 @@ public class ModelTicket {
 
     private boolean isvalid;
 
+    private int category;
+
+    private String arr;
+
     public ModelTicket(String ticketid, String state, String scope, String timelimit, double money){
         this.ticketid = ticketid;
         this.state = state;
@@ -73,4 +77,21 @@ public class ModelTicket {
     public void setIsvalid(boolean isvalid) {
         this.isvalid = isvalid;
     }
+
+    public int getCategory() {
+        return category;
+    }
+
+    public void setCategory(int category) {
+        this.category = category;
+    }
+
+    public String getArr() {
+        return arr;
+    }
+
+    public void setArr(String arr) {
+        this.arr = arr;
+    }
+
 }

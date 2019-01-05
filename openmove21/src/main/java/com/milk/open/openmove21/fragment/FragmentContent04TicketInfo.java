@@ -185,22 +185,14 @@ public class FragmentContent04TicketInfo extends FragmentBase {
             return;
         }
         if(isvalid){
-            animation_iv_valid = AnimationsContainer.getInstance(R.array.animation_tinfo_iv_isvalid, 16, this.getContext()).createProgressDialogAnim(iv_valid);
+            animation_iv_valid = AnimationsContainer.getInstance(R.array.animation_tinfo_isvalid, 16, this.getContext()).createProgressDialogAnim(iv_valid);
             animation_iv_valid.start();
 
-            animation_verifyqrcode_bg = AnimationsContainer.getInstance(R.array.animation_tinfo_verifyqrcode_bg, 16, this.getContext()).createProgressDialogAnim(iv_verifyqrcode_bg);
+            animation_verifyqrcode_bg = AnimationsContainer.getInstance(R.array.animation_tinfo_valid_bg, 16, this.getContext()).createProgressDialogAnim(iv_verifyqrcode_bg);
             animation_verifyqrcode_bg.start();
-
-//            iv_valid.setImageResource(R.drawable.animation_tinfo_iv_isvalid);
-//            anDrawable_valid = (AnimationDrawable) iv_valid.getDrawable();
-//            anDrawable_valid.start();
 
             tv_qrinfo.setText(getQrinfo());
             arraydata_ticketrecord.add(new ModelKeyValue(valid_time, valid_bus));
-
-//            iv_verifyqrcode_bg.setImageResource(R.drawable.animation_tinfo_iv_isvalid_bg);
-//            anDrawable_verifyqrcode_bg = (AnimationDrawable) iv_verifyqrcode_bg.getDrawable();
-//            anDrawable_verifyqrcode_bg.start();
         }
         adapter_userinfo.setDataSource(arraydata_userinfo);
         adapter_userinfo.notifyDataSetChanged();

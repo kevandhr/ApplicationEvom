@@ -21,6 +21,8 @@
     <string name="no_internet">No Internet!</string>
     <string name="lianjiezhong">连接中....</string>
     <string name="lianjiezhong_shaohou">连接中..请稍后....</string>
+
+    <string name="tickettouse">TICKET TO USE</string>
     <string name="purchase">Purchase</string>
     <string name="validate">Validate</string>
     <string name="validate_again">Validate again</string>

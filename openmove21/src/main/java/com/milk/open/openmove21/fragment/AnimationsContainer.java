@@ -8,14 +8,13 @@ import android.graphics.drawable.BitmapDrawable;
 import android.os.Build;
 import android.os.Handler;
 import android.widget.ImageView;
-import com.milk.open.openmove21.R;
 
 import java.lang.ref.SoftReference;
 
 
 public class AnimationsContainer {
     public int FPS = 15;  // 每秒播放帧数，fps = 1/t，t-动画两帧时间间隔
-    private int resId = R.array.animation_tinfo_iv_isvalid; //图片资源
+    private int resId; //图片资源
     private Context mContext;
     // 单例
     private static AnimationsContainer mInstance;

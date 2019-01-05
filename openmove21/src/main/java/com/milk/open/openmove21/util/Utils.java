@@ -19,17 +19,23 @@ public class Utils {
         return point;
     }
 
-    public static int n_data = 10;
-    public static String[] ticketid = {"123", "456", "789", "246", "357", "123", "456", "789", "246", "357"};
-    public static String[] states = {"To be purchased", "To be purchased", "To be purchased", "To be purchased", "To be purchased",
-            "To be purchased", "To be purchased", "To be purchased", "To be purchased", "To be purchased"};
-    public static String[] scopes = {"TRENTO URBAN", "TRENTO", "PERGINE URBAN", "PERGINE URBAN", "PERGINE URBAN",
-            "TRENTO URBAN", "TRENTO URBAN", "PERGINE URBAN", "PERGINE URBAN", "PERGINE URBAN"};
-    public static String[] timelimits = {"70 minutes", "6 hours", "150 minutes", "6 h", "1 Day",
-            "70 minutes", "70 minutes", "150 minutes", "6 hours", "1 Day"};
-    public static double[] money = {1.10, 1.60, 1.60, 2.00, 2.00, 1.60, 2.00, 2.00,1.60, 2.00};
+    public static int TC_CIVEZZANO = 5678;
 
-    public static int n_mytickets = 2;
+    public static int n_data = 10;
+    public static String[] ticketid = {"123", "456", "789", "246", "357", "123", "456", "789", "246", "357",
+            "1111"};
+    public static String[] states = {"To be purchased", "To be purchased", "To be purchased", "To be purchased", "To be purchased",
+            "To be purchased", "To be purchased", "To be purchased", "To be purchased", "To be purchased", "Valid"};
+    public static String[] scopes = {"TRENTO URBAN", "TRENTO", "PERGINE URBAN", "PERGINE URBAN", "PERGINE URBAN",
+            "TRENTO URBAN", "TRENTO URBAN", "PERGINE URBAN", "PERGINE URBAN", "PERGINE URBAN",
+            "CIVEZZANO/MOCHENA/SILLE"};
+    public static String[] timelimits = {"70 minutes", "6 hours", "150 minutes", "6 h", "1 Day",
+            "70 minutes", "70 minutes", "150 minutes", "6 hours", "1 Day",
+            "(PASSING THROUGH VALSUGANA)"};
+    public static double[] money = {1.10, 1.60, 1.60, 2.00, 2.00, 1.60, 2.00, 2.00,1.60, 2.00, 1.60};
+
+    public static String myticket_arr = "TRENTO";
+    public static int n_mytickets = 3;
 
     public static String[] menuitems = {
             "Search tickets", "Search trips", "Timetable", "Advise",

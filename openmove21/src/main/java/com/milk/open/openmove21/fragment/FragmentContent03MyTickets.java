@@ -109,7 +109,6 @@ public class FragmentContent03MyTickets extends FragmentBase {
     }
 
     private void print() {
-//        UtilLog.i("print()");
         adapter.setDataSource(arraydata);
         adapter.notifyDataSetChanged();
     }
@@ -122,6 +121,18 @@ public class FragmentContent03MyTickets extends FragmentBase {
         if (Utils.IS_TEST_DATA){
             // test data
             arraydata.clear();
+
+            int seq_validticket = 10;
+            ModelTicket aticket0 = new ModelTicket(Utils.ticketid[seq_validticket],
+                        Utils.states[seq_validticket],
+                        Utils.scopes[seq_validticket],
+                        Utils.timelimits[seq_validticket],
+                        Utils.money[seq_validticket]);
+            aticket0.setCategory(Utils.TC_CIVEZZANO);
+            aticket0.setIsvalid(true);
+            aticket0.setArr(Utils.myticket_arr);
+            arraydata.add(aticket0);
+
             for (int i = 1; i < Utils.n_mytickets; i++) {
                 ModelTicket aticket = new ModelTicket(
                         Utils.ticketid[i],
@@ -132,7 +143,6 @@ public class FragmentContent03MyTickets extends FragmentBase {
                 arraydata.add(aticket);
             }
 
-            arraydata.get(0).setIsvalid(true);
             handler.sendEmptyMessageDelayed(MESSAGE_UPDATE_PRINT, 500);
 
 //            try {
