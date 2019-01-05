@@ -1,21 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string-array name="left_panel_group_names">
-        <item>新闻</item>
-        <item>扩展</item>
+    <string-array name="animation_tinfo_iv_isvalid">
+        <item>@drawable/anim_iv_isvalid_95</item>
+        <item>@drawable/anim_iv_isvalid_85</item>
+        <item>@drawable/anim_iv_isvalid_75</item>
+        <item>@drawable/anim_iv_isvalid_65</item>
+        <item>@drawable/anim_iv_isvalid_55</item>
+        <item>@drawable/anim_iv_isvalid_45</item>
+        <item>@drawable/anim_iv_isvalid_35</item>
+        <item>@drawable/anim_iv_isvalid_30</item>
+        <item>@drawable/anim_iv_isvalid_25</item>
+        <item>@drawable/anim_iv_isvalid_20</item>
+        <item>@drawable/anim_iv_isvalid_15</item>
+        <item>@drawable/anim_iv_isvalid_10</item>
+        <item>@drawable/anim_iv_isvalid_05</item>
+        <item>@drawable/anim_iv_isvalid_00</item>
+        <item>@drawable/anim_iv_isvalid_20</item>
+        <item>@drawable/anim_iv_isvalid_30</item>
+        <item>@drawable/anim_iv_isvalid_45</item>
+        <item>@drawable/anim_iv_isvalid_55</item>
+        <item>@drawable/anim_iv_isvalid_65</item>
+        <item>@drawable/anim_iv_isvalid_75</item>
+        <item>@drawable/anim_iv_isvalid_85</item>
     </string-array>
-    <string-array name="left_panel_first_group_names">
-        <item>校园新事</item>
-        <item>校内通知</item>
-        <item>自习室</item>
-        <item>课程表</item>
-        <item>圈内消息</item>
+
+    <string-array name="animation_tinfo_verifyqrcode_bg">
+        <item>@drawable/anim_tinfo_iv_isvalid_bg_01</item>
+        <item>@drawable/anim_tinfo_iv_isvalid_bg_03</item>
+        <item>@drawable/anim_tinfo_iv_isvalid_bg_05</item>
+        <item>@drawable/anim_tinfo_iv_isvalid_bg_07</item>
+        <item>@drawable/anim_tinfo_iv_isvalid_bg_09</item>
+        <item>@drawable/anim_tinfo_iv_isvalid_bg_11</item>
+        <item>@drawable/anim_tinfo_iv_isvalid_bg_13</item>
+        <item>@drawable/anim_tinfo_iv_isvalid_bg_15</item>
+        <item>@drawable/anim_tinfo_iv_isvalid_bg_17</item>
+        <item>@drawable/anim_tinfo_iv_isvalid_bg_19</item>
+        <item>@drawable/anim_tinfo_iv_isvalid_bg_21</item>
     </string-array>
-    <string-array name="left_panel_second_group_names">
-        <item>订餐</item>
-        <item>失物招领</item>
-        <item>二手市场</item>
+
+    <string-array name="animation_prodialog1">
+        <item>@drawable/prodialog01</item>
+        <item>@drawable/prodialog02</item>
+        <item>@drawable/prodialog03</item>
+        <item>@drawable/prodialog04</item>
+        <item>@drawable/prodialog05</item>
+        <item>@drawable/prodialog06</item>
+        <item>@drawable/prodialog07</item>
+        <item>@drawable/prodialog08</item>\
+        <item>@drawable/prodialog09</item>\
+        <item>@drawable/prodialog10</item>\
     </string-array>
+
 
 </resources>

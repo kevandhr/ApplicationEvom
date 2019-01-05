@@ -12,13 +12,14 @@
 
         <ImageView
                 android:id="@+id/adp_stickets_iv_che"
-                android:layout_width="48dp"
+                android:layout_width="42dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:contentDescription="@string/contentDescription"
-                android:background="@drawable/fcontent_ic_03_bustype"/>
+                android:src="@drawable/fcontent_03_ic_bustype"
+                android:background="@color/color2_fenhongse"/>
 
         <LinearLayout
                 android:layout_width="wrap_content"

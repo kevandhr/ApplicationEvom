@@ -40,13 +40,13 @@ public class FragmentContent03MyTickets extends FragmentBase {
     Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
+            if (proDialog != null) {
+                proDialog.dismiss();
+            }
             if (msg.what == MESSAGE_UPDATE_PRINT) {
                 print();
             } else if (msg.what == MESSAGE_NET_CONNECTION_ERROR) {
                 toast(R.string.no_internet);
-            }
-            if (proDialog != null) {
-                proDialog.dismiss();
             }
         }
     };
@@ -97,6 +97,17 @@ public class FragmentContent03MyTickets extends FragmentBase {
         return inflater.inflate(R_id_layout, container, false);
     }
 
+    //重新回来fragment
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (hidden) {
+
+        } else {
+            handler.sendEmptyMessage(MESSAGE_UPDATE_PRINT);
+        }
+    }
+
     private void print() {
 //        UtilLog.i("print()");
         adapter.setDataSource(arraydata);
@@ -109,24 +120,28 @@ public class FragmentContent03MyTickets extends FragmentBase {
 
     private void getData() {
         if (Utils.IS_TEST_DATA){
-            try {
-                Thread.sleep(500);
-                // test data
-                arraydata.clear();
-                for (int i = 1; i < Utils.n_mytickets; i++) {
-                    ModelTicket aticket = new ModelTicket(
-                            Utils.ticketid[i],
-                            Utils.states[i],
-                            Utils.scopes[i],
-                            Utils.timelimits[i],
-                            Utils.money[i]);
-                    arraydata.add(aticket);
-                }
-            } catch (Exception e) {
-                handler.sendEmptyMessage(MESSAGE_NET_CONNECTION_ERROR);
-            } finally {
-                handler.sendEmptyMessage(MESSAGE_UPDATE_PRINT);
+            // test data
+            arraydata.clear();
+            for (int i = 1; i < Utils.n_mytickets; i++) {
+                ModelTicket aticket = new ModelTicket(
+                        Utils.ticketid[i],
+                        Utils.states[i],
+                        Utils.scopes[i],
+                        Utils.timelimits[i],
+                        Utils.money[i]);
+                arraydata.add(aticket);
             }
+
+            arraydata.get(0).setIsvalid(true);
+            handler.sendEmptyMessageDelayed(MESSAGE_UPDATE_PRINT, 500);
+
+//            try {
+//
+//            } catch (Exception e) {
+//                handler.sendEmptyMessage(MESSAGE_NET_CONNECTION_ERROR);
+//            } finally {
+//                handler.sendEmptyMessageDelayed(MESSAGE_UPDATE_PRINT, 500);
+//            }
         }
     }
 

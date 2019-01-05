@@ -11,14 +11,22 @@
             android:layout_height="@dimen/adpstickets_height_head" >
 
         <ImageView
+                android:id="@+id/adp_mytickets_isvalid_bg"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="fitXY"/>
+
+
+        <ImageView
                 android:id="@+id/adp_mytickets_iv_che"
-                android:layout_width="48dp"
+                android:layout_width="42dp"
                 android:layout_height="match_parent"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
                 android:contentDescription="@string/contentDescription"
-                android:background="@drawable/fcontent_ic_04_bustype_yellow"/>
+                android:src="@drawable/fcontent_04_ic_bustype_green1"
+                android:scaleType="fitXY"/>
 
         <LinearLayout
                 android:layout_width="wrap_content"
@@ -36,7 +44,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="22dp"
-                    android:textColor="#ecde6b"
+                    android:textColor="#379637"
                     android:textSize="12sp"
                     android:text="@string/textview"/>
 
@@ -69,7 +77,7 @@
                 android:layout_alignParentEnd="true"
                 android:layout_marginRight="6dp"
                 android:contentDescription="@string/contentDescription"
-                android:background="@drawable/ticket_logotrentras"/>
+                android:background="@drawable/ticket_logotrentras_touming"/>
     </RelativeLayout>
 
     <RelativeLayout
@@ -86,12 +94,12 @@
 
         <ImageView
                 android:id="@+id/adp_mytickets_iv_gouwuche"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
+                android:layout_width="17dp"
+                android:layout_height="17dp"
                 android:layout_centerVertical="true"
-                android:background="@drawable/fcontent_ic_03_qrcode"
-                android:layout_marginLeft="8dp"
-                android:layout_marginStart="8dp" />
+                android:background="@drawable/fcontent_03_ic_qrcode"
+                android:layout_marginLeft="10dp"
+                android:layout_marginStart="10dp" />
 
         <TextView
                 android:id="@+id/adp_mytickets_tv_validate"
@@ -100,12 +108,12 @@
                 android:layout_centerVertical="true"
                 android:layout_toRightOf="@+id/adp_mytickets_iv_gouwuche"
                 android:layout_toEndOf="@+id/adp_mytickets_iv_gouwuche"
-                android:layout_marginLeft="4dp"
-                android:layout_marginStart="4dp"
+                android:layout_marginLeft="6dp"
+                android:layout_marginStart="6dp"
                 android:textColor="#666d6d"
                 android:gravity="center"
                 android:textSize="15sp"
-                android:text="@string/validate" />
+                android:text="@string/validate_again" />
 
     </RelativeLayout>
 

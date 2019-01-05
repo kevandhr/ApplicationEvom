@@ -23,10 +23,10 @@ public class Utils {
     public static String[] ticketid = {"123", "456", "789", "246", "357", "123", "456", "789", "246", "357"};
     public static String[] states = {"To be purchased", "To be purchased", "To be purchased", "To be purchased", "To be purchased",
             "To be purchased", "To be purchased", "To be purchased", "To be purchased", "To be purchased"};
-    public static String[] scopes = {"TRENTO URBAN", "TRENTO URBAN", "PERGINE URBAN", "PERGINE URBAN", "PERGINE URBAN",
+    public static String[] scopes = {"TRENTO URBAN", "TRENTO", "PERGINE URBAN", "PERGINE URBAN", "PERGINE URBAN",
             "TRENTO URBAN", "TRENTO URBAN", "PERGINE URBAN", "PERGINE URBAN", "PERGINE URBAN"};
-    public static String[] timelimits = {"70 minutes", "70 minutes", "150 minutes", "6 h", "1 Day",
-            "70 minutes", "70 minutes", "150 minutes", "6 h", "1 Day"};
+    public static String[] timelimits = {"70 minutes", "6 hours", "150 minutes", "6 h", "1 Day",
+            "70 minutes", "70 minutes", "150 minutes", "6 hours", "1 Day"};
     public static double[] money = {1.10, 1.60, 1.60, 2.00, 2.00, 1.60, 2.00, 2.00,1.60, 2.00};
 
     public static int n_mytickets = 2;
@@ -48,31 +48,43 @@ public class Utils {
             R.drawable.fmenu_ic_gongneng10,
             R.drawable.fmenu_ic_gongneng11, };
 
-    public static int n_userinfo = 6;
-    public static String[] userinfostr1 = {"Name", "Date of birth", "Email", "Name", "Date of birth", "Email"};
-    public static String[] userinfostr2 = {"yu", "14/03/1995", "shenyu123@gmail.com", "yu", "14/03/1995", "shenyu123@gmail.com"};
+    public static int n_userinfo = 9;
+    public static String[] userinfostr1 = {
+            "Purechase date",
+            "Origin",
+            "Destination",
+            "Price",
+            "Routing",
+            "Validity",
+            "Expiry",
+            "Travellers",
+            "ID"};
+    public static String[] userinfostr2 = {
+            "02/01/19 - 10:06",
+            "Civezzano/Mochena/Sille",
+            "Trento",
+            "1.60 €",
+            "VALSUGANA",
+            "6 Hours",
+            "31/12/19 - 23:59:59",
+            "1",
+            "TT296197",};
 
-    public static int n_ticketrecords = 10;
+    public static int n_ticketrecords = 3;
     public static String[] ticketrecordstr1 = {
-            "31/12/18 - 19:32:18",
-            "29/12/18 - 17:17:04",
             "25/12/18 - 13:59:42",
             "25/12/18 - 11:36:28",
             "29/12/18 - 17:17:04",
             "25/12/18 - 13:59:42",
             "25/12/18 - 11:36:28",
-            "31/12/18 - 19:32:18",
             "29/12/18 - 17:17:04",
-            "23/12/18 - 17:23:18"};
+            "31/12/18 - 19:32:18"};
     public static String[] ticketrecordstr2 = {
             "TT1416",
-            "66 - S - S.Bartolameo FS",
             "TT1472",
             "TT1668",
             "TT2512",
-            "TT1416",
             "66 - S - S.Bartolameo FS",
-            "TT1472",
-            "TT1668",
-            "TT2512"};
+            "TT1416",
+            "TT1472"};
 }

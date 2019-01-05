@@ -2,17 +2,15 @@ package com.milk.open.openmove21.fragment;
 
 import android.annotation.SuppressLint;
 import android.app.ProgressDialog;
+import android.graphics.drawable.AnimationDrawable;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.*;
 import com.milk.open.openmove21.R;
 import com.milk.open.openmove21.adapter.AdapterTicketInfoUserRecord;
 import com.milk.open.openmove21.diyview.TopItemNavbar;
@@ -21,6 +19,7 @@ import com.milk.open.openmove21.slidemenu.OnMenuClickListener;
 import com.milk.open.openmove21.util.Utils;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class FragmentContent04TicketInfo extends FragmentBase {
 
@@ -30,6 +29,13 @@ public class FragmentContent04TicketInfo extends FragmentBase {
     private TopItemNavbar topItemNavbar;
     private ImageView iv_home;
     private ImageView iv_back;
+//    private RelativeLayout rl_verifyqrcode;
+    private ImageView iv_verifyqrcode_bg;
+    private ImageView iv_valid;
+    AnimationsContainer.FramesSequenceAnimation animation_iv_valid;
+    AnimationsContainer.FramesSequenceAnimation animation_verifyqrcode_bg;
+    private AnimationDrawable anDrawable_verifyqrcode_bg;
+    private AnimationDrawable anDrawable_valid;
     private TextView tv_qrinfo;
 
     private FragmentMenu.OnFragmentInteractionListener mListenerActivity;
@@ -42,21 +48,24 @@ public class FragmentContent04TicketInfo extends FragmentBase {
     private AdapterTicketInfoUserRecord adapter_ticketrecord;
 
     private int parentFragment_nickname;
-    private String qrinfostr="";
+    private boolean isvalid = true;
+    private String valid_time="";
+    private String valid_bus="";
 
+    private boolean isdatachanged = false;
     private static final int MESSAGE_NET_CONNECTION_ERROR = 408;
     private static final int MESSAGE_UPDATE_PRINT = 401;
     @SuppressLint("HandlerLeak")
     Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
+            if (proDialog != null) {
+                proDialog.dismiss();
+            }
             if (msg.what == MESSAGE_UPDATE_PRINT) {
                 print();
             } else if (msg.what == MESSAGE_NET_CONNECTION_ERROR) {
                 toast(R.string.no_internet);
-            }
-            if (proDialog != null) {
-                proDialog.dismiss();
             }
         }
     };
@@ -127,8 +136,10 @@ public class FragmentContent04TicketInfo extends FragmentBase {
         setListViewHeightBasedOnChildren(lv_userinfo);
         setListViewHeightBasedOnChildren(lv_ticketrecord);
 
+        iv_verifyqrcode_bg = (ImageView) view.findViewById(R.id.fcontent04_iv_isvalid_bg);
+        iv_valid = (ImageView) view.findViewById(R.id.fcontent04_iv_isvalid);
         tv_qrinfo = (TextView) view.findViewById(R.id.fcontent04_tv_qrinfo);
-        tv_qrinfo.setText(qrinfostr);
+        tv_qrinfo.setText(getQrinfo());
     }
 
     @Override
@@ -147,16 +158,57 @@ public class FragmentContent04TicketInfo extends FragmentBase {
     @Override
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
-        if (!hidden) {
-            tv_qrinfo.setText(qrinfostr);
+        if (hidden) {
+            animation_iv_valid.stop();
+            animation_verifyqrcode_bg.stop();
+//            if (null != anDrawable_valid) {
+//                anDrawable_valid.stop();
+//            }
+//            if (null != anDrawable_verifyqrcode_bg) {
+//            anDrawable_verifyqrcode_bg.stop();
+//            }
+        } else {
+            animation_iv_valid.start();
+            animation_verifyqrcode_bg.start();
+            handler.sendEmptyMessage(MESSAGE_UPDATE_PRINT);
         }
     }
 
     private void print() {
+//        if (null != anDrawable_valid) {
+//            anDrawable_valid.start();
+//        }
+//            if (null != anDrawable_verifyqrcode_bg) {
+//            anDrawable_verifyqrcode_bg.start();
+//            }
+        if(!isdatachanged){
+            return;
+        }
+        if(isvalid){
+            animation_iv_valid = AnimationsContainer.getInstance(R.array.animation_tinfo_iv_isvalid, 16, this.getContext()).createProgressDialogAnim(iv_valid);
+            animation_iv_valid.start();
+
+            animation_verifyqrcode_bg = AnimationsContainer.getInstance(R.array.animation_tinfo_verifyqrcode_bg, 16, this.getContext()).createProgressDialogAnim(iv_verifyqrcode_bg);
+            animation_verifyqrcode_bg.start();
+
+//            iv_valid.setImageResource(R.drawable.animation_tinfo_iv_isvalid);
+//            anDrawable_valid = (AnimationDrawable) iv_valid.getDrawable();
+//            anDrawable_valid.start();
+
+            tv_qrinfo.setText(getQrinfo());
+            arraydata_ticketrecord.add(new ModelKeyValue(valid_time, valid_bus));
+
+//            iv_verifyqrcode_bg.setImageResource(R.drawable.animation_tinfo_iv_isvalid_bg);
+//            anDrawable_verifyqrcode_bg = (AnimationDrawable) iv_verifyqrcode_bg.getDrawable();
+//            anDrawable_verifyqrcode_bg.start();
+        }
         adapter_userinfo.setDataSource(arraydata_userinfo);
         adapter_userinfo.notifyDataSetChanged();
-        adapter_ticketrecord.setDataSource(arraydata_ticketrecord);
+        ArrayList<ModelKeyValue> arraydata_ticketrecord_reverse = arraydata_ticketrecord;
+        Collections.reverse(arraydata_ticketrecord_reverse);
+        adapter_ticketrecord.setDataSource(arraydata_ticketrecord_reverse);
         adapter_ticketrecord.notifyDataSetChanged();
+        isdatachanged = false;
     }
 
     public void setOnFragmentInteractionListener(FragmentMenu.OnFragmentInteractionListener mListenerActivity){
@@ -175,29 +227,56 @@ public class FragmentContent04TicketInfo extends FragmentBase {
             }
 
             arraydata_ticketrecord.clear();
-            for (int i = 0; i < Utils.n_ticketrecords; i++) {
-                ModelKeyValue arecord = new ModelKeyValue(
-                        Utils.ticketrecordstr1[i],
-                        Utils.ticketrecordstr2[i]);
-                arraydata_ticketrecord.add(arecord);
-            }
-            try {
-                Thread.sleep(200);
+//            for (int i = 0; i < Utils.n_ticketrecords; i++) {
+//                ModelKeyValue arecord = new ModelKeyValue(
+//                        Utils.ticketrecordstr1[i],
+//                        Utils.ticketrecordstr2[i]);
+//                arraydata_ticketrecord.add(arecord);
+//            }
 
-            } catch (Exception e) {
-                handler.sendEmptyMessage(MESSAGE_NET_CONNECTION_ERROR);
-            } finally {
-                handler.sendEmptyMessage(MESSAGE_UPDATE_PRINT);
-            }
+            isdatachanged = true;
+            handler.sendEmptyMessageDelayed(MESSAGE_UPDATE_PRINT, 300);
+
+//            try {
+//
+//            } catch (Exception e) {
+//                handler.sendEmptyMessage(MESSAGE_NET_CONNECTION_ERROR);
+//            } finally {
+//                handler.sendEmptyMessage(MESSAGE_UPDATE_PRINT);
+//            }
         }
     }
 
     public String getQrinfo() {
-        return qrinfostr;
+        if(isvalid) {
+            return "Validated: " + this.valid_time + " - " + this.valid_bus;
+        }else{
+            return "";
+        }
+
     }
 
-    public void setQrinfo(String qrinfostr) {
-        this.qrinfostr = qrinfostr;
+    public void setQrinfo(String valid_time, String valid_bus) {
+        this.valid_time = valid_time;
+        this.valid_bus = valid_bus;
+        isdatachanged = true;
+        isvalid=true;
+    }
+
+    public String getValid_time() {
+        return valid_time;
+    }
+
+    public void setValid_time(String valid_time) {
+        this.valid_time = valid_time;
+    }
+
+    public String getValid_bus() {
+        return valid_bus;
+    }
+
+    public void setValid_bus(String valid_bus) {
+        this.valid_bus = valid_bus;
     }
 
     public int getParentFragment_nickname() {
@@ -216,15 +295,16 @@ public class FragmentContent04TicketInfo extends FragmentBase {
         return fragment;
     }
 
-    public static FragmentContent04TicketInfo getInstance(String qrinfo){
+    public static FragmentContent04TicketInfo getInstance(int parentFragment_nickname){
         fragment = getInstance();
-        fragment.setQrinfo(qrinfo);
+        fragment.setParentFragment_nickname(parentFragment_nickname);
         return fragment;
     }
 
-    public static FragmentContent04TicketInfo getInstance(int parentFragment_nickname, String qrinfo){
-        fragment = getInstance(qrinfo);
-        fragment.setParentFragment_nickname(parentFragment_nickname);
+    public static FragmentContent04TicketInfo getInstance(int parentFragment_nickname, String valid_time, String valid_bus){
+        fragment = getInstance(parentFragment_nickname);
+        fragment.setQrinfo(valid_time, valid_bus);
+        fragment.isvalid=true;
         return fragment;
     }
 

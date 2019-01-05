@@ -79,6 +79,11 @@ public class AdapterSearchTickets extends BaseAdapter {
 		super();
 	}
 
+	public AdapterSearchTickets(Activity activity) {
+		super();
+		this.activityParent = activity;
+	}
+
 	public AdapterSearchTickets(Activity activity, List<ModelTicket> data) {
 		super();
 		this.activityParent = activity;
@@ -94,14 +99,5 @@ public class AdapterSearchTickets extends BaseAdapter {
 		this.l = data;
 		return this;
 	}
-
-//	public AdapterSearchTickets setMlv(ListView mlv) {
-//		this.mlv = mlv;
-//		return this;
-//	}
-//
-//	public ListView getMlv() {
-//		return mlv;
-//	}
 
 }

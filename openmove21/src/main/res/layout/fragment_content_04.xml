@@ -5,6 +5,7 @@
     android:background="#f4f4f4"
     android:orientation="vertical">
 
+    <!-- top bar-->
     <RelativeLayout
             android:id="@+id/fcontent04_rl_top"
             android:layout_width="match_parent"
@@ -19,12 +20,12 @@
 
         <ImageView
                 android:id="@+id/fcontent04_iv_back"
-                android:layout_width="18dp"
-                android:layout_height="22dp"
+                android:layout_width="36dp"
+                android:layout_height="24dp"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_centerVertical="true"
-                android:background="@drawable/left_normal_arrow"
+                android:src="@drawable/left_normal_arrow"
                 android:contentDescription="@string/contentDescription"
                 android:layout_marginLeft="60dp"
                 android:layout_marginStart="60dp"/>
@@ -33,7 +34,7 @@
                 android:id="@+id/fcontent04_iv_home"
                 android:layout_width="26dp"
                 android:layout_height="25dp"
-                android:background="@drawable/fmenu_ic_gongneng01"
+                android:src="@drawable/fmenu_ic_gongneng01"
                 android:contentDescription="@string/contentDescription"
                 android:layout_alignParentEnd="true"
                 android:layout_alignParentRight="true"
@@ -43,6 +44,7 @@
 
     </RelativeLayout>
 
+    <!-- content -->
     <com.milk.open.openmove21.diyview.MilkScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -50,106 +52,141 @@
             android:overScrollMode="never"
             android:background="#f0f0f0">
 
+        <!-- the whole layout-->
         <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:orientation="vertical">
 
+            <!-- title verify-->
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:layout_marginTop="@dimen/fc04_margintop_title"
-                    android:textColor="#dd515757"
+                    android:textColor="#dd474d4d"
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:text="@string/verify"/>
 
-            <LinearLayout
+            <RelativeLayout
+                    android:id="@+id/fcontent04_rl_verifyqrcode"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="#FFFFFF"
+                    android:layout_height="360dp"
                     android:layout_marginTop="4dp"
-                    android:orientation="vertical">
+                    android:background="#FFFFFF">
 
-                <LinearLayout
+                <ImageView
+                        android:id="@+id/fcontent04_iv_isvalid_bg"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitXY"/>
+
+                <View
+                        android:id="@+id/fcontent04_view_verifyqrcode_middle"
+                        android:layout_width="0dp"
+                        android:layout_height="128dp"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="12dp"/>
+
+                <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:background="#FFFFFF"
-                        android:layout_marginTop="8dp"
-                        android:orientation="horizontal">
-                    <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1">
-                        <ImageView
-                                android:layout_width="118dp"
-                                android:layout_height="118dp"
-                                android:layout_centerInParent="true"
-                                android:background="@drawable/fcontent_ic_04_qrcode"/>
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentStart="true"
+                        android:layout_toLeftOf="@id/fcontent04_view_verifyqrcode_middle"
+                        android:layout_toStartOf="@id/fcontent04_view_verifyqrcode_middle"
+                        android:layout_marginTop="12dp">
 
-                    </RelativeLayout>
-                    <RelativeLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:layout_weight="1">
-                        <ImageView
-                                android:layout_width="118dp"
-                                android:layout_height="50dp"
-                                android:layout_centerInParent="true"
-                                android:background="@drawable/ticket_logotrentras"/>
+                    <ImageView
+                            android:layout_width="128dp"
+                            android:layout_height="128dp"
+                            android:contentDescription="@string/contentDescription"
+                            android:layout_centerInParent="true"
+                            android:background="@drawable/fcontent_04_ic_qrcode"/>
+                </RelativeLayout>
 
-                    </RelativeLayout>
-                </LinearLayout>
+                <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentRight="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_toRightOf="@id/fcontent04_view_verifyqrcode_middle"
+                        android:layout_toEndOf="@id/fcontent04_view_verifyqrcode_middle"
+                        android:layout_marginTop="18dp">
+
+                        <ImageView
+                                android:id="@+id/fcontent04_iv_trenbuslogo"
+                                android:layout_width="190dp"
+                                android:layout_height="72dp"
+                                android:layout_centerHorizontal="true"
+                                android:contentDescription="@string/contentDescription"
+                                android:background="@drawable/ticket_logotrentras_touming"/>
+                        <TextView
+                                android:layout_width="156dp"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="center_horizontal"
+                                android:layout_below="@id/fcontent04_iv_trenbuslogo"
+                                android:layout_centerHorizontal="true"
+                                android:gravity="center_horizontal"
+                                android:textSize="14sp"
+                                android:textColor="#474d4d"
+                                android:text="@string/verify_belowlogo" />
+                </RelativeLayout>
 
                 <TextView
+                        android:id="@+id/fcontent04_tv_route"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
+                        android:layout_below="@+id/fcontent04_view_verifyqrcode_middle"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginLeft="44dp"
+                        android:layout_marginStart="44dp"
+                        android:layout_marginRight="44dp"
+                        android:layout_marginEnd="44dp"
+                        android:textSize="16sp"
+                        android:textColor="#474d4d"
                         android:gravity="center"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginLeft="48dp"
-                        android:layout_marginStart="48dp"
-                        android:layout_marginRight="48dp"
-                        android:layout_marginEnd="48dp"
+                        android:lineSpacingMultiplier="1.2"
+                        android:text="@string/road" />
+
+                <TextView
+                        android:id="@+id/fcontent04_tv_moneyperson"
+                        android:layout_width="90dp"
+                        android:layout_height="20dp"
+                        android:layout_below="@+id/fcontent04_tv_route"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="6dp"
                         android:textSize="16sp"
                         android:textColor="#515757"
-                        android:text="@string/road" />
-                <!--<TextView-->
-                        <!--android:layout_width="wrap_content"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_gravity="center_horizontal"-->
-                        <!--android:layout_marginTop="4dp"-->
-                        <!--android:textSize="16sp"-->
-                        <!--android:textColor="#515757"-->
-                        <!--android:text="@string/contentDescription" />-->
-                <TextView
-                        android:id="@+id/fcontent04_tv_isvalid"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="12dp"
-                        android:textSize="16sp"
-                        android:textColor="#515757" />
+                        android:background="@drawable/fcontent_04_ic_money"/>
+
+                <ImageView
+                        android:id="@+id/fcontent04_iv_isvalid"
+                        android:layout_width="176dp"
+                        android:layout_height="66dp"
+                        android:layout_below="@+id/fcontent04_tv_moneyperson"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="18dp"/>
+
                 <TextView
                         android:id="@+id/fcontent04_tv_qrinfo"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="12dp"
-                        android:layout_marginBottom="16dp"
+                        android:layout_below="@+id/fcontent04_iv_isvalid"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="18dp"
                         android:textSize="16sp"
-                        android:textColor="#515757"
+                        android:textColor="#474d4d"
                         android:text="@string/verifytime" />
-
-            </LinearLayout>
+            </RelativeLayout>
 
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:layout_marginTop="@dimen/fc04_margintop_title"
-                    android:textColor="#dd515757"
+                    android:textColor="#dd474d4d"
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:text="@string/information"/>
@@ -162,13 +199,14 @@
                     android:scrollbars="none"
                     android:background="#FFFFFF"/>
 
+            <!-- additional information-->
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:layout_marginTop="@dimen/fc04_margintop_title"
                     android:textStyle="bold"
-                    android:textColor="#dd515757"
+                    android:textColor="#dd474d4d"
                     android:textSize="18sp"
                     android:text="@string/addiinfo"/>
 
@@ -182,21 +220,24 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:gravity="start"
+                        android:layout_marginTop="8dp"
                         android:layout_marginLeft="4dp"
                         android:layout_marginStart="4dp"
                         android:background="#FFFFFF"
-                        android:textSize="17sp"
+                        android:textSize="16sp"
                         android:textColor="#989b9d"
+                        android:lineSpacingMultiplier="0.9"
                         android:text="@string/addiinfocontent"/>
 
             </LinearLayout>
 
+            <!-- title validations -->
             <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center_horizontal"
                     android:layout_marginTop="@dimen/fc04_margintop_title"
-                    android:textColor="#dd515757"
+                    android:textColor="#dd474d4d"
                     android:textStyle="bold"
                     android:textSize="18sp"
                     android:text="@string/validations"/>

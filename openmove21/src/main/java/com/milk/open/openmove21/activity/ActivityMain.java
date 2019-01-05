@@ -11,6 +11,7 @@ import com.google.zxing.integration.android.IntentIntegrator;
 import com.google.zxing.integration.android.IntentResult;
 import com.milk.open.openmove21.R;
 import com.milk.open.openmove21.fragment.*;
+import com.milk.open.openmove21.model.ModelKeyValue;
 import com.milk.open.openmove21.slidemenu.SlideMenuContainerLayout;
 
 import java.text.SimpleDateFormat;
@@ -48,7 +49,7 @@ public class ActivityMain extends ActivityBase implements FragmentMenu.OnFragmen
         @Override
         public void handleMessage(Message msg) {
             if (msg.what == MESSAGE_GOTO_FRAGMENT04) {
-                onFragmentInteraction(fragment04NICKNAME, qrinfo);
+                onFragmentInteraction(fragment04NICKNAME, (ModelKeyValue)msg.obj);
             }
         }
     };
@@ -94,6 +95,10 @@ public class ActivityMain extends ActivityBase implements FragmentMenu.OnFragmen
         return transaction;
     }
 
+    public void onFragmentInteraction(String msg) {
+        mSlideContainer.hide_menu();
+    }
+
     public void onFragmentInteraction(int seq){
         if(0 == seq){
             if(null == fragment01){
@@ -127,31 +132,19 @@ public class ActivityMain extends ActivityBase implements FragmentMenu.OnFragmen
         mSlideContainer.hide_menu();
     }
 
-    public void onFragmentInteraction(int seq, String qrinfo) {
+    public void onFragmentInteraction(int seq, ModelKeyValue data_time_bus) {
         if (fragment04NICKNAME == seq) {
             if (null == fragment04) {
-                fragment04 = FragmentContent04TicketInfo.getInstance(currentFragmentNickname, qrinfo);
+                fragment04 = FragmentContent04TicketInfo.getInstance(currentFragmentNickname, data_time_bus.getStr1(), data_time_bus.getStr2());
                 fragment04.setOnFragmentInteractionListener(this);
             } else {
-                fragment04.setQrinfo(qrinfo);
                 fragment04.setParentFragment_nickname(currentFragmentNickname);
+                fragment04.setQrinfo(data_time_bus.getStr1(), data_time_bus.getStr2());
             }
             switchContentFragment(fragment04).commit();
             currentFragmentNickname = seq;
         }
         mSlideContainer.hide_menu();
-    }
-
-    public void onFragmentInteraction(String msg) {
-        mSlideContainer.hide_menu();
-    }
-
-    protected void initialized() {
-
-    }
-
-    protected int getLayoutId() {
-        return 0;
     }
 
     @Override
@@ -163,7 +156,7 @@ public class ActivityMain extends ActivityBase implements FragmentMenu.OnFragmen
 //                toast("取消扫描");
             } else {
                 // HH:mm:ss
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss");
+                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yy - HH:mm:ss");
                 //获取当前时间
                 Date date = new Date(System.currentTimeMillis());
 
@@ -186,15 +179,28 @@ public class ActivityMain extends ActivityBase implements FragmentMenu.OnFragmen
 //                        simpleDateFormat.format(date)+ "-"+
 //                        resultqrinfo);
 
-                qrinfo = "Validated: "+
-                        simpleDateFormat.format(date)+
-                        " - "+
-                        resultqrinfo;
+//                qrinfo = "Validated: "+
+//                        simpleDateFormat.format(date)+
+//                        " - "+
+//                        resultqrinfo;
 //                handler.sendEmptyMessage(MESSAGE_GOTO_FRAGMENT04);
-                handler.sendEmptyMessageDelayed(MESSAGE_GOTO_FRAGMENT04, 1500);
+//                handler.sendEmptyMessageDelayed(MESSAGE_GOTO_FRAGMENT04, 1100);
+                ModelKeyValue data_time_bus = new ModelKeyValue(simpleDateFormat.format(date), resultqrinfo);
+                Message message = Message.obtain();
+                message.obj = data_time_bus;
+                message.what = MESSAGE_GOTO_FRAGMENT04;
+                handler.sendMessageDelayed(message, 500);
             }
         } else {
             super.onActivityResult(requestCode, resultCode, data);
         }
+    }
+
+    protected void initialized() {
+
+    }
+
+    protected int getLayoutId() {
+        return 0;
     }
 }

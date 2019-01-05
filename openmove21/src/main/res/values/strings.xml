@@ -23,19 +23,20 @@
     <string name="lianjiezhong_shaohou">连接中..请稍后....</string>
     <string name="purchase">Purchase</string>
     <string name="validate">Validate</string>
+    <string name="validate_again">Validate again</string>
 
     <string name="verify">VERIFY</string>
-    <string name="road">CIVEZZANO/MOCHENA/SILLE-TRENTO VALSUGANA</string>
+    <string name="verify_belowlogo">Trentino Trasporti S.P.A P.IVA 01807370224</string>
+
+    <string name="road">CIVEZZANO/MOCHENA/SILLE - TRENTO VALSUGANA</string>
     <string name="verifytime">Validated: 02/01/19&#8211;12:39&#8211;TT1552</string>
 
     <string name="information">INFORMATION</string>
     <string name="addiinfo">ADDITIONAL INFORMATION</string>
     <string name="addiinfocontent">
         Integrated ticket Autonomous Province of Trento.
-        \n
-        Valid for both buses and trains. Can not be used on: Valsugana Railway over Primolano; Brenner Railway over Auer and Borghetto and the ascent / descent to the stations of Salurn, Margreid / Kurtatsch, Neumarkt; ES / FA, EC, IC and Express trains.
-        \n
-        Ticket is usable until 6 hours after first validation.
+        \n\nValid for both buses and trains. Can not be used on: Valsugana Railway over Primolano; Brenner Railway over Auer and Borghetto and the ascent / descent to the stations of Salurn, Margreid / Kurtatsch, Neumarkt; ES / FA, EC, IC and Express trains.
+        \n\nTicket is usable until 6 hours after first validation.\n
     </string>
 
     <string name="validations">VALIDATIONS</string>

@@ -12,6 +12,8 @@ public class ModelTicket {
 
     private double money;
 
+    private boolean isvalid;
+
     public ModelTicket(String ticketid, String state, String scope, String timelimit, double money){
         this.ticketid = ticketid;
         this.state = state;
@@ -62,5 +64,13 @@ public class ModelTicket {
     public String getMoneystr() {
         String result = String.format("%.2f €", money);
         return result;
+    }
+
+    public boolean isIsvalid() {
+        return isvalid;
+    }
+
+    public void setIsvalid(boolean isvalid) {
+        this.isvalid = isvalid;
     }
 }
