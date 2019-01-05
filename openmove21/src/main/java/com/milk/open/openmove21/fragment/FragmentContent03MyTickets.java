@@ -133,15 +133,15 @@ public class FragmentContent03MyTickets extends FragmentBase {
             aticket0.setArr(Utils.myticket_arr);
             arraydata.add(aticket0);
 
-            for (int i = 1; i < Utils.n_mytickets; i++) {
-                ModelTicket aticket = new ModelTicket(
-                        Utils.ticketid[i],
-                        Utils.states[i],
-                        Utils.scopes[i],
-                        Utils.timelimits[i],
-                        Utils.money[i]);
-                arraydata.add(aticket);
-            }
+//            for (int i = 1; i < Utils.n_mytickets; i++) {
+//                ModelTicket aticket = new ModelTicket(
+//                        Utils.ticketid[i],
+//                        Utils.states[i],
+//                        Utils.scopes[i],
+//                        Utils.timelimits[i],
+//                        Utils.money[i]);
+//                arraydata.add(aticket);
+//            }
 
             handler.sendEmptyMessageDelayed(MESSAGE_UPDATE_PRINT, 500);
 

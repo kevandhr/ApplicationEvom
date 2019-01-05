@@ -35,7 +35,7 @@ public class Utils {
     public static double[] money = {1.10, 1.60, 1.60, 2.00, 2.00, 1.60, 2.00, 2.00,1.60, 2.00, 1.60};
 
     public static String myticket_arr = "TRENTO";
-    public static int n_mytickets = 3;
+    public static int n_mytickets = 2;
 
     public static String[] menuitems = {
             "Search tickets", "Search trips", "Timetable", "Advise",

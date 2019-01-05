@@ -76,7 +76,7 @@ public class ActivityMain extends ActivityBase implements FragmentMenu.OnFragmen
 
         mSlideContainer.setContent(R.layout.slidemenu_content);
 
-        onFragmentInteraction(4);
+        onFragmentInteraction(0);
     }
 
     private FragmentTransaction switchContentFragment(Fragment targetFragment){
