@@ -39,38 +39,53 @@ public class FragmentContent03MyTickets extends FragmentBase {
 
     private static final int MESSAGE_NET_CONNECTION_ERROR = 308;
     private static final int MESSAGE_UPDATE_PRINT = 301;
+    private static final int MESSAGE_UPDATE_PRINT_TESTDATA = 302;
     private static final int MESSAGE_CLOSE_PRODIALOG = 303;
 
     @SuppressLint("HandlerLeak")
     Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-//            if (proDialog != null) {
-//                proDialog.dismiss();
-//            }
             if (animation_proDialog != null) {
                 animation_proDialog.stop();
-                ((LinearLayout)mListView.getParent()).removeView(iv_proDialog);
+                iv_proDialog.setVisibility(View.GONE);
             }
-            if (msg.what == MESSAGE_UPDATE_PRINT) {
+            if (msg.what == MESSAGE_UPDATE_PRINT_TESTDATA) {
+                // test data
+                arraydata.clear();
+                int seq_validticket = 10;
+                ModelTicket aticket0 = new ModelTicket(Utils.ticketid[seq_validticket],
+                        Utils.states[seq_validticket],
+                        Utils.scopes[seq_validticket],
+                        Utils.timelimits[seq_validticket],
+                        Utils.money[seq_validticket]);
+                aticket0.setCategory(Utils.TC_CIVEZZANO);
+                aticket0.setArr(Utils.myticket_arr);
+                aticket0.setIsvalid(true);
+                arraydata.add(aticket0);
 
+                for (int i = 1; i < Utils.n_mytickets; i++) {
+                    ModelTicket aticket = new ModelTicket(
+                            Utils.ticketid[i],
+                            Utils.states[i],
+                            Utils.scopes[i],
+                            Utils.timelimits[i],
+                            Utils.money[i]);
+                    arraydata.add(aticket);
+                }
+
+                print();
+            }else if (msg.what == MESSAGE_UPDATE_PRINT) {
                 print();
             } else if (msg.what == MESSAGE_NET_CONNECTION_ERROR) {
                 toast(R.string.no_internet);
             }
         }
     };
-    private ProgressDialog proDialog;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-//        proDialog = ProgressDialog
-//                .show(this.getContext(), getString(R.string.lianjiezhong)
-//                        , getString(R.string.lianjiezhong_shaohou), true, true);
-        arraydata = new ArrayList<ModelTicket>();
-        new Thread(new Rungetdata()).start();
     }
 
     @Override
@@ -89,16 +104,18 @@ public class FragmentContent03MyTickets extends FragmentBase {
         iv_home.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                toast("home");
                 mListenerActivity.onFragmentInteraction(0);
             }
         });
 
+        arraydata = new ArrayList<ModelTicket>();
         adapter = new AdapterMyTickets(getActivity(), arraydata);
 
-        mListView = (ListView) view.findViewById(R.id.fcontent03_lv);
+        mListView = view.findViewById(R.id.fcontent03_lv);
 
         mListView.setAdapter(adapter);
+
+        new Thread(new Rungetdata()).start();
     }
 
     @Override
@@ -118,11 +135,12 @@ public class FragmentContent03MyTickets extends FragmentBase {
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         if (hidden) {
-
+            animation_proDialog.stop();
+            iv_proDialog.setVisibility(View.GONE);
         } else {
-            ((LinearLayout)mListView.getParent()).addView(iv_proDialog);
+            iv_proDialog.setVisibility(View.VISIBLE);
             animation_proDialog.start();
-            handler.sendEmptyMessageDelayed(MESSAGE_CLOSE_PRODIALOG, 500);
+            handler.sendEmptyMessageDelayed(MESSAGE_CLOSE_PRODIALOG, 200);
         }
     }
 
@@ -136,20 +154,19 @@ public class FragmentContent03MyTickets extends FragmentBase {
     }
 
     private void getData() {
-        if (Utils.IS_TEST_DATA){
-
-                // test data
-                arraydata.clear();
-                int seq_validticket = 10;
-                ModelTicket aticket0 = new ModelTicket(Utils.ticketid[seq_validticket],
-                        Utils.states[seq_validticket],
-                        Utils.scopes[seq_validticket],
-                        Utils.timelimits[seq_validticket],
-                        Utils.money[seq_validticket]);
-                aticket0.setCategory(Utils.TC_CIVEZZANO);
-                aticket0.setIsvalid(true);
-                aticket0.setArr(Utils.myticket_arr);
-                arraydata.add(aticket0);
+        if (Utils.IS_TEST_DATA) {
+//                // test data
+//                arraydata.clear();
+//                int seq_validticket = 10;
+//                ModelTicket aticket0 = new ModelTicket(Utils.ticketid[seq_validticket],
+//                        Utils.states[seq_validticket],
+//                        Utils.scopes[seq_validticket],
+//                        Utils.timelimits[seq_validticket],
+//                        Utils.money[seq_validticket]);
+//                aticket0.setCategory(Utils.TC_CIVEZZANO);
+//                aticket0.setArr(Utils.myticket_arr);
+////                aticket0.setIsvalid(true);
+//                arraydata.add(aticket0);
 //            for (int i = 1; i < Utils.n_mytickets; i++) {
 //                ModelTicket aticket = new ModelTicket(
 //                        Utils.ticketid[i],
@@ -159,9 +176,9 @@ public class FragmentContent03MyTickets extends FragmentBase {
 //                        Utils.money[i]);
 //                arraydata.add(aticket);
 //            }
-
-            handler.sendEmptyMessageDelayed(MESSAGE_UPDATE_PRINT, 600);
-
+            handler.sendEmptyMessageDelayed(MESSAGE_UPDATE_PRINT_TESTDATA, 600);
+        }
+//        else{
 //            try {
 //
 //            } catch (Exception e) {
@@ -169,7 +186,7 @@ public class FragmentContent03MyTickets extends FragmentBase {
 //            } finally {
 //                handler.sendEmptyMessageDelayed(MESSAGE_UPDATE_PRINT, 500);
 //            }
-        }
+//        }
     }
 
     private static FragmentContent03MyTickets fragment;

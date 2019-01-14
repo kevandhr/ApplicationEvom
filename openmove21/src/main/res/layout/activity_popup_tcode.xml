@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        tools:context=".activity.ActivityPopupTCode"
+        android:background="#FFFFFF">
+
+    <RelativeLayout
+            android:layout_width="156dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:background="#4AAABF">
+
+        <ImageView
+                android:id="@+id/act_pop_iv_qrcode"
+                android:layout_width="60dp"
+                android:layout_height="60dp"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="24dp"
+                android:src="@drawable/fcontent_04_ic_qrcode"/>
+
+        <TextView
+                android:id="@+id/act_pop_tv_tcode"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/act_pop_iv_qrcode"
+                android:layout_marginTop="24dp"
+                android:layout_marginBottom="24dp"
+                android:text="TT2005"/>
+
+        <View
+                android:id="@+id/act_pop_middleofsubcancel"
+                android:layout_width="0dp"
+                android:layout_height="32dp"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/act_pop_tv_tcode"/>
+
+        <TextView
+                android:id="@+id/act_pop_tv_cancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/act_pop_tv_tcode"
+                android:layout_toLeftOf="@id/act_pop_middleofsubcancel"
+                android:layout_toStartOf="@id/act_pop_middleofsubcancel"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:gravity="center_horizontal"
+                android:text="cancel"/>
+
+        <TextView
+                android:id="@+id/act_pop_tv_submit"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/act_pop_tv_tcode"
+                android:layout_toRightOf="@id/act_pop_middleofsubcancel"
+                android:layout_toEndOf="@id/act_pop_middleofsubcancel"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:gravity="center_horizontal"
+                android:text="submit"/>
+
+    </RelativeLayout>
+
+
+
+</RelativeLayout>

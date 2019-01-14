@@ -10,7 +10,7 @@ import com.milk.open.openmove21.R;
 import com.milk.open.openmove21.slidemenu.OnMenuClickListener;
 import com.milk.open.openmove21.diyview.TopItemNavbar;
 
-public class FragmentContent02 extends FragmentBase {
+public class FragmentContent02SearchTrips extends FragmentBase {
 
     private int R_id_layout = R.layout.fragment_content_02;
     private int R_id_topbar = R.id.fcontent02_topitembar;
@@ -59,10 +59,10 @@ public class FragmentContent02 extends FragmentBase {
         this.mListenerActivity = mListenerActivity;
     }
 
-    private static FragmentContent02 fragment;
-    public static FragmentContent02 getInstance(){
+    private static FragmentContent02SearchTrips fragment;
+    public static FragmentContent02SearchTrips getInstance(){
         if (null == fragment){
-            fragment = new FragmentContent02();
+            fragment = new FragmentContent02SearchTrips();
         }
         return fragment;
     }

@@ -37,7 +37,9 @@
     <string name="addiinfo">ADDITIONAL INFORMATION</string>
     <string name="addiinfocontent">
         Integrated ticket Autonomous Province of Trento.
-        \n\nValid for both buses and trains. Can not be used on: Valsugana Railway over Primolano; Brenner Railway over Auer and Borghetto and the ascent / descent to the stations of Salurn, Margreid / Kurtatsch, Neumarkt; ES / FA, EC, IC and Express trains.
+        \n\nValid for both buses and trains. Can not be used on: Valsugana Railway over Primolano; Brenner Railway over
+        Auer and Borghetto and the ascent / descent to the stations of Salurn, Margreid / Kurtatsch, Neumarkt; ES / FA,
+        EC, IC and Express trains.
         \n\nTicket is usable until 6 hours after first validation.\n
     </string>
 

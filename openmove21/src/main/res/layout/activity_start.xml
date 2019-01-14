@@ -3,9 +3,11 @@
              android:layout_width="match_parent"
              android:layout_height="match_parent" >
 
-    <ImageView android:id="@+id/iv_1_activity_start"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@drawable/gen_img_start_screen"/>
+    <ImageView
+            android:id="@+id/iv_1_activity_start"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scaleType="centerCrop"
+            android:src="@drawable/gen_img_start_screen"/>
 
 </RelativeLayout>

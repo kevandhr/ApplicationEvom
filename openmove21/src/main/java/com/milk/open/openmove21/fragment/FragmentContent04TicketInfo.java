@@ -29,13 +29,10 @@ public class FragmentContent04TicketInfo extends FragmentBase {
     private TopItemNavbar topItemNavbar;
     private ImageView iv_home;
     private ImageView iv_back;
-//    private RelativeLayout rl_verifyqrcode;
     private ImageView iv_verifyqrcode_bg;
     private ImageView iv_valid;
-    AnimationsContainer.FramesSequenceAnimation animation_iv_valid;
-    AnimationsContainer.FramesSequenceAnimation animation_verifyqrcode_bg;
-    private AnimationDrawable anDrawable_verifyqrcode_bg;
-    private AnimationDrawable anDrawable_valid;
+    private AnimationsContainer.FramesSequenceAnimation animation_iv_valid;
+    private AnimationsContainer.FramesSequenceAnimation animation_verifyqrcode_bg;
     private TextView tv_qrinfo;
 
     private FragmentMenu.OnFragmentInteractionListener mListenerActivity;
@@ -48,13 +45,15 @@ public class FragmentContent04TicketInfo extends FragmentBase {
     private AdapterTicketInfoUserRecord adapter_ticketrecord;
 
     private int parentFragment_nickname;
-    private boolean isvalid = true;
+    private boolean isvalid = false;
     private String valid_time="";
     private String valid_bus="";
 
     private boolean isdatachanged = false;
     private static final int MESSAGE_NET_CONNECTION_ERROR = 408;
     private static final int MESSAGE_UPDATE_PRINT = 401;
+    private static final int MESSAGE_UPDATE_PRINT_TESTDATA = 402;
+
     @SuppressLint("HandlerLeak")
     Handler handler = new Handler() {
         @Override
@@ -62,7 +61,22 @@ public class FragmentContent04TicketInfo extends FragmentBase {
             if (proDialog != null) {
                 proDialog.dismiss();
             }
-            if (msg.what == MESSAGE_UPDATE_PRINT) {
+            if (msg.what == MESSAGE_UPDATE_PRINT_TESTDATA) {
+                // test data
+                arraydata_userinfo.clear();
+                for (int i = 0; i < Utils.n_userinfo; i++) {
+                    ModelKeyValue a = new ModelKeyValue(
+                            Utils.userinfostr1[i],
+                            Utils.userinfostr2[i]);
+                    arraydata_userinfo.add(a);
+                }
+
+                arraydata_ticketrecord.clear();
+
+                isdatachanged = true;
+
+                print();
+            } else if (msg.what == MESSAGE_UPDATE_PRINT) {
                 print();
             } else if (msg.what == MESSAGE_NET_CONNECTION_ERROR) {
                 toast(R.string.no_internet);
@@ -78,11 +92,6 @@ public class FragmentContent04TicketInfo extends FragmentBase {
         proDialog = ProgressDialog
                 .show(this.getContext(), getString(R.string.lianjiezhong)
                         , getString(R.string.lianjiezhong_shaohou), true, true);
-        arraydata_userinfo = new ArrayList<ModelKeyValue>();
-        arraydata_ticketrecord = new ArrayList<ModelKeyValue>();
-        adapter_userinfo = new AdapterTicketInfoUserRecord(getActivity(), arraydata_userinfo);
-        adapter_ticketrecord = new AdapterTicketInfoUserRecord(getActivity(), arraydata_ticketrecord);
-        new Thread(new Rungetdata()).start();
     }
 
     @Override
@@ -110,8 +119,13 @@ public class FragmentContent04TicketInfo extends FragmentBase {
             }
         });
 
+        arraydata_userinfo = new ArrayList<ModelKeyValue>();
+        adapter_userinfo = new AdapterTicketInfoUserRecord(getActivity(), arraydata_userinfo);
         lv_userinfo = (ListView) view.findViewById(R.id.fcontent04_lv_userinfo);
         lv_userinfo.setAdapter(adapter_userinfo);
+
+        arraydata_ticketrecord = new ArrayList<ModelKeyValue>();
+        adapter_ticketrecord = new AdapterTicketInfoUserRecord(getActivity(), arraydata_ticketrecord);
         lv_ticketrecord = (ListView) view.findViewById(R.id.fcontent04_lv_trecord);
         lv_ticketrecord.setAdapter(adapter_ticketrecord);
 
@@ -140,6 +154,8 @@ public class FragmentContent04TicketInfo extends FragmentBase {
         iv_valid = (ImageView) view.findViewById(R.id.fcontent04_iv_isvalid);
         tv_qrinfo = (TextView) view.findViewById(R.id.fcontent04_tv_qrinfo);
         tv_qrinfo.setText(getQrinfo());
+
+        new Thread(new Rungetdata()).start();
     }
 
     @Override
@@ -159,47 +175,46 @@ public class FragmentContent04TicketInfo extends FragmentBase {
     public void onHiddenChanged(boolean hidden) {
         super.onHiddenChanged(hidden);
         if (hidden) {
-            animation_iv_valid.stop();
-            animation_verifyqrcode_bg.stop();
-//            if (null != anDrawable_valid) {
-//                anDrawable_valid.stop();
-//            }
-//            if (null != anDrawable_verifyqrcode_bg) {
-//            anDrawable_verifyqrcode_bg.stop();
-//            }
+            if(null != animation_iv_valid){
+                animation_iv_valid.stop();
+                animation_verifyqrcode_bg.stop();
+            }
         } else {
-            animation_iv_valid.start();
-            animation_verifyqrcode_bg.start();
+            if(null != animation_iv_valid) {
+                animation_iv_valid.start();
+                animation_verifyqrcode_bg.start();
+            }
             handler.sendEmptyMessage(MESSAGE_UPDATE_PRINT);
         }
     }
 
     private void print() {
-//        if (null != anDrawable_valid) {
-//            anDrawable_valid.start();
-//        }
-//            if (null != anDrawable_verifyqrcode_bg) {
-//            anDrawable_verifyqrcode_bg.start();
-//            }
         if(!isdatachanged){
             return;
         }
         if(isvalid){
-            animation_iv_valid = AnimationsContainer.getInstance(R.array.animation_tinfo_isvalid, 16, this.getContext()).createProgressDialogAnim(iv_valid);
+            if(null == animation_iv_valid) {
+                animation_iv_valid = AnimationsContainer.getInstance(R.array.animation_tinfo_isvalid, 20, this.getContext()).createProgressDialogAnim(iv_valid);
+            }
             animation_iv_valid.start();
 
-            animation_verifyqrcode_bg = AnimationsContainer.getInstance(R.array.animation_tinfo_valid_bg, 16, this.getContext()).createProgressDialogAnim(iv_verifyqrcode_bg);
+            if(null == animation_verifyqrcode_bg) {
+                animation_verifyqrcode_bg = AnimationsContainer.getInstance(R.array.animation_tinfo_valid_bg, 20, this.getContext()).createProgressDialogAnim(iv_verifyqrcode_bg);
+            }
             animation_verifyqrcode_bg.start();
 
             tv_qrinfo.setText(getQrinfo());
             arraydata_ticketrecord.add(new ModelKeyValue(valid_time, valid_bus));
         }
+
         adapter_userinfo.setDataSource(arraydata_userinfo);
         adapter_userinfo.notifyDataSetChanged();
+
         ArrayList<ModelKeyValue> arraydata_ticketrecord_reverse = arraydata_ticketrecord;
         Collections.reverse(arraydata_ticketrecord_reverse);
         adapter_ticketrecord.setDataSource(arraydata_ticketrecord_reverse);
         adapter_ticketrecord.notifyDataSetChanged();
+
         isdatachanged = false;
     }
 
@@ -208,27 +223,28 @@ public class FragmentContent04TicketInfo extends FragmentBase {
     }
 
     private void getData() {
-        if (Utils.IS_TEST_DATA){
-            // test data
-            arraydata_userinfo.clear();
-            for (int i = 0; i < Utils.n_userinfo; i++) {
-                ModelKeyValue a = new ModelKeyValue(
-                        Utils.userinfostr1[i],
-                        Utils.userinfostr2[i]);
-                arraydata_userinfo.add(a);
-            }
-
-            arraydata_ticketrecord.clear();
-//            for (int i = 0; i < Utils.n_ticketrecords; i++) {
-//                ModelKeyValue arecord = new ModelKeyValue(
-//                        Utils.ticketrecordstr1[i],
-//                        Utils.ticketrecordstr2[i]);
-//                arraydata_ticketrecord.add(arecord);
+        if (Utils.IS_TEST_DATA) {
+//            // test data
+//            arraydata_userinfo.clear();
+//            for (int i = 0; i < Utils.n_userinfo; i++) {
+//                ModelKeyValue a = new ModelKeyValue(
+//                        Utils.userinfostr1[i],
+//                        Utils.userinfostr2[i]);
+//                arraydata_userinfo.add(a);
 //            }
-
-            isdatachanged = true;
-            handler.sendEmptyMessageDelayed(MESSAGE_UPDATE_PRINT, 300);
-
+//
+//            arraydata_ticketrecord.clear();
+////            for (int i = 0; i < Utils.n_ticketrecords; i++) {
+////                ModelKeyValue arecord = new ModelKeyValue(
+////                        Utils.ticketrecordstr1[i],
+////                        Utils.ticketrecordstr2[i]);
+////                arraydata_ticketrecord.add(arecord);
+////            }
+//
+//            isdatachanged = true;
+            handler.sendEmptyMessageDelayed(MESSAGE_UPDATE_PRINT_TESTDATA, 300);
+        }
+//        else{
 //            try {
 //
 //            } catch (Exception e) {
@@ -236,7 +252,7 @@ public class FragmentContent04TicketInfo extends FragmentBase {
 //            } finally {
 //                handler.sendEmptyMessage(MESSAGE_UPDATE_PRINT);
 //            }
-        }
+//        }
     }
 
     public String getQrinfo() {

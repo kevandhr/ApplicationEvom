@@ -33,13 +33,14 @@ public class ActivityMain extends ActivityBase implements FragmentMenu.OnFragmen
 
     private FragmentContent01SearchTickets fragment01;
 
-    private FragmentContent02 fragment02;
+    private FragmentContent02SearchTrips fragment02;
 
     private FragmentContent03MyTickets fragment03;
 
     private FragmentContent04TicketInfo fragment04;
     public static int fragment04NICKNAME = 98;
 
+    public final static int REQUESTCODE_TCODE = 1;// 表示返回的结果码
     private String qrinfo;
 
     private static final int MESSAGE_NET_CONNECTION_ERROR = 9008;
@@ -76,7 +77,8 @@ public class ActivityMain extends ActivityBase implements FragmentMenu.OnFragmen
 
         mSlideContainer.setContent(R.layout.slidemenu_content);
 
-        onFragmentInteraction(0);
+//        onFragmentInteraction(0);
+        onFragmentInteraction(4);
     }
 
     private FragmentTransaction switchContentFragment(Fragment targetFragment){
@@ -108,7 +110,7 @@ public class ActivityMain extends ActivityBase implements FragmentMenu.OnFragmen
             currentFragmentNickname = seq;
         } else if(1 == seq){
             if(null == fragment02){
-                fragment02 = FragmentContent02.getInstance();
+                fragment02 = FragmentContent02SearchTrips.getInstance();
                 fragment02.setOnFragmentInteractionListener(this);
             }
             switchContentFragment(fragment02).commit();
@@ -149,53 +151,56 @@ public class ActivityMain extends ActivityBase implements FragmentMenu.OnFragmen
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        // 获取解析结果
-        IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
-        if (result != null) {
-            if (result.getContents() == null) {
-//                toast("取消扫描");
-            } else {
-                // HH:mm:ss
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yy - HH:mm:ss");
-                //获取当前时间
-                Date date = new Date(System.currentTimeMillis());
+        // HH:mm:ss
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat("MM/dd/yy - HH:mm:ss");
+        String resultbusinfo = "";
+        boolean isgotbusinfo = false;
 
+        if(REQUESTCODE_TCODE == requestCode){
+            resultbusinfo = "TT2005";
+            isgotbusinfo = true;
+        } else {
+            // 获取解析结果
+            IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
+            if ((result != null) && (result.getContents()!= null)) {//toast("取消扫描");
                 qrinfo = result.getContents();
-                String resultqrinfo = "";
+
+                resultbusinfo = "";
 
                 Pattern pattern = Pattern.compile("partner=(.*?)&");
                 Matcher matcher = pattern.matcher(qrinfo);
-                if(matcher.find()) {
-                    resultqrinfo = resultqrinfo + matcher.group(1);
+                if (matcher.find()) {
+                    resultbusinfo = matcher.group(1);
                 }
 
                 pattern = Pattern.compile("&id=(.*?)$");
                 matcher = pattern.matcher(qrinfo);
                 if (matcher.find()) {
-                    resultqrinfo = resultqrinfo + matcher.group(1);
+                    resultbusinfo = resultbusinfo + matcher.group(1);
                 }
 
-//                toast("Validated: "+
-//                        simpleDateFormat.format(date)+ "-"+
-//                        resultqrinfo);
-
-//                qrinfo = "Validated: "+
-//                        simpleDateFormat.format(date)+
-//                        " - "+
-//                        resultqrinfo;
-//                handler.sendEmptyMessage(MESSAGE_GOTO_FRAGMENT04);
-//                handler.sendEmptyMessageDelayed(MESSAGE_GOTO_FRAGMENT04, 1100);
-                ModelKeyValue data_time_bus = new ModelKeyValue(simpleDateFormat.format(date), resultqrinfo);
-                Message message = Message.obtain();
-                message.obj = data_time_bus;
-                message.what = MESSAGE_GOTO_FRAGMENT04;
-                handler.sendMessageDelayed(message, 500);
+                isgotbusinfo = true;
+            } else {
+                super.onActivityResult(requestCode, resultCode, data);
             }
-        } else {
-            super.onActivityResult(requestCode, resultCode, data);
         }
+
+        if(isgotbusinfo){
+            //获取当前时间
+            Date date = new Date(System.currentTimeMillis());
+            ModelKeyValue data_time_bus = new ModelKeyValue(simpleDateFormat.format(date), resultbusinfo);
+            Message message = Message.obtain();
+            message.obj = data_time_bus;
+            message.what = MESSAGE_GOTO_FRAGMENT04;
+            handler.sendMessageDelayed(message, 500);
+            isgotbusinfo = false;
+        }
+
     }
 
+    public void call_onActivityResult() {
+        onActivityResult(REQUESTCODE_TCODE, 1, null);
+    }
     protected void initialized() {
 
     }

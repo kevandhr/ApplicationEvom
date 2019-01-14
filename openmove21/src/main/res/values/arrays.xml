@@ -9,47 +9,145 @@
         <item>@drawable/prodialog05</item>
         <item>@drawable/prodialog06</item>
         <item>@drawable/prodialog07</item>
-        <item>@drawable/prodialog08</item>\
-        <item>@drawable/prodialog09</item>\
-        <item>@drawable/prodialog10</item>\
+        <item>@drawable/prodialog08</item>
+        <item>@drawable/prodialog09</item>
+        <item>@drawable/prodialog10</item>
+        <item>@drawable/prodialog11</item>
+        <item>@drawable/prodialog12</item>
+        <item>@drawable/prodialog13</item>
+        <item>@drawable/prodialog14</item>
+        <item>@drawable/prodialog15</item>
+        <item>@drawable/prodialog16</item>
+        <item>@drawable/prodialog17</item>
+        <item>@drawable/prodialog18</item>
+        <item>@drawable/prodialog19</item>
+        <item>@drawable/prodialog20</item>
+        <item>@drawable/prodialog21</item>
+        <item>@drawable/prodialog22</item>
+        <item>@drawable/prodialog23</item>
+        <item>@drawable/prodialog24</item>
+        <item>@drawable/prodialog25</item>
+        <item>@drawable/prodialog26</item>
+        <item>@drawable/prodialog27</item>
+        <item>@drawable/prodialog28</item>
+        <item>@drawable/prodialog29</item>
+    </string-array>
+
+    <string-array name="animation_adpmyticket_isvalid">
+        <item>@drawable/anim_adpmticket_bg_isvalid_01</item>
+        <item>@drawable/anim_adpmticket_bg_isvalid_02</item>
+        <item>@drawable/anim_adpmticket_bg_isvalid_03</item>
+        <item>@drawable/anim_adpmticket_bg_isvalid_04</item>
+        <item>@drawable/anim_adpmticket_bg_isvalid_05</item>
+        <item>@drawable/anim_adpmticket_bg_isvalid_06</item>
+        <item>@drawable/anim_adpmticket_bg_isvalid_07</item>
+        <item>@drawable/anim_adpmticket_bg_isvalid_08</item>
+        <item>@drawable/anim_adpmticket_bg_isvalid_09</item>
+        <item>@drawable/anim_adpmticket_bg_isvalid_10</item>
+        <item>@drawable/anim_adpmticket_bg_isvalid_11</item>
+        <item>@drawable/anim_adpmticket_bg_isvalid_12</item>
+        <item>@drawable/anim_adpmticket_bg_isvalid_13</item>
+        <item>@drawable/anim_adpmticket_bg_isvalid_14</item>
+        <item>@drawable/anim_adpmticket_bg_isvalid_15</item>
+        <item>@drawable/anim_adpmticket_bg_isvalid_16</item>
+        <item>@drawable/anim_adpmticket_bg_isvalid_17</item>
+        <item>@drawable/anim_adpmticket_bg_isvalid_18</item>
+        <item>@drawable/anim_adpmticket_bg_isvalid_19</item>
+        <item>@drawable/anim_adpmticket_bg_isvalid_20</item>
+        <item>@drawable/anim_adpmticket_bg_isvalid_21</item>
+        <item>@drawable/anim_adpmticket_bg_isvalid_22</item>
+        <item>@drawable/anim_adpmticket_bg_isvalid_23</item>
+        <item>@drawable/anim_adpmticket_bg_isvalid_24</item>
+        <item>@drawable/anim_adpmticket_bg_isvalid_25</item>
+        <item>@drawable/anim_adpmticket_bg_isvalid_26</item>
+        <item>@drawable/anim_adpmticket_bg_isvalid_27</item>
+        <item>@drawable/anim_adpmticket_bg_isvalid_28</item>
+        <item>@drawable/anim_adpmticket_bg_isvalid_29</item>
+        <item>@drawable/anim_adpmticket_bg_isvalid_30</item>
+        <item>@drawable/anim_adpmticket_bg_isvalid_31</item>
+        <item>@drawable/anim_adpmticket_bg_isvalid_32</item>
+        <item>@drawable/anim_adpmticket_bg_isvalid_33</item>
+        <item>@drawable/anim_adpmticket_bg_isvalid_34</item>
     </string-array>
 
     <string-array name="animation_tinfo_isvalid">
         <item>@drawable/anim_tinfo_valid_95</item>
         <item>@drawable/anim_tinfo_valid_90</item>
+        <item>@drawable/anim_tinfo_valid_85</item>
         <item>@drawable/anim_tinfo_valid_80</item>
+        <item>@drawable/anim_tinfo_valid_75</item>
         <item>@drawable/anim_tinfo_valid_70</item>
+        <item>@drawable/anim_tinfo_valid_65</item>
         <item>@drawable/anim_tinfo_valid_60</item>
+        <item>@drawable/anim_tinfo_valid_55</item>
         <item>@drawable/anim_tinfo_valid_50</item>
+        <item>@drawable/anim_tinfo_valid_45</item>
         <item>@drawable/anim_tinfo_valid_40</item>
+        <item>@drawable/anim_tinfo_valid_35</item>
         <item>@drawable/anim_tinfo_valid_30</item>
+        <item>@drawable/anim_tinfo_valid_25</item>
         <item>@drawable/anim_tinfo_valid_20</item>
+        <item>@drawable/anim_tinfo_valid_15</item>
         <item>@drawable/anim_tinfo_valid_10</item>
         <item>@drawable/anim_tinfo_valid_05</item>
         <item>@drawable/anim_tinfo_valid_00</item>
+        <item>@drawable/anim_tinfo_valid_15</item>
         <item>@drawable/anim_tinfo_valid_20</item>
+        <item>@drawable/anim_tinfo_valid_25</item>
         <item>@drawable/anim_tinfo_valid_30</item>
+        <item>@drawable/anim_tinfo_valid_35</item>
         <item>@drawable/anim_tinfo_valid_40</item>
+        <item>@drawable/anim_tinfo_valid_45</item>
         <item>@drawable/anim_tinfo_valid_50</item>
+        <item>@drawable/anim_tinfo_valid_55</item>
         <item>@drawable/anim_tinfo_valid_60</item>
+        <item>@drawable/anim_tinfo_valid_65</item>
         <item>@drawable/anim_tinfo_valid_70</item>
+        <item>@drawable/anim_tinfo_valid_75</item>
         <item>@drawable/anim_tinfo_valid_80</item>
+        <item>@drawable/anim_tinfo_valid_85</item>
         <item>@drawable/anim_tinfo_valid_90</item>
     </string-array>
 
     <string-array name="animation_tinfo_valid_bg">
         <item>@drawable/anim_tinfo_valid_bg_01</item>
         <item>@drawable/anim_tinfo_valid_bg_02</item>
+        <item>@drawable/anim_tinfo_valid_bg_03</item>
         <item>@drawable/anim_tinfo_valid_bg_04</item>
+        <item>@drawable/anim_tinfo_valid_bg_05</item>
         <item>@drawable/anim_tinfo_valid_bg_06</item>
+        <item>@drawable/anim_tinfo_valid_bg_07</item>
         <item>@drawable/anim_tinfo_valid_bg_08</item>
+        <item>@drawable/anim_tinfo_valid_bg_09</item>
         <item>@drawable/anim_tinfo_valid_bg_10</item>
+        <item>@drawable/anim_tinfo_valid_bg_11</item>
         <item>@drawable/anim_tinfo_valid_bg_12</item>
+        <item>@drawable/anim_tinfo_valid_bg_13</item>
         <item>@drawable/anim_tinfo_valid_bg_14</item>
+        <item>@drawable/anim_tinfo_valid_bg_15</item>
         <item>@drawable/anim_tinfo_valid_bg_16</item>
+        <item>@drawable/anim_tinfo_valid_bg_17</item>
         <item>@drawable/anim_tinfo_valid_bg_18</item>
+        <item>@drawable/anim_tinfo_valid_bg_19</item>
         <item>@drawable/anim_tinfo_valid_bg_20</item>
+        <item>@drawable/anim_tinfo_valid_bg_21</item>
         <item>@drawable/anim_tinfo_valid_bg_22</item>
+        <item>@drawable/anim_tinfo_valid_bg_23</item>
+        <item>@drawable/anim_tinfo_valid_bg_24</item>
+        <item>@drawable/anim_tinfo_valid_bg_25</item>
+        <item>@drawable/anim_tinfo_valid_bg_26</item>
+        <item>@drawable/anim_tinfo_valid_bg_27</item>
+        <item>@drawable/anim_tinfo_valid_bg_28</item>
+        <item>@drawable/anim_tinfo_valid_bg_29</item>
+        <item>@drawable/anim_tinfo_valid_bg_30</item>
+        <item>@drawable/anim_tinfo_valid_bg_31</item>
+        <item>@drawable/anim_tinfo_valid_bg_32</item>
+        <item>@drawable/anim_tinfo_valid_bg_33</item>
+        <item>@drawable/anim_tinfo_valid_bg_34</item>
+        <item>@drawable/anim_tinfo_valid_bg_35</item>
+        <item>@drawable/anim_tinfo_valid_bg_36</item>
+        <item>@drawable/anim_tinfo_valid_bg_37</item>
+        <item>@drawable/anim_tinfo_valid_bg_38</item>
     </string-array>
 
 </resources>

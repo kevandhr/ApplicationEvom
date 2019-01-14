@@ -49,13 +49,13 @@ public class ActivityStart extends ActivityBase {
     }
 
     private void init() {
-        if (Tools.isNetworkAvailable(ActivityStart.this)) {
-            Toast.makeText(ActivityStart.this, "network accessed",
-                    Toast.LENGTH_SHORT).show();
-        } else {
-            Toast.makeText(ActivityStart.this, "no network", Toast.LENGTH_SHORT)
-                    .show();
-        }
+//        if (Tools.isNetworkAvailable(ActivityStart.this)) {
+//            Toast.makeText(ActivityStart.this, "network accessed",
+//                    Toast.LENGTH_SHORT).show();
+//        } else {
+//            Toast.makeText(ActivityStart.this, "no network", Toast.LENGTH_SHORT)
+//                    .show();
+//        }
     }
 
     @Override

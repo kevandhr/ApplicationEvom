@@ -191,7 +191,14 @@
                     android:textSize="18sp"
                     android:text="@string/information"/>
 
-            <ListView
+            <!--<ListView-->
+                    <!--android:id="@+id/fcontent04_lv_userinfo"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="8dp"-->
+                    <!--android:scrollbars="none"-->
+                    <!--android:background="#FFFFFF"/>-->
+            <com.milk.open.openmove21.diyview.ListViewForScrollView
                     android:id="@+id/fcontent04_lv_userinfo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -243,7 +250,14 @@
                     android:textSize="18sp"
                     android:text="@string/validations"/>
 
-            <ListView
+            <!--<ListView-->
+                    <!--android:id="@+id/fcontent04_lv_trecord"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:layout_marginTop="8dp"-->
+                    <!--android:scrollbars="none"-->
+                    <!--android:background="#FFFFFF"/>-->
+            <com.milk.open.openmove21.diyview.ListViewForScrollView
                     android:id="@+id/fcontent04_lv_trecord"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"

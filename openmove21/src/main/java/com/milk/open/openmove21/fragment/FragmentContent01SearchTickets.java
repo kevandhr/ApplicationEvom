@@ -13,12 +13,14 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import com.milk.open.openmove21.R;
 import com.milk.open.openmove21.slidemenu.OnMenuClickListener;
 import com.milk.open.openmove21.diyview.TopItemNavbar;
 import com.milk.open.openmove21.util.Utils;
 import com.milk.open.openmove21.adapter.AdapterSearchTickets;
 import com.milk.open.openmove21.model.ModelTicket;
+import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 
@@ -32,22 +34,23 @@ public class FragmentContent01SearchTickets extends FragmentBase {
     private ArrayList<ModelTicket> arraydata;
     private AdapterSearchTickets adapter;
     private ImageView iv_proDialog;
+    private TextView tv_arr_to;
+    private int is_clickable_tv_arr_to = 4;
 
     private static final int MESSAGE_NET_CONNECTION_ERROR = 108;
     private static final int MESSAGE_UPDATE_PRINT = 101;
+    private static final int MESSAGE_UPDATE_PRINT_TESTDATA = 102;
     private static final int MESSAGE_CLOSE_PRODIALOG = 103;
+    private static final int MESSAGE_TV_ARR_CLICKABLE = 104;
     @SuppressLint("HandlerLeak")
     Handler handler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
-//            if (proDialog != null) {
-//                proDialog.dismiss();
-//            }
             if (animation_proDialog != null) {
                 animation_proDialog.stop();
-                ((LinearLayout)mListView.getParent()).removeView(iv_proDialog);
+                iv_proDialog.setVisibility(View.GONE);
             }
-            if (msg.what == MESSAGE_UPDATE_PRINT) {
+            if (msg.what == MESSAGE_UPDATE_PRINT_TESTDATA) {
                 if (Utils.IS_TEST_DATA){
                     arraydata.clear();
                     for (int i = 0; i < Utils.n_data; i++) {
@@ -61,23 +64,19 @@ public class FragmentContent01SearchTickets extends FragmentBase {
                     }
                 }
                 print();
+            } else if (msg.what == MESSAGE_UPDATE_PRINT) {
+                print();
             } else if (msg.what == MESSAGE_NET_CONNECTION_ERROR) {
                 toast(R.string.no_internet);
+            } else if (msg.what == MESSAGE_TV_ARR_CLICKABLE) {
+                is_clickable_tv_arr_to = 4;
             }
         }
     };
-//    private ProgressDialog proDialog;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-//        proDialog = ProgressDialog
-//                .show(this.getContext(), getString(R.string.lianjiezhong)
-//                        , getString(R.string.lianjiezhong_shaohou), true, true);
-//
-        arraydata = new ArrayList<ModelTicket>();
-//        new Thread(new Rungetdata()).start();
     }
 
     @Override
@@ -85,13 +84,15 @@ public class FragmentContent01SearchTickets extends FragmentBase {
         super.onViewCreated(view, savedInstanceState);
 
         iv_proDialog = view.findViewById(R.id.fcontent01_iv_proDialog);
-        animation_proDialog = AnimationsContainer.getInstance(R.array.animation_prodialog1, 16, this.getContext()).createProgressDialogAnim(iv_proDialog);
+        animation_proDialog = AnimationsContainer.getInstance(R.array.animation_prodialog1, 18, this.getContext()).createProgressDialogAnim(iv_proDialog);
+
         animation_proDialog.start();
 
         topItemNavbar = (TopItemNavbar) view.findViewById(R_id_topbar);
         topItemNavbar.setTitle("SEATCH TICKETS");
         topItemNavbar.setOnMenuClickListener((OnMenuClickListener)view.getParent().getParent().getParent());
 
+        arraydata = new ArrayList<ModelTicket>();
         adapter = new AdapterSearchTickets(getActivity(), arraydata);
 
         mListView = (ListView) view.findViewById(R.id.fcontent01_lv);
@@ -106,6 +107,27 @@ public class FragmentContent01SearchTickets extends FragmentBase {
 //            }
 //        });
         setListViewHeightBasedOnChildren(mListView);
+
+        tv_arr_to = (TextView) view.findViewById(R.id.vs_tv_arr);
+        tv_arr_to.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(is_clickable_tv_arr_to > 3) {
+                    if (null != animation_proDialog) {
+                        mListView.setVisibility(View.INVISIBLE);
+                        iv_proDialog.setVisibility(View.VISIBLE);
+                        animation_proDialog.start();
+                        new Thread(new Rungetdata()).start();
+                    }
+                    is_clickable_tv_arr_to = 3;
+                } else if(is_clickable_tv_arr_to >= 2){
+                    is_clickable_tv_arr_to -= 2;
+                } else {
+                    toast("You clicked too fast!");
+                    is_clickable_tv_arr_to = 3;
+                }
+            }
+        });
         new Thread(new Rungetdata()).start();
     }
 
@@ -122,22 +144,23 @@ public class FragmentContent01SearchTickets extends FragmentBase {
     }
 
     //重新回来fragment
-    @Override
-    public void onHiddenChanged(boolean hidden) {
-        super.onHiddenChanged(hidden);
-        if (hidden) {
-
-        } else {
-            ((LinearLayout)mListView.getParent()).addView(iv_proDialog);
-//            animation_proDialog = AnimationsContainer.getInstance(R.array.animation_prodialog1, 16, this.getContext()).createProgressDialogAnim(iv_proDialog);
-            animation_proDialog.start();
-            handler.sendEmptyMessageDelayed(MESSAGE_CLOSE_PRODIALOG, 500);
-        }
-    }
+//    @Override
+//    public void onHiddenChanged(boolean hidden) {
+//        super.onHiddenChanged(hidden);
+//        if (hidden) {
+//
+//        } else {
+////            ((LinearLayout)mListView.getParent()).addView(iv_proDialog);
+////            animation_proDialog.start();
+////            handler.sendEmptyMessageDelayed(MESSAGE_CLOSE_PRODIALOG, 500);
+//        }
+//    }
 
     private void print() {
+        mListView.setVisibility(View.VISIBLE);
         adapter.setDataSource(arraydata);
         adapter.notifyDataSetChanged();
+        handler.sendEmptyMessageDelayed(MESSAGE_TV_ARR_CLICKABLE, 1000);
     }
 
     private void getData() {
@@ -154,7 +177,7 @@ public class FragmentContent01SearchTickets extends FragmentBase {
 //                arraydata.add(aticket);
 //            }
 
-            handler.sendEmptyMessageDelayed(MESSAGE_UPDATE_PRINT, 1000);
+            handler.sendEmptyMessageDelayed(MESSAGE_UPDATE_PRINT_TESTDATA, 3400);
 //            try {
 //
 //            } catch (Exception e) {

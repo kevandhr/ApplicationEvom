@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          xmlns:tools="http://schemas.android.com/tools"
           package="com.milk.open.openmove21">
 
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-    <!--<uses-permission android:name="android.permission.CAMERA"/>-->
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
+    <!-- <uses-permission android:name="android.permission.CAMERA"/> -->
     <application
             android:allowBackup="true"
             android:icon="@mipmap/icon"
@@ -15,11 +16,12 @@
             android:theme="@style/AppBaseTheme">
 
         <activity android:name=".activity.ActivityStart">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN"/>-->
 
-                <!--<category android:name="android.intent.category.LAUNCHER"/>-->
-            <!--</intent-filter>-->
+             <!--<intent-filter>-->
+             <!--<action android:name="android.intent.action.MAIN"/>-->
+
+             <!--<category android:name="android.intent.category.LAUNCHER"/>-->
+             <!--</intent-filter>-->
         </activity>
 
         <activity android:name=".activity.ActivityMain">
@@ -33,7 +35,11 @@
         <activity
                 android:name="com.journeyapps.barcodescanner.CaptureActivity"
                 android:screenOrientation="fullSensor"
-                tools:replace="screenOrientation" />
+                tools:replace="screenOrientation"/>
+
+        <activity
+                android:name=".activity.ActivityPopupTCode"
+                android:theme="@style/AppBaseTheme_popup"/>
 
     </application>
 

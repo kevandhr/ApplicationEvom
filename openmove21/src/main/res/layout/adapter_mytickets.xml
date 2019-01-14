@@ -14,7 +14,8 @@
                 android:id="@+id/adp_mytickets_isvalid_bg"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:scaleType="fitXY"/>
+                android:adjustViewBounds="true"
+                android:scaleType="centerCrop"/>
 
 
         <ImageView
@@ -24,6 +25,8 @@
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
                 android:layout_alignParentTop="true"
+                android:layout_marginRight="6dp"
+                android:layout_marginEnd="6dp"
                 android:contentDescription="@string/contentDescription"
                 android:src="@drawable/fcontent_04_ic_bustype_yellow"
                 android:scaleType="fitXY"/>
@@ -36,8 +39,6 @@
                 android:layout_toEndOf="@id/adp_mytickets_iv_che"
                 android:layout_toLeftOf="@id/adp_mytickets_iv_gongsi"
                 android:layout_toStartOf="@id/adp_mytickets_iv_gongsi"
-                android:layout_marginLeft="6dp"
-                android:layout_marginStart="6dp"
                 android:layout_marginTop="16dp"
                 android:textColor="#ecde6b"
                 android:textSize="14sp"
@@ -45,57 +46,54 @@
 
         <ImageView
                 android:id="@+id/adp_mytickets_iv_deparr"
-                android:layout_width="wrap_content"
+                android:layout_width="12dp"
                 android:layout_height="48dp"
                 android:layout_below="@id/adp_mytickets_tv_state"
                 android:layout_toRightOf="@id/adp_mytickets_iv_che"
                 android:layout_toEndOf="@id/adp_mytickets_iv_che"
-                android:layout_marginLeft="6dp"
-                android:layout_marginStart="6dp"/>
+                android:layout_marginLeft="4dp"
+                android:layout_marginStart="4dp"
+                android:src="@drawable/ticket_deparr"
+                android:visibility="gone"/>
 
-        <TextView
-                android:id="@+id/adp_mytickets_tv_scope"
+        <LinearLayout
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:orientation="vertical"
                 android:layout_below="@id/adp_mytickets_tv_state"
                 android:layout_toRightOf="@id/adp_mytickets_iv_deparr"
                 android:layout_toEndOf="@id/adp_mytickets_iv_deparr"
                 android:layout_toLeftOf="@id/adp_mytickets_iv_gongsi"
                 android:layout_toStartOf="@id/adp_mytickets_iv_gongsi"
-                android:layout_marginLeft="2dp"
-                android:layout_marginStart="2dp"
-                android:textColor="#646b6b"
-                android:textSize="16sp"
-                android:text="@string/textview"/>
+                android:layout_marginLeft="1dp"
+                android:layout_marginStart="1dp">
 
-        <TextView
-                android:id="@+id/adp_mytickets_tv_arr"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/adp_mytickets_tv_scope"
-                android:layout_toRightOf="@id/adp_mytickets_iv_deparr"
-                android:layout_toEndOf="@id/adp_mytickets_iv_deparr"
-                android:layout_toLeftOf="@id/adp_mytickets_iv_gongsi"
-                android:layout_toStartOf="@id/adp_mytickets_iv_gongsi"
-                android:layout_marginLeft="2dp"
-                android:layout_marginStart="2dp"
-                android:textColor="#646b6b"/>
+            <TextView
+                    android:id="@+id/adp_mytickets_tv_scope"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#646b6b"
+                    android:textSize="15sp"
+                    android:text="@string/textview"/>
 
-        <TextView
-                android:id="@+id/adp_mytickets_tv_timelimit"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_below="@id/adp_mytickets_tv_scope"
-                android:layout_toRightOf="@id/adp_mytickets_iv_deparr"
-                android:layout_toEndOf="@id/adp_mytickets_iv_deparr"
-                android:layout_toLeftOf="@id/adp_mytickets_iv_gongsi"
-                android:layout_toStartOf="@id/adp_mytickets_iv_gongsi"
-                android:layout_marginLeft="3dp"
-                android:layout_marginStart="3dp"
-                android:layout_marginTop="2dp"
-                android:textColor="#999999"
-                android:textSize="12sp"
-                android:text="@string/textview"/>
+            <TextView
+                    android:id="@+id/adp_mytickets_tv_arr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#777777"
+                    android:textSize="17sp"
+                    android:text="@string/textview"
+                    android:visibility="gone"/>
+
+            <TextView
+                    android:id="@+id/adp_mytickets_tv_timelimit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:textColor="#999999"
+                    android:textSize="12sp"
+                    android:text="@string/textview"/>
+        </LinearLayout>
 
         <ImageView
                 android:id="@+id/adp_mytickets_iv_gongsi"

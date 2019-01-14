@@ -49,9 +49,10 @@
 
             <ImageView
                     android:id="@+id/fcontent01_iv_proDialog"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="108dp"
+                    android:layout_height="108dp"
                     android:layout_gravity="center"/>
+
             <com.milk.open.openmove21.diyview.ListViewForScrollView
                     android:id="@+id/fcontent01_lv"
                     android:layout_width="match_parent"

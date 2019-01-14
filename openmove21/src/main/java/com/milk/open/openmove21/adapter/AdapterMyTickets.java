@@ -1,6 +1,7 @@
 package com.milk.open.openmove21.adapter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.graphics.drawable.AnimationDrawable;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -9,6 +10,8 @@ import android.widget.*;
 import com.google.zxing.integration.android.IntentIntegrator;
 import com.milk.open.openmove21.R;
 import com.milk.open.openmove21.activity.ActivityMain;
+import com.milk.open.openmove21.activity.ActivityPopupTCode;
+import com.milk.open.openmove21.fragment.AnimationsContainer;
 import com.milk.open.openmove21.model.ModelTicket;
 import com.milk.open.openmove21.util.Utils;
 
@@ -19,7 +22,8 @@ public class AdapterMyTickets extends BaseAdapter {
 	private List<ModelTicket> l;
 	private Activity activityParent;
 
-	private AnimationDrawable anDrawable_isvalid_bg;
+//	private AnimationDrawable anDrawable_isvalid_bg;
+    AnimationsContainer.FramesSequenceAnimation animation_adpmyticket_isvalid;
 
 	class Holder {
 		TextView tv_state;
@@ -58,6 +62,18 @@ public class AdapterMyTickets extends BaseAdapter {
 		h.tv_scope.setText(_data.getScope());
 		h.tv_timelimit.setText(_data.getTimelimit());
 
+		h.iv_che = (ImageView) convertView.findViewById(R.id.adp_mytickets_iv_che);
+		h.iv_che.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+				((ActivityMain)activityParent).call_onActivityResult();
+//                Intent intent = new Intent(activityParent, ActivityPopupTCode.class);
+//                // 将值传入意图
+//                intent.putExtra("a", "a");
+//                activityParent.startActivityForResult(intent, ActivityMain.REQUESTCODE_TCODE);
+            }
+        });
+
         h.tv_validate = (TextView) convertView.findViewById(R.id.adp_mytickets_tv_validate);
         h.tv_validate.setOnClickListener(new OnClickListener() {
             @Override
@@ -72,32 +88,29 @@ public class AdapterMyTickets extends BaseAdapter {
 
 		if(Utils.TC_CIVEZZANO == _data.getCategory()){
             h.iv_category = (ImageView) convertView.findViewById(R.id.adp_mytickets_iv_deparr);
-            h.iv_category.setAdjustViewBounds(true);
-            h.iv_category.setMaxWidth(36);
+            h.iv_category.setVisibility(View.VISIBLE);
             h.iv_category.setImageResource(R.drawable.ticket_deparr);
 
-            h.tv_scope.setTextSize(14);
+
 
             h.tv_arr = (TextView) convertView.findViewById(R.id.adp_mytickets_tv_arr);
+            h.tv_arr.setVisibility(View.VISIBLE);
             h.tv_arr.setText(_data.getArr());
-            h.tv_arr.setTextSize(17);
-            h.tv_arr.setTextColor(0xFF777777);
-
-            RelativeLayout.LayoutParams Params =  (RelativeLayout.LayoutParams)h.tv_timelimit.getLayoutParams();
-            Params.topMargin = 4+h.tv_arr.getHeight();
-            h.tv_timelimit.setLayoutParams(Params);
         }
 		if(_data.isIsvalid()) {
             h.tv_state.setTextColor(0xFF379637);
             h.tv_timelimit.setTextColor(0xFF379637);
 
-            h.iv_che = (ImageView) convertView.findViewById(R.id.adp_mytickets_iv_che);
             h.iv_che.setImageResource(R.drawable.fcontent_04_ic_bustype_green1);
 
             h.iv_isvalid_bg = (ImageView) convertView.findViewById(R.id.adp_mytickets_isvalid_bg);
-            h.iv_isvalid_bg.setImageResource(R.drawable.animation_adpmticket_isvalid_bg);
-            anDrawable_isvalid_bg = (AnimationDrawable) h.iv_isvalid_bg.getDrawable();
-            anDrawable_isvalid_bg.start();
+//            h.iv_isvalid_bg.setImageResource(R.drawable.animation_adpmticket_isvalid_bg);
+//            anDrawable_isvalid_bg = (AnimationDrawable) h.iv_isvalid_bg.getDrawable();
+//            anDrawable_isvalid_bg.start();
+            if(null == animation_adpmyticket_isvalid) {
+                animation_adpmyticket_isvalid = AnimationsContainer.getInstance(R.array.animation_adpmyticket_isvalid, 18, activityParent).createProgressDialogAnim(h.iv_isvalid_bg);
+            }
+            animation_adpmyticket_isvalid.start();
 
             h.tv_validate.setText("Validate again");
         }
